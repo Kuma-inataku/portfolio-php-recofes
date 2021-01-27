@@ -29,16 +29,7 @@
       <!-- キャッチコピー -->
       <div class="title">
         <div class="t-content">
-          <!-- <div>
-            <span class="t-title">ただ今、転職活動中！</span>
-            <br>
-            <br>
-            学習中言語：JavaScript/PHP/WordPress
-            <br>
-            希望勤務地：東京
-            <br>
-            <span class="t-message">ご興味持っていただいたらご連絡ください！</span>
-          </div> -->
+
         </div>
       </div>
       <!-- キャッチコピー(終わり) -->
