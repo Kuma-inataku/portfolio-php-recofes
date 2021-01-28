@@ -45,18 +45,21 @@
               <input type="password" name="password" size="35" maxlength="255" value="" />
             </div>
           </div>
-          <!-- 余裕あれば実装 -->
+          <!-- 余裕あればデータベースと連携 -->
           <div class="save_login">
             <input id="save" type="checkbox" name="save" value="on">
             <label for="save">ログイン状態を維持する</label>
           </div>
-          <!-- [END]余裕あれば実装 -->
+          <!-- [END]余裕あればデータベースと連携 -->
           <div class="go_login">
             <input type="submit" value="ログイン" />
           </div>
         </form>
       </div>
     </div>
+  </div>
+  <div class="register">
+    <a href="#">新規登録はこちら</a>
   </div>
   <footer>
     ©2021 Reco.FES 
