@@ -50,6 +50,9 @@
 .rank-content ol li[data-rank="3"] span{
   background-color: #6A3805;
 }
+.rank-content ol li p{
+  display: inline;
+}
 .rank-title {
   font-size: 20px;
   margin-bottom: 20px;

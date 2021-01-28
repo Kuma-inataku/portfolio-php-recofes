@@ -33,48 +33,40 @@
   <section class="rank_wrap">
     <div class="rank"> 
       <!-- [PHP]投稿内容持ってくる -->
-      <!-- <img class="rank-img" src="<?php ?>" alt=""> -->
       <div class="rank-content">
         <h2>オススメフェスランキング</h2>
         <ol>
           <li data-rank="1">
             <span>1位</span>
             <a href="#">Rock'in Japan<?php ?></a>
+            <p>(<?php ?>票)</p>
           </li>
           <li data-rank="2">
             <span>2位</span>
             <a href="#">SWEET LOVE SHOWER<?php ?></a>
+            <p>(<?php ?>票)</p>
           </li>
           <li data-rank="3">
             <span>3位</span>
             <a href="#">RIZING SUN<?php ?></a>
+            <p>(<?php ?>票)</p>
           </li>
           <li>
             <span>4位</span>
             <a href="#">COUNT DOWN JAPAN<?php ?></a>
+            <p>(<?php ?>票)</p>
           </li>
           <li>
             <span>5位</span>
             <a href="#">サマーソニック<?php ?></a>
+            <p>(<?php ?>票)</p>
           </li>
         </ol>
-        <!-- <p class="rank-text">サイコーだった！WANIMAいいね！</p> -->
       </div>
       <div class="rank-link">
-          <a href="#">もっと見る</a>
+        <a href="#">もっと見る</a>
       </div>
     </div>
-    </section>
-
-      <!-- ranking.cssでデザイン -->
-      <!-- ランキング -->
-      <div class="title">
-        <div class="t-content">
-          
-        </div>
-      </div>
-      <!-- ランキング(終わり) -->
-      <!-- ranking.cssでデザイン -->
     </section>
     <div>
       <h2>口コミをしてまだ知らないフェス仲間とつながろう！</h2>
