@@ -86,3 +86,55 @@ h2{
 /* [END]カードリンク*/
 
 /* [END]直近の投稿 */
+
+
+/* ------------------ログイン画面---------------------- */
+
+.wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px;
+}
+.container{
+  padding: 30px;
+  border-radius: 10px;
+  background: #fff;
+}
+.container h1{
+  text-align: center;
+  margin-bottom: 30px ;
+}
+.content .subtitle{
+  font-weight: bold;
+  margin-bottom:10px ;
+}
+.content .corner{
+  margin-bottom: 30px;
+}
+.content .corner input{
+  background: #eee;
+  border: none;
+  font-size: 16px;
+}
+.subtitle .must{
+  font-weight: normal;
+  color: #fff;
+  background-color: #E5117C;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.content .save_login{
+  margin-bottom: 30px;
+  text-align: center;
+}
+.content .go_login{
+  text-align: center;
+}
+.content .go_login input{
+  border: none;
+  background-color: #444;
+  color: #fff;
+}
+
