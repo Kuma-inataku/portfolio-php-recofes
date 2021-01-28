@@ -88,7 +88,6 @@
             <p class="subtitle">自己紹介</p>
             <div>
             <textarea name="profile" cols="50" rows="10" placeholder="簡単な自己紹介をどうぞ！"></textarea>
-              <!-- <input type="text" name="profile" size="35" maxlength="255" value="" /> -->
             </div>
           </div>
           <div class="go_login">
