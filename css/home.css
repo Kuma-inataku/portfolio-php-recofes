@@ -1,0 +1,88 @@
+/* トップページ */
+.bg-img{
+  position: relative;
+  height: 600px;
+  width: 100%;
+  background-image: url(../images/top_image3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color:rgba(255,255,255,0.4);
+  background-blend-mode:lighten;
+}
+/* [END]トップページ */
+/* タイトル */
+h2{
+  text-align: center;
+  margin: 40px 0;
+}
+/* [END]タイトル */
+/* できること */
+.about{  
+  display: flex;
+  justify-content: center;
+  margin:auto 0;
+}
+.ab_left{
+  width: 30%;
+  background: red;
+}
+.ab_left img{
+  width:300px;
+}
+.ab_right{
+  list-style: none;
+  width: 70%;
+  background: blue;
+}
+/* [END]できること */
+
+/* 直近の投稿 */
+.recent_reviews{
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+.card{
+  margin: 30px auto;
+  width: 350px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+}
+.card-img{
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+}
+.card-content{
+  padding: 20px;
+}
+.card-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+.card-text {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* カードリンク(余裕あれば実装) */
+.card-link {
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding: 20px;
+}
+.card-link a {
+  text-decoration: none;
+  color: #0bd;
+  margin: 0 10px;
+}
+.card-link a:hover {
+  color: #0090aa;
+}
+/* [END]カードリンク*/
+
+/* [END]直近の投稿 */
