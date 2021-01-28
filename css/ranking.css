@@ -1,0 +1,79 @@
+
+
+.rank_wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rank{
+  margin: 30px auto;
+  width: 90%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px #ccc;
+}
+/* .rank-img{
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+} */
+.rank-content{
+  padding: 20px;
+}
+.rank-content ol{
+  list-style: none;
+}
+.rank-content ol li:first-of-type{
+  border-top: 1px solid #dadada;
+}
+.rank-content ol li{
+  padding: 20px 0px;
+  border-bottom: 1px solid #dadada;
+}
+.rank-content ol li a{
+  text-decoration: none;
+}
+.rank-content ol li span{
+  margin-right: 30px;
+  color: #fff;
+  padding: 5px 15px;
+  background-color:#333 ;
+  border-radius: 5px;
+}
+.rank-content ol li[data-rank="1"] span{
+  background-color: #AF9500;
+}
+.rank-content ol li[data-rank="2"] span{
+  background-color: #B4B4B4;
+}
+.rank-content ol li[data-rank="3"] span{
+  background-color: #6A3805;
+}
+.rank-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+.rank-text {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* カードリンク(余裕あれば実装) */
+.rank-link {
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding: 20px;
+  background-color: #333333;
+}
+.rank-link a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 10px;
+}
+.rank-link a:hover {
+  text-decoration: solid;
+  /* color: #0090aa; */
+}
