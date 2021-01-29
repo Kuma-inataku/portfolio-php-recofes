@@ -33,7 +33,6 @@
   <section class="rank_wrap">
     <div class="rank"> 
       <!-- [PHP]投稿内容持ってくる -->
-      <!-- <img class="rank-img" src="<?php ?>" alt=""> -->
       <div class="rank-content">
         <h2>オススメフェスランキング</h2>
         <ol>
