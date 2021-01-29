@@ -14,11 +14,11 @@
 /* タイトル */
 h2{
   text-align: center;
-  margin: 40px 0;
+  padding: 40px 0;
 }
 /* [END]タイトル */
 /* できること */
-.about{  
+.about{
   display: flex;
   justify-content: center;
   margin:auto 0;
@@ -116,6 +116,7 @@ h2{
   background: #eee;
   border: none;
   font-size: 16px;
+  resize: none;
 }
 .subtitle .must{
   font-weight: normal;
