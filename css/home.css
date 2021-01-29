@@ -112,7 +112,7 @@ h2{
 .content .corner{
   margin-bottom: 30px;
 }
-.content .corner input{
+.content .corner input,textarea{
   background: #eee;
   border: none;
   font-size: 16px;
@@ -136,6 +136,7 @@ h2{
   border: none;
   background-color: #333;
   color: #fff;
+  padding: 10px 20px;
 }
 .register{
   text-align: center;
