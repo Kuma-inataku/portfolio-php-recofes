@@ -14,14 +14,17 @@
         <li class="nav_home">
             レコＦＥＳ
         </li>
-        <li>
-          <a href="#">ユーザー登録</a>
+        <li class="nav_must">
+          <a href="#">他のランキング</a>
+        </li>
+        <li class="nav_must">
+          <a href="about">口コミする</a>
         </li>
         <li>
-          <a href="about">ログイン</a>
+          <a href="skills">特典</a>
         </li>
         <li>
-          <a href="skills">ゲストログイン</a>
+          <a href="skills"><?php ?>○○さん</a>
         </li>
       </ul>
     </nav>
@@ -59,9 +62,6 @@
         </form>
       </div>
     </div>
-  </div>
-  <div class="register">
-    既に会員の方は<a href="#">コチラ</a>からログイン
   </div>
   <footer>
     ©2021 Reco.FES 
