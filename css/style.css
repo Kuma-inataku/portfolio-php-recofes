@@ -164,6 +164,13 @@ nav li.nav_home{
 }
 /* [end]ナビバー */
 
+.error{
+  color:#E05736 ;
+  background-color: #FFEBEE;
+  border-radius: 5px;
+  padding:10px ;
+  font-size:14px ;
+}
 
 /* フッター */
 footer{
