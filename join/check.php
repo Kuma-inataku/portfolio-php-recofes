@@ -15,13 +15,13 @@
             レコＦＥＳ
         </li>
         <li>
-          <a href="#">ユーザー登録</a>
+          <a href="http://localhost:8888/my_project/join/index.php">ユーザー登録</a>
         </li>
         <li>
-          <a href="about">ログイン</a>
+          <a href="http://localhost:8888/my_project/login.php">ログイン</a>
         </li>
         <li>
-          <a href="skills">ゲストログイン</a>
+          <a href="#">ゲストログイン</a>
         </li>
       </ul>
     </nav>
