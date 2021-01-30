@@ -118,6 +118,9 @@ h2{
   font-size: 16px;
   resize: none;
 }
+.content .corner img{
+  width: 250px;
+}
 .subtitle .must{
   font-weight: normal;
   color: #fff;
@@ -139,15 +142,23 @@ h2{
 .content .go_login{
   text-align: center;
 }
+.content .go_login a{
+  text-align: center;
+  text-decoration: none;
+  margin: 20px;
+}
+.content .go_login a:hover{
+  color: orange;
+}
 .content .go_login input{
   border: none;
   background-color: #333;
   color: #fff;
   padding: 10px 20px;
+  margin: 20px;
 }
 .register{
   text-align: center;
-  /* margin: 0 auto; */
 }
 .register a{
   color: #333;
