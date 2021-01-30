@@ -112,7 +112,7 @@ h2{
 .content .corner{
   margin-bottom: 30px;
 }
-.content .corner input,textarea{
+.content .corner input,textarea,select{
   background: #eee;
   border: none;
   font-size: 16px;
@@ -125,6 +125,12 @@ h2{
   border-radius: 10px;
   font-size: 12px;
   padding: 0 10px;
+}
+.subtitle .sns_url{
+  font-weight: normal;
+  color: #777;
+  font-size: 12px;
+  margin-left: 20px;
 }
 .content .save_login{
   margin-bottom: 30px;

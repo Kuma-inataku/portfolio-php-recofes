@@ -12,7 +12,7 @@
     <nav>
       <ul>
         <li class="nav_home">
-            レコＦＥＳ
+          <a href="http://localhost:8888/my_project/index.php">レコＦＥＳ</a> 
         </li>
         <li>
           <a href="http://localhost:8888/my_project/join/index.php">ユーザー登録</a>

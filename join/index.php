@@ -1,3 +1,32 @@
+<?php 
+// Noticeメッセージを表示する
+ini_set('display_errors', 1); 
+
+if(!empty($_POST)){
+  if($_POST['email'] === ''){
+    $error['email'] = 'blank';
+  }
+  if(strlen($_POST['password']) < 4){
+    $error['password'] ='length';
+  }
+  if($_POST['password'] === ''){
+    $error['password'] ='blank';
+  }
+  if($_POST['name'] === ''){
+    $error['name'] = 'blank';
+  }
+  if($_POST['fes_count'] === '選択してください'){
+    $error['fes_count'] = 'must_select';
+  }
+  
+  if(empty($error)){
+    header('Location:check.php');
+    exit();
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,7 +41,7 @@
     <nav>
       <ul>
         <li class="nav_home">
-            レコＦＥＳ
+          <a href="http://localhost:8888/my_project/index.php">レコＦＥＳ</a> 
         </li>
         <li>
           <a href="http://localhost:8888/my_project/join/index.php">ユーザー登録</a>
@@ -25,63 +54,78 @@
         </li>
       </ul>
     </nav>
-  </header>
+</header>
   <div class="wrap">
     <div class="container">
       <h1>新規登録</h1>
       <div class="content">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
+
           <div class="corner">
             <p class="subtitle">メールアドレス<span class="must">必須</span></p>
-            <input type="text" name="email" size="35" maxlength="255" value=" " />
-            <!-- エラー表示 -->
-              <!-- <div>
-                <p class="error">*メールアドレスとパスワードをご記入ください</
-                <p class="error">*ログインに失敗しました。正しくご記入ください</p>
-              </div> -->
-            <!-- [END]エラー表示 -->
-          </div>
-          <div class="corner">
-            <p class="subtitle">パスワード<span class="must">必須</span></p>
-            <div>
-              <input type="password" name="password" size="35" maxlength="255" value="" />
+            <input type="text" name="email" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['email'],ENT_QUOTES)); ?>" />
+            <!-- 未記入の場合のエラー表示 -->
+            <?php if($error['email'] === 'blank'): ?>
+              <p class="error">メールアドレスをご記入ください</p>
+              <?php endif; ?>
+              <!-- [END]未記入の場合のエラー表示 -->
             </div>
-          </div>
-          <div class="corner">
-            <p class="subtitle">パスワード(確認用)<span class="must">必須</span></p>
-            <div>
-              <input type="password" name="password" size="35" maxlength="255" value="" />
-            </div>
+            
+            <div class="corner">
+              <p class="subtitle">パスワード<span class="must">必須</span></p>
+              <input type="password" name="password" size="10" maxlength="20" value="<?php print(htmlspecialchars($_POST['password'], ENT_QUOTES)); ?>" />
+              <!-- 未記入の場合のエラー表示 -->
+              <?php if ($error['password'] === 'blank'): ?>
+                <p class="error">パスワードを入力してください</p>
+              <?php endif; ?>      
+              <!-- [END]未記入の場合のエラー表示 -->
+              <!-- 4文字以下の場合のエラー表示 -->
+              <?php if ($error['password'] === 'length'): ?>
+                <p class="error">4文字以上で入力ください</p>
+              <?php endif; ?>      
+              <!-- [END]4文字以下の場合のエラー表示 -->
           </div>
           <div class="corner">
             <p class="subtitle">ニックネーム<span class="must">必須</span></p>
-            <!-- <p class="error">*ニックネームを入力してください</p> -->
             <div>
-              <input type="text" name="name" size="35" maxlength="255" value="" />
+              <input type="text" name="name" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['name'],ENT_QUOTES)); ?>" />
+            <!-- 未記入の場合のエラー表示 -->
+            <?php if ($error['name'] === 'blank'): ?>
+						<p class="error">ニックネームを入力してください</p>
+            <?php endif; ?> 
+            <!-- [END]未記入の場合のエラー表示 -->
             </div>
           </div>
           <div class="corner">
-            <p class="subtitle">SNS(Twiter)</p>
+            <p class="subtitle">SNS(Twiter)<span class="sns_url">※URLを記入ください</span></p>
             <div>
-              <input type="text" name="twitter" size="35" maxlength="255" value="" />
+              <input type="text" name="twitter" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['twitter'],ENT_QUOTES)); ?>" />
             </div>
           </div>
           <div class="corner">
-            <p class="subtitle">SNS(Instagram)</p>
+            <p class="subtitle">SNS(Instagram)<span class="sns_url">※URLを記入ください</span></p>
             <div>
-              <input type="text" name="instagram" size="35" maxlength="255" value="" />
+              <input type="text" name="instagram" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['instagram'],ENT_QUOTES)); ?>" />
             </div>
           </div>
           <div class="corner">
-            <p class="subtitle">フェスに行った回数</p>
+            <p class="subtitle">フェスに行った回数<span class="must">必須</span></p>
             <div>
-              <input type="password" name="password" size="35" maxlength="255" value="" />
+              <select name="fes_count">
+                <option value="選択してください">選択してください</option>
+                <?php for($i=0; $i<=100; $i++): ?>
+                <option value="<?php print $i ?>"><?php print $i . '回' ?></option>
+                <?php endfor;?>
+              </select>
+            <?php if ($error['fes_count'] === 'must_select'): ?>
+  						<p class="error">回数を選んでください</p>
+            <?php endif; ?>
             </div>
           </div>
           <div class="corner">
             <p class="subtitle">プロフィール画像</p>
             <div>
-              <input type="password" name="password" size="35" maxlength="255" value="" />
+              <input type="file" name="image" size="35" maxlength="255" value="" />
             </div>
           </div>
           <div class="corner">
