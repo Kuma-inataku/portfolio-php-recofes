@@ -2,6 +2,8 @@
 // Noticeメッセージを表示する
 ini_set('display_errors', 1); 
 
+session_start();
+
 if(!empty($_POST)){
   if($_POST['email'] === ''){
     $error['email'] = 'blank';
@@ -18,13 +20,27 @@ if(!empty($_POST)){
   if($_POST['fes_count'] === '選択してください'){
     $error['fes_count'] = 'must_select';
   }
+  $fileName = $_FILES['image']['name'];
+  if(!empty($fileName)){
+    $ext = substr($fileName,-3);
+    if($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){
+      $error['image']= 'type';
+    }
+  }
   
   if(empty($error)){
+    $image = date('YmdHis') . $_FILES['image']['name'];
+    move_uploaded_file($_FILES['image']['tmp_name'], '../user_picture/' . $image);
+    $_SESSION['join'] = $_POST;
+    $_SESSION['join']['image'] = $image;
     header('Location:check.php');
     exit();
   }
 }
 
+if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
+  $_POST = $_SESSION['join'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -117,15 +133,32 @@ if(!empty($_POST)){
                 <option value="<?php print $i ?>"><?php print $i . '回' ?></option>
                 <?php endfor;?>
               </select>
+            <!-- 未記入の場合のエラー表示 -->
             <?php if ($error['fes_count'] === 'must_select'): ?>
   						<p class="error">回数を選んでください</p>
             <?php endif; ?>
+            <!-- [END]未記入の場合のエラー表示 -->
+            <!-- 他項目で漏れがあった場合の場合のエラー -->
+            <?php if(!empty($error)): ?>
+              <p class="error">恐れ入りますが、再度回数を選択ください</p>
+            <?php endif; ?>
+            <!-- [END]他項目で漏れがあった場合の場合のエラー -->
             </div>
           </div>
           <div class="corner">
             <p class="subtitle">プロフィール画像</p>
             <div>
               <input type="file" name="image" size="35" maxlength="255" value="" />
+              <!-- 画像じゃないモノが投函された場合のエラー -->
+              <?php if ($error['image'] === 'type'): ?>
+                <p class="error">画像は「.jpg」「.gif」「.png」のどれかで指定してください</p>
+                <?php endif; ?>
+              <!-- [END]画像じゃないモノが投函された場合のエラー -->
+              <!-- 他項目で漏れがあった場合の場合のエラー -->
+              <?php if(!empty($error)): ?>
+              <p class="error">恐れ入りますが、再度画像を指定してください</p>
+              <?php endif; ?>
+              <!-- [END]他項目で漏れがあった場合の場合のエラー -->
             </div>
           </div>
           <div class="corner">

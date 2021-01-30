@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+if(!isset($_SESSION['join'])){
+  header('Location:index.php');
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -25,7 +34,7 @@
         </li>
       </ul>
     </nav>
-  </header>
+</header>
   <div class="wrap">
     <div class="container">
       <h1>登録内容確認</h1>
@@ -33,49 +42,50 @@
         <form action="" method="post">
           <div class="corner">
             <p class="subtitle">メールアドレス</p>
-            <?php ?>
+            <p>
+            <?php print(htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES)); ?>
+            </p>
           </div>
           <div class="corner">
             <p class="subtitle">パスワード</p>
-            <div>*****(表示されません)</div>
+            <p>*****(表示されません)</p>
           </div>
           <div class="corner">
             <p class="subtitle">ニックネーム</p>
-            <div>
-              <?php ?>
-            </div>
+            <p><?php print(htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES)); ?></p>
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Twiter)</p>
-            <div>
-              <?php ?>
-            </div>
+            <p>
+            <?php print(htmlspecialchars($_SESSION['join']['twitter'],ENT_QUOTES)); ?>
+            </p>
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Instagram)</p>
-            <div>
-              <?php ?>
-            </div>
+            <p>
+            <?php print(htmlspecialchars($_SESSION['join']['instagram'],ENT_QUOTES)); ?>
+            </p>
           </div>
           <div class="corner">
             <p class="subtitle">フェスに行った回数</p>
-            <div>
-              <?php ?>
-            </div>
+            <p>
+            <?php print(htmlspecialchars($_SESSION['join']['fes_count'],ENT_QUOTES)); ?>回
+            </p>
           </div>
           <div class="corner">
             <p class="subtitle">プロフィール画像</p>
-            <div>
-              <?php ?>
-            </div>
+              <?php if($_SESSION['join']['image'] !== ''): ?>
+               <img src="../user_picture/<?php print(htmlspecialchars($_SESSION['join']['image'],ENT_QUOTES)); ?>" alt=""> 
+               <?php endif; ?>
           </div>
           <div class="corner">
             <p class="subtitle">自己紹介</p>
-            <div>
-              <?php ?>
-            </div>
+            <p>
+            <?php print(htmlspecialchars($_SESSION['join']['profile'],ENT_QUOTES)); ?>
+            </p>
           </div>
           <div class="go_login">
+            <a href="index.php?action=rewrite">&laquo;&nbsp;修正する</a>
             <input type="submit" value="登録" />
           </div>
         </form>
