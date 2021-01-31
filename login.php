@@ -1,3 +1,35 @@
+<?php
+require('dbconnect.php');
+
+if(!empty($_POST)){
+  if($_POST['email'] !== '' && $_POST['password'] !== ''){
+    $login = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
+    $login->execute(array(
+      $_POST['email'],
+      sha1($_POST['password'])
+    ));
+    $user = $login->fetch();
+
+    if($user){
+      // SESSIONに値を代入
+      $_SESSION['id'] = $user['id'];
+      $_SESSION['time'] = time();
+      header('Location: ranking/home.php');
+      exit();
+    }
+    //$userが空(＝emailかpasswordが間違えていてログインに失敗)である場合
+    else{
+      $error['login'] = 'failed';
+    }
+  }
+  //$_POSTで受け取るemailかpasswordのどちらかが空である場合
+  else{
+    $error['login'] = 'blank';
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -32,18 +64,19 @@
       <div class="content">
         <form action="" method="post">
           <div class="corner">
+            <?php if ($error['login'] === 'blank'): ?>
+            <p class="error">メールアドレスとパスワードをご記入ください</p>
+            <?php endif;?>
             <p class="subtitle">メールアドレス<span class="must">必須</span></p>
-            <input type="text" name="email" size="35" maxlength="255" value=" " />
-            <!-- <div>
-              <p class="error">*メールアドレスとパスワードをご記入ください</
-              <p class="error">*ログインに失敗しました。正しくご記入ください</p>
-            </div> -->
+            <input type="text" name="email" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['email'],ENT_QUOTES)); ?>" />
+            <?php if ($error['login'] === 'failed'): ?>
+              <p class="error">ログインに失敗しました。正しくご記入ください</p>
+            <?php endif;?>
+            </div>
           </div>
           <div class="corner">
             <p class="subtitle">パスワード<span class="must">必須</span></p>
-            <div>
-              <input type="password" name="password" size="35" maxlength="255" value="" />
-            </div>
+            <input type="password" name="password" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['password'],ENT_QUOTES)); ?>" />
           </div>
           <!-- 余裕あればデータベースと連携 -->
           <div class="save_login">
@@ -59,7 +92,7 @@
     </div>
   </div>
   <div class="register">
-    <a href="#">新規登録はこちら</a>
+    <a href="http://localhost:8888/my_project/join/index.php">新規登録はこちら</a>
   </div>
   <footer>
     ©2021 Reco.FES 
