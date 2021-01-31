@@ -2,24 +2,34 @@
 // Noticeメッセージを表示する
 ini_set('display_errors', 1); 
 
+//セッションの値受取(書き直し時に受け取れるように)
 session_start();
 
+//MyAdminとの接続用
+require('../dbconnect.php');
+
 if(!empty($_POST)){
+  //空欄時のエラー表示(メールアドレス)
   if($_POST['email'] === ''){
     $error['email'] = 'blank';
   }
+  //4文字以下入力時のエラー表示(パスワード)
   if(strlen($_POST['password']) < 4){
     $error['password'] ='length';
   }
+  //空欄時のエラー表示(パスワード)
   if($_POST['password'] === ''){
     $error['password'] ='blank';
   }
+  //空欄時のエラー表示(ニックネーム)
   if($_POST['name'] === ''){
     $error['name'] = 'blank';
   }
+  //空欄時のエラー表示(フェス回数)
   if($_POST['fes_count'] === '選択してください'){
     $error['fes_count'] = 'must_select';
   }
+  ///jpg/.png/gif以外が選択された時のエラー表示(画像選択)
   $fileName = $_FILES['image']['name'];
   if(!empty($fileName)){
     $ext = substr($fileName,-3);
@@ -27,17 +37,36 @@ if(!empty($_POST)){
       $error['image']= 'type';
     }
   }
-  
+  //アカウントの重複チェック
   if(empty($error)){
+    //メールアドレスの重複チェック
+    $member = $db->prepare('SELECT COUNT(*) AS cnt_email FROM users WHERE email=?');
+    $member->execute(array($_POST['email']));
+    $recordEmail = $member->fetch();
+    if ($recordEmail['cnt_email'] > 0){
+      $error['email'] = 'duplicate';
+    }
+    //ニックネームの重複チェック
+    $member = $db->prepare('SELECT COUNT(*) AS cnt_name FROM users WHERE name=?');
+    $member->execute(array($_POST['name']));
+    $recordName = $member->fetch();
+    if ($recordName['cnt_name'] > 0){
+      $error['name'] = 'duplicate';
+    }
+  }
+    // エラーが一つも出て得ない場合
+  if(empty($error)){
+    // 画像データを../user_pictureという場所に投函し、かつ画像データを保持
     $image = date('YmdHis') . $_FILES['image']['name'];
     move_uploaded_file($_FILES['image']['tmp_name'], '../user_picture/' . $image);
     $_SESSION['join'] = $_POST;
     $_SESSION['join']['image'] = $image;
+    // check.phpに遷移する
     header('Location:check.php');
     exit();
   }
 }
-
+// check.phpで内容修正があった場合、SESSIONの値をフォームに入力する
 if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
   $_POST = $_SESSION['join'];
 }
@@ -82,10 +111,15 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
             <input type="text" name="email" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['email'],ENT_QUOTES)); ?>" />
             <!-- 未記入の場合のエラー表示 -->
             <?php if($error['email'] === 'blank'): ?>
-              <p class="error">メールアドレスをご記入ください</p>
-              <?php endif; ?>
-              <!-- [END]未記入の場合のエラー表示 -->
-            </div>
+            <p class="error">メールアドレスをご記入ください</p>
+            <?php endif; ?>
+            <!-- [END]未記入の場合のエラー表示 -->
+            <!-- メールアドレス重複時のエラー表示 -->
+            <?php if($error['email'] === 'duplicate'): ?>
+            <p class="error">指定されたメールアドレスは既に登録されています</p>
+            <?php endif; ?>
+            <!-- [END]メールアドレス重複時のエラー表示 -->
+          </div>
             
             <div class="corner">
               <p class="subtitle">パスワード<span class="must">必須</span></p>
@@ -110,6 +144,11 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
 						<p class="error">ニックネームを入力してください</p>
             <?php endif; ?> 
             <!-- [END]未記入の場合のエラー表示 -->
+            <!-- ニックネームが重複時のエラー表示 -->
+            <?php if ($error['name'] === 'duplicate'): ?>
+              <p class="error">指定されたニックネームは既に他のユーザーが使用しています</p>
+            <?php endif; ?> 
+            <!-- [END]ニックネームが重複時のエラー表示 -->
             </div>
           </div>
           <div class="corner">
