@@ -1,12 +1,39 @@
 <?php 
+// Noticeメッセージを表示する
+ini_set('display_errors', 1); 
+
 session_start();
+require('../dbconnect.php');
 
 if(!isset($_SESSION['join'])){
   header('Location:index.php');
   exit();
 }
-?>
 
+if(!empty($_POST)){
+  $statement = $db->prepare('INSERT INTO users SET email=?, password=?, name=?, sns_twitter=?,sns_instagram=?, fes_count=?, image=?, profile=?, created=NOW()');
+  $statement->execute(array(
+    $_SESSION['join']['email'],
+    sha1($_SESSION['join']['password']),
+    $_SESSION['join']['name'],
+    $_SESSION['join']['twitter'],
+    $_SESSION['join']['instagram'],
+    $_SESSION['join']['fes_count'],
+    $_SESSION['join']['image'],
+    $_SESSION['join']['profile']
+  ));
+  // var_dump($_SESSION); // ここ
+  // var_dump($db->errorInfo());
+  // exit();
+
+  unset($_SESSION['join']);
+
+  header('Location: thanks.php');
+  exit();
+  
+}
+
+  ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -40,6 +67,7 @@ if(!isset($_SESSION['join'])){
       <h1>登録内容確認</h1>
       <div class="content">
         <form action="" method="post">
+          <input type="hidden" name="action" value="submit"/>
           <div class="corner">
             <p class="subtitle">メールアドレス</p>
             <p>
