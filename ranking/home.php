@@ -11,14 +11,13 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
-
 }
 else{
   header('Location: ../login.php');
   exit();
 }
 
-
+$reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, sns_instagram, r.* FROM users u, reviews r WHERE u.id=r.reviewer_id ORDER BY r.created DESC');
 
 ?>
 
@@ -100,45 +99,33 @@ else{
       <div>
         <h2>直近の口コミ</h2>
         <ul class="recent_reviews">
+        <?php foreach($reviews as $review): ?>
           <!-- <a href="#"> -->
             <li class="card"> 
               <!-- <section> -->
-              <!-- [PHP]投稿内容持ってくる -->
-              <img class="card-img" src="<?php ?>" alt="">
+              <img class="card-img" src="../user_picture/<?php print(htmlspecialchars($review['image'],ENT_QUOTES)); ?>" alt="思い出の一枚">
               <div class="card-content">
-                <p class="card-text">サイコーだった！WANIMAいいね！</p>
+                <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
+                <br>
+                <p><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?></p>
+                <br>
+                <p><?php print(htmlspecialchars($review['created'],ENT_QUOTES)); ?></p>
+                <br>
+                <p>フェス経験回数：<?php print(htmlspecialchars($review['fes_count'],ENT_QUOTES)); ?>回</p>
+                <br>
+                <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
+                  <img src="../images/twitter.png" alt="">
+                </a>
+                <a href="<?php print(htmlspecialchars($review['sns_twitter'],ENT_QUOTES)); ?>">
+                  <img src="../images/instagram.png" alt="">
+                </a>
               </div>
               <div class="card-link">
                   <a href="#">もっと見る</a>
               </div>
             <!-- </section> -->
             </li>
-            <li class="card"> 
-              <!-- <section> -->
-                <!-- [PHP]投稿内容持ってくる -->
-                <img class="card-img" src="<?php ?>" alt="">
-                <div class="card-content">
-                <p class="card-text">サイコーだった！[Alexandros]いいね！</p>
-              </div>
-              <div class="card-link">
-                <a href="#">もっと見る</a>
-              </div>
-            <!-- </section> -->
-            </li>
-            <li class="card"> 
-            <!-- <section> -->
-              <!-- [PHP]投稿内容持ってくる -->
-              <img class="card-img" src="<?php ?>" alt="">
-              <div class="card-content">
-                <p class="card-text">サイコーだった！ロケーションいいね！</p>
-              </div>
-              <div class="card-link">
-                <a href="#">もっと見る</a>
-              </div>
-                <!-- [PHP]投稿内容持ってくる -->
-            <!-- </section> -->
-            </li>
-          <!-- </a> -->
+          <?php endforeach; ?>
         </ul>
       </div>
       <footer>
