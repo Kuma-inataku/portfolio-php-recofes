@@ -1,3 +1,24 @@
+<?php 
+session_start();
+require('../dbconnect.php');
+
+// SESSIONにidやtimeが保存されてた場合
+if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
+  // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
+  $_SESSION['time'] =time();
+  
+  // DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
+  $users = $db->prepare('SELECT * FROM users WHERE id=?');
+  $users->execute(array($_SESSION['id']));
+  $user = $users->fetch();
+}
+else{
+  header('Location: ../login.php');
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -14,19 +35,19 @@
     <nav>
       <ul>
         <li class="nav_home">
-            レコＦＥＳ
+        <a href="http://localhost:8888/my_project/ranking/home.php">レコＦＥＳ</a>
         </li>
         <li class="nav_must">
           <a href="#">他のランキング</a>
         </li>
         <li class="nav_must">
-          <a href="about">口コミする</a>
+        <a href="http://localhost:8888/my_project/review/review.php">口コミする</a>
         </li>
         <li>
-          <a href="skills">特典</a>
+          <a href="#">特典</a>
         </li>
         <li>
-          <a href="skills"><?php ?>さん</a>
+          <a href="http://localhost:8888/my_project/mypage/mypage.php"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</a>
         </li>
       </ul>
     </nav>
@@ -54,7 +75,7 @@
           </div>
         </div>
         <div class="prof_info_update">
-          <button type="submit">プロフィール編集</button>
+          <button type="submit" onClick="location.href='http://localhost:8888/my_project/mypage/update.php'">プロフィール編集</button>
         </div>
       </div>
     </div>

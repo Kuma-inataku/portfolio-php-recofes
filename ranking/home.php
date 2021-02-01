@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 require('../dbconnect.php');
@@ -87,7 +88,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, sns_i
         </ol>
       </div>
       <div class="rank-link">
-        <a href="#">もっと見る</a>
+        <a href="http://localhost:8888/my_project/ranking/ranking.php">もっと見る</a>
       </div>
     </div>
     </section>
