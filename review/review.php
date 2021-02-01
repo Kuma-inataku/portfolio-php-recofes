@@ -16,8 +16,10 @@ else{
   header('Location: ../login.php');
   exit();
 }
+
 if(!empty($_POST)){
   if($_POST['review'] !== ''){
+    // フォーム入力内容をDBに保存
     $review = $db->prepare('INSERT INTO reviews SET reviewer_id=?, fes_name=?, review_image=?, review=?, created=NOW()');
     $review->execute(array(
       $user['id'],
@@ -25,8 +27,6 @@ if(!empty($_POST)){
       $_POST['review_image'],
       $_POST['review']
     ));
-    // var_dump($user); // ここを追加
-    // die(); // ここを追加
 
     header('Location: ../ranking/home.php');
     exit();  
