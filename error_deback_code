@@ -1,0 +1,8 @@
+  var_dump($user); // ここを追加
+  die(); // ここを追加
+
+  if(!empty($_POST)){
+  if($_POST['message'] !== ''){
+    $mesage = $db->prepare('INSERT INTO review SET ')
+  }
+}

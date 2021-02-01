@@ -1,5 +1,6 @@
 <?php
 require('dbconnect.php');
+session_start();
 
 // COOKIEのemailに何か保存されている場合、そのemailを呼び出す状況を$emailに代入
 if($_COOKIE['email'] !== ''){
