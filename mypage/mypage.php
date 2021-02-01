@@ -55,21 +55,20 @@ else{
   <section class="prof_wrap">
     <div class="prof"> 
       <h2 class="title_mypage">マイページ</h2>
-      <!-- [PHP]投稿内容持ってくる -->
-      <!-- <img class="rank-img" src="<?php ?>" alt=""> -->
+      <!-- [PHP]DB情報持ってくる -->
       <div class="prof-info">
         <div class="prof_info_img">
-          <img src="../images/top_image3.jpg<?php ?>" alt="">
+          <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
         </div>
         <div class="prof_info_content">
-          <p class="myname"><?php ?>山田太郎</p>
-          <p class="myfes_count">フェス行った回数：<?php ?>5回</p>
-          <p class="my_comment"><?php ?>初めまして！</p>
+          <p class="myname"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?></p>
+          <p class="myfes_count">フェスへ行った回数：<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回</p>
+          <p class="my_comment"><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></p>
           <div class="mysns">
-            <a href="#" alt="">
+            <a href="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL">
               <img src="../images/twitter.png" alt="">
             </a>
-            <a href="#" alt="">
+            <a href="sns_instagram" alt="Instagram URL">
               <img src="../images/Instagram.png" alt="">
             </a>
           </div>
@@ -82,13 +81,13 @@ else{
   </section>
     <div>
       <div>
-        <h2><?php ?>の口コミ</h2>
+        <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
         <ul class="this_reviews">
           <!-- <a href="#"> -->
             <li class="reviews"> 
-              <!-- [PHP]投稿内容持ってくる -->
               <div class="review_flex">
                 <div class="review-left">
+                  <!-- [PHP]reviewsテーブルのreview_image持ってくる -->
                   <img class="card-img" src="../images/top_image3.jpg<?php ?>" alt="">
                 </div>
                 <div class="review-right">
@@ -97,12 +96,12 @@ else{
                   </div>
                   <div class="review_right_bottom">
                     <div class="reviewer_img">
-                      <img src="../images/top_image3.jpg<?php ?>" alt="">
+                      <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="">
                     </div>
                     <div class="reviewer_profile">
-                      <p class="reviewer_name">山田太郎<?php ?></p>
+                      <p class="reviewer_name"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?></p>
                       <br>
-                      フェス回数：<?php ?>回
+                      フェス回数：<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回
                     </div>
                   </div>
                 </div>

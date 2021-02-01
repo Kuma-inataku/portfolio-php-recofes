@@ -2,7 +2,6 @@
 require('dbconnect.php');
 session_start();
 
-
 ?>
 
 <!DOCTYPE html>
