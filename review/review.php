@@ -1,3 +1,26 @@
+<?php
+session_start();
+require('../dbconnect.php');
+
+// SESSIONにidやtimeが保存されてた場合
+if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
+  // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
+  $_SESSION['time'] =time();
+  
+  // DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
+  $users = $db->prepare('SELECT * FROM users WHERE id=?');
+  $users->execute(array($_SESSION['id']));
+  $user = $users->fetch();
+}
+else{
+  header('Location: ../login.php');
+  exit();
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -24,7 +47,7 @@
           <a href="skills">特典</a>
         </li>
         <li>
-          <a href="skills"><?php ?>○○さん</a>
+          <a href="skills"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</a>
         </li>
       </ul>
     </nav>
