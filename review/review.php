@@ -16,8 +16,22 @@ else{
   header('Location: ../login.php');
   exit();
 }
+if(!empty($_POST)){
+  if($_POST['review'] !== ''){
+    $review = $db->prepare('INSERT INTO reviews SET reviewer_id=?, fes_name=?, review_image=?, review=?, created=NOW()');
+    $review->execute(array(
+      $user['id'],
+      $_POST['fes_name'],
+      $_POST['review_image'],
+      $_POST['review']
+    ));
+    // var_dump($user); // ここを追加
+    // die(); // ここを追加
 
-
+    header('Location: ../ranking/home.php');
+    exit();  
+  }
+}
 
 ?>
 
@@ -51,7 +65,7 @@ else{
         </li>
       </ul>
     </nav>
-  </header>
+</header>
   <div class="wrap">
     <div class="container">
       <h1>口コミする</h1>
@@ -59,24 +73,21 @@ else{
         <form action="" method="post">
           <div class="corner">
             <p class="subtitle">オススメフェス<span class="must">必須</span></p>
-            <input type="text" name="email" size="35" maxlength="255" value=" " />
-            <!-- エラー表示 -->
-              <div>
-                <p class="error">*フェスを選んでください</p>
-              </div>
-            <!-- [END]エラー表示 -->
+            <select name="fes_name">
+              <option value="選択してください">選択してください</option>
+              <option value="ロッキンジャパン">ロッキンジャパン</option>
+              <option value="ラブシャ">ラブシャ</option>
+              <option value="カウントダウンジャパン">カウントダウンジャパン</option>
+            </select>
           </div>
-
           <div class="corner">
             <p class="subtitle">思い出の一枚</p>
-            <div>
-              <input type="file" name="picture" size="35" maxlength="255" value="" />
-            </div>
+            <input type="file" name="review_image" size="35" maxlength="255" value="" />
           </div>
           <div class="corner">
             <p class="subtitle">オススメの理由</p>
             <div>
-            <textarea name="profile" cols="50" rows="10" placeholder="オススメの理由を書いてください！"></textarea>
+            <textarea name="review" cols="50" rows="10" placeholder="オススメの理由を書いてください！"></textarea>
             </div>
           </div>
           <div class="go_login">
