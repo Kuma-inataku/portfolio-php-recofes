@@ -18,7 +18,7 @@ else{
   exit();
 }
 
-$reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, sns_instagram, r.* FROM users u, reviews r WHERE u.id=r.reviewer_id ORDER BY r.created DESC');
+$reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns_instagram, r.* FROM users u, reviews r WHERE u.id=r.reviewer_id ORDER BY r.created DESC');
 
 ?>
 
@@ -31,6 +31,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, sns_i
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../css/home.css">
   <link rel="stylesheet" type="text/css" href="../css/ranking.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -122,7 +123,12 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, sns_i
                 </a>
               </div>
               <div class="card-link">
-                  <a href="#">もっと見る</a>
+                  <a href="../review/detail.php">もっと見る</a>
+                 <?php if($_SESSION['id'] == $review['reviewer_id']) : ?>
+                  <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                    <i class="far fa-trash-alt"></i>
+                  </a>
+                  <?php endif; ?>
               </div>
             <!-- </section> -->
             </li>

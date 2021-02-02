@@ -1,13 +1,3 @@
   var_dump($user); // ここを追加
   die(); // ここを追加
 
-            <!-- 未記入の場合のエラー表示 -->
-            <?php if ($error['fes_count'] === 'must_select'): ?>
-  						<p class="error">フェスを選んでください</p>
-            <?php endif; ?>
-            <!-- [END]未記入の場合のエラー表示 -->
-            <!-- 他項目で漏れがあった場合の場合のエラー -->
-            <?php if(!empty($error)): ?>
-              <p class="error">恐れ入りますが、再度回数を選択ください</p>
-            <?php endif; ?>
-            <!-- [END]他項目で漏れがあった場合の場合のエラー -->
