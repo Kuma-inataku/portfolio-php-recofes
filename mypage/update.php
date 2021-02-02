@@ -11,10 +11,28 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
+ 
 }
-else{
+  else{
   header('Location: ../login.php');
   exit();
+}
+if(!empty($_POST)){
+  $statement = $db->prepare('UPDATE users SET name, sns_twitter, sns_instagram, fes_count, image, profile WHERE id=? ');
+  $statement->execute(array(
+    $_SESSION['join']['name'],
+    $_SESSION['join']['twitter'],
+    $_SESSION['join']['instagram'],
+    $_SESSION['join']['fes_count'],
+    $_SESSION['join']['image'],
+    $_SESSION['join']['profile']
+  ));
+  
+  unset($_SESSION['join']);
+
+  header('Location: thanks.php');
+  exit();
+  
 }
 ?>
 
@@ -28,7 +46,7 @@ else{
   <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
 <body>
-<header>
+  <header>
     <nav>
     <ul>
         <li class="nav_home">
@@ -61,48 +79,50 @@ else{
             <p class="subtitle">ニックネーム</p>
             <!-- <p class="error">*ニックネームを入力してください</p> -->
             <div>
-              <input type="text" name="name" size="35" maxlength="255" value="<?php ?>" />
+              <input type="text" name="name" size="35" maxlength="255" value="<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>" />
             </div>
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Twiter)</p>
             <div>
-              <input type="text" name="twitter" size="35" maxlength="255" value="<?php ?>" />
+              <input type="text" name="twitter" size="35" maxlength="255" value="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" />
             </div>
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Instagram)</p>
             <div>
-              <input type="text" name="instagram" size="35" maxlength="255" value="<?php ?>" />
+              <input type="text" name="instagram" size="35" maxlength="255" value="<?php print(htmlspecialchars($user['sns_instagram'],ENT_QUOTES)); ?>" />
             </div>
           </div>
           <div class="corner">
             <p class="subtitle">フェスに行った回数</p>
-            <div>
-              <input type="password" name="password" size="35" maxlength="255" value="<?php ?>" />
-            </div>
+            <select name="fes_count">
+              <option value="<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>"><?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回</option>
+              <?php for($i=0; $i<=100; $i++): ?>
+              <option value="<?php print $i ?>"><?php print $i . '回' ?></option>
+              <?php endfor;?>
+            </select>
           </div>
           <div class="corner">
             <p class="subtitle">プロフィール画像</p>
             <div>
-              <input type="password" name="password" size="35" maxlength="255" value="<?php ?>" />
+              <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
             </div>
+            <input type="file" name="image" size="35" maxlength="255" value="" />
           </div>
           <div class="corner">
             <p class="subtitle">自己紹介</p>
             <div>
-            <textarea name="profile" cols="50" rows="10" placeholder=""><?php ?></textarea>
+            <textarea name="profile" cols="50" rows="10" placeholder=""><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></textarea>
             </div>
           </div>
           <div class="go_login">
-            <input type="submit" onClick="location.href='http://localhost:8888/my_project/mypage/mypage.php'" value="登録" />
-          </div>
+            <!-- <input type="submit" onClick="location.href='../mypage.php'" value="登録" /> -->
+            <input type="submit" value="登録" />
+            </div>
         </form>
       </div>
     </div>
-  </div>
-  <div class="register">
-    既に会員の方は<a href="#">コチラ</a>からログイン
   </div>
   <footer>
     ©2021 Reco.FES 
