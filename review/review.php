@@ -63,6 +63,9 @@ if(!empty($_POST)){
         <li>
           <a href="http://localhost:8888/my_project/mypage/mypage.php"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</a>
         </li>
+        <li>
+          <a href="http://localhost:8888/my_project/logout.php">ログアウト</a>
+        </li>
       </ul>
     </nav>
 </header>
