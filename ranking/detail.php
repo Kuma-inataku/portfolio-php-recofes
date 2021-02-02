@@ -60,7 +60,7 @@ else{
       <h2>YONFES<?php ?></h2>
       <div class="rank-info">
         <div class="rank_info_img">
-          <img src="../images/top_image3.jpg<?php ?>" alt="">
+          <img src="../fes_image/<?php print(htmlspecialchars($review['image'],ENT_QUOTES)); ?>" alt="">
         </div>
         <div class="rank_info_content">
           <table>

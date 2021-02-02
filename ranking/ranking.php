@@ -11,6 +11,8 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
+
+  $rankings = $db->query('SELECT * FROM fes LIMIT 0,15');
 }
 else{
   header('Location: ../login.php');
@@ -59,12 +61,14 @@ else{
       <div class="rank-content">
         <h2>オススメフェスランキング</h2>
         <ol>
+        <?php foreach($rankings as $ranking):?>
           <li data-rank="1">
-            <span>1位</span>
-            <a href="http://localhost:8888/my_project/ranking/detail.php">Rock'in Japan<?php ?></a>
+            <span><?php print(htmlspecialchars($ranking['fes_id'],ENT_QUOTES)); ?>位</span>
+            <a href="http://localhost:8888/my_project/ranking/detail.php"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
             <p>(<?php ?>票)</p>
           </li>
-          <li data-rank="2">
+          <?php endforeach; ?>
+          <!-- <li data-rank="2">
             <span>2位</span>
             <a href="#">SWEET LOVE SHOWER<?php ?></a>
             <p>(<?php ?>票)</p>
@@ -78,87 +82,14 @@ else{
             <span>4位</span>
             <a href="#">COUNT DOWN JAPAN<?php ?></a>
             <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>5位</span>
-            <a href="#">HAJIKETEMAZARE<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>6位</span>
-            <a href="#">イナズマロック<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>6位</span>
-            <a href="#">カミングKOBE<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>7位</span>
-            <a href="#">ツタフェス<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>8位</span>
-            <a href="#">FUJI ROCK<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>9位</span>
-            <a href="#">JAIGA<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>10位</span>
-            <a href="#">YONFES<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>11位</span>
-            <a href="#">YONFES<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>12位</span>
-            <a href="#">YONFES<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>13位</span>
-            <a href="#">YONFES<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>14位</span>
-            <a href="#">YONFES<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>15位</span>
-            <a href="#">YONFES<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
+          </li> -->
         </ol>
       </div>
     </div>
-    </section>
-
-      <!-- ranking.cssでデザイン -->
-      <!-- ランキング -->
-      <div class="title">
-        <div class="t-content">
-          
-        </div>
-      </div>
-      <!-- ランキング(終わり) -->
-      <!-- ranking.cssでデザイン -->
-    </section>
-
-
-      <footer>
-      ©2021 Reco.FES 
-      </footer>
+  </section>
+  <footer>
+  ©2021 Reco.FES 
+  </footer>
 </body>
 </html>
 

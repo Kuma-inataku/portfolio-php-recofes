@@ -12,6 +12,8 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
+
+  $rankings = $db->query('SELECT * FROM fes LIMIT 0,5');
 }
 else{
   header('Location: ../login.php');
@@ -64,31 +66,28 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
       <div class="rank-content">
         <h2>オススメフェスランキング</h2>
         <ol>
+          <?php foreach($rankings as $ranking):?>
           <li data-rank="1">
             <span>1位</span>
-            <a href="#">Rock'in Japan<?php ?></a>
+            <a href="#"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
             <p>(<?php ?>票)</p>
           </li>
-          <li data-rank="2">
+          <?php endforeach; ?>
+          <!-- <li data-rank="2">
             <span>2位</span>
-            <a href="#">SWEET LOVE SHOWER<?php ?></a>
-            <p>(<?php ?>票)</p>
+            <a href="#">SWEET LOVE SHOWER</a>
+            <p>(票)</p>
           </li>
           <li data-rank="3">
             <span>3位</span>
-            <a href="#">RIZING SUN<?php ?></a>
-            <p>(<?php ?>票)</p>
+            <a href="#">RIZING SUN</a>
+            <p>(票)</p>
           </li>
           <li>
             <span>4位</span>
-            <a href="#">COUNT DOWN JAPAN<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>5位</span>
-            <a href="#">サマーソニック<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
+            <a href="#">COUNT DOWN JAPAN</a>
+            <p>(票)</p>
+          </li> -->
         </ol>
       </div>
       <div class="rank-link">
