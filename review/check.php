@@ -26,6 +26,9 @@ else{
   <title>レコフェス</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../css/home.css">
+  <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
+  <script type="text/javascript" src="../js/dropdownmenu.js"></script>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -41,14 +44,31 @@ else{
         <a href="http://localhost:8888/my_project/review/review.php">口コミする</a>
         </li>
         <li>
-          <a href="#">特典</a>
+          <a href="../present/present.php">特典</a>
         </li>
         <li>
-          <a href="http://localhost:8888/my_project/mypage/mypage.php"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</a>
+          <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
         </li>
         <li>
-          <a href="http://localhost:8888/my_project/logout.php">ログアウト</a>
+          <a href="http://localhost:8888/my_project/logout.php"></a>
         </li>
+        <!-- ドロップダウンリスト -->
+        <div class="dropdown">
+          <button class="dropdown__btn" id="dropdown__btn">
+            <i class="fas fa-bars fa-2x"></i>
+          </button>
+          <div class="dropdown__body">
+            <ul class="dropdown__list">
+              <li class="dropdown__item">
+                <a href="../mypage/mypage.php" class="dropdown__item-link">マイページ</a>
+              </li>
+              <li class="dropdown__item">
+                <a href="../logout.php" class="dropdown__item-link">ログアウト</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- [END]ドロップダウンリスト -->
       </ul>
     </nav>
   </header>
