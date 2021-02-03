@@ -18,19 +18,17 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   exit();
 }
 if(!empty($_POST)){
-  $statement = $db->prepare('UPDATE users SET name, sns_twitter, sns_instagram, fes_count, image, profile WHERE id=? ');
-  $statement->execute(array(
-    $_SESSION['join']['name'],
-    $_SESSION['join']['twitter'],
-    $_SESSION['join']['instagram'],
-    $_SESSION['join']['fes_count'],
-    $_SESSION['join']['image'],
-    $_SESSION['join']['profile']
+  $stmt = $db->prepare('UPDATE users SET name=?, sns_twitter=?, sns_instagram=?, fes_count=?, image=?, profile=? WHERE id=? ');
+  $stmt->execute(array(
+    $user['name'],
+    $user['twitter'],
+    $user['instagram'],
+    $user['fes_count'],
+    $user['image'],
+    $user['profile']
   ));
   
-  unset($_SESSION['join']);
-
-  header('Location: thanks.php');
+  header('Location: mypage.php');
   exit();
   
 }
@@ -50,7 +48,7 @@ if(!empty($_POST)){
     <nav>
     <ul>
         <li class="nav_home">
-           <a href="http://localhost:8888/my_project/ranking/home.php">レコＦＥＳ</a>
+           <a href="http://localhost:8888/my_project/ranking/index.php">レコＦＥＳ</a>
         </li>
         <li class="nav_must">
           <a href="#">他のランキング</a>

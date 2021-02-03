@@ -33,7 +33,7 @@ else{
     <nav>
       <ul>
         <li class="nav_home">
-          <a href="http://localhost:8888/my_project/ranking/home.php">レコＦＥＳ</a>
+          <a href="http://localhost:8888/my_project/ranking/index.php">レコＦＥＳ</a>
         </li>
         <li class="nav_must">
           <a href="#">他のランキング</a>
