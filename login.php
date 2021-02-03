@@ -28,8 +28,8 @@ if(!empty($_POST)){
       if($_POST['save']==='on'){
         setcookie('email',$_POST['email'], time()+60*60*24*14);
       }
-      // ranking/home.phpに遷移
-      header('Location: ranking/home.php');
+      // ranking/index.phpに遷移
+      header('Location: ranking/index.php');
       exit();
     }
     //$userが空(＝emailかpasswordが間違えていてログインに失敗)である場合

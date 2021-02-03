@@ -14,7 +14,7 @@ if(isset($_SESSION['id'])){
     $del->execute(array($id)); 
   }
 
-  header('Location: ./ranking/home.php');
+  header('Location: ./ranking/index.php');
   exit();
 }
 ?>

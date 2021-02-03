@@ -35,7 +35,7 @@ else{
     <nav>
       <ul>
         <li class="nav_home">
-        <a href="http://localhost:8888/my_project/ranking/home.php">レコＦＥＳ</a>
+        <a href="http://localhost:8888/my_project/ranking/index.php">レコＦＥＳ</a>
         </li>
         <li class="nav_must">
           <a href="#">他のランキング</a>
@@ -77,7 +77,7 @@ else{
           </div>
         </div>
         <div class="prof_info_update">
-          <button type="submit" onClick="location.href='http://localhost:8888/my_project/mypage/update.php'">プロフィール編集</button>
+          <button type="submit" onClick="location.href='http://localhost:8888/my_project/mypage/edit.php'">プロフィール編集</button>
         </div>
       </div>
     </div>
