@@ -98,22 +98,19 @@ if(!empty($_POST)){
     <nav>
     <ul>
         <li class="nav_home">
-           <a href="http://localhost:8888/my_project/ranking/index.php">レコＦＥＳ</a>
+           <a href="../ranking/index.php">レコＦＥＳ</a>
         </li>
         <li class="nav_must">
           <a href="#">他のランキング</a>
         </li>
         <li class="nav_must">
-          <a href="http://localhost:8888/my_project/review/review.php">口コミする</a>
+          <a href="../review/review.php">口コミする</a>
         </li>
         <li>
           <a href="../present/present.php">特典</a>
         </li>
         <li>
           <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
-        </li>
-        <li>
-          <a href="http://localhost:8888/my_project/logout.php"></a>
         </li>
         <!-- ドロップダウンリスト -->
         <div class="dropdown">

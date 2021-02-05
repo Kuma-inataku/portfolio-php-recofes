@@ -11,14 +11,14 @@
 <header>
     <nav>
       <ul>
-        <li class="nav_home">
-            <a href="http://localhost:8888/my_project/index.php">レコＦＥＳ</a>
+      <li class="nav_home">
+          <a href="../index.php">レコＦＥＳ</a> 
         </li>
         <li>
-          <a href="http://localhost:8888/my_project/join/index.php">ユーザー登録</a>
+          <a href="index.php">ユーザー登録</a>
         </li>
         <li>
-          <a href="http://localhost:8888/my_project/login.php">ログイン</a>
+          <a href="../login.php">ログイン</a>
         </li>
         <li>
           <a href="#">ゲストログイン</a>
