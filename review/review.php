@@ -11,6 +11,8 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
+
+  $reviews = $db->query('SELECT * FROM fes WHERE fes_id ORDER BY fes_name_kana ASC');
 }
 else{
   header('Location: ../login.php');
@@ -93,12 +95,16 @@ if(!empty($_POST)){
         <form action="" method="post">
           <div class="corner">
             <p class="subtitle">オススメフェス<span class="must">必須</span></p>
-            <select name="fes_name">
+            <p>※あいうえお順</p>
+            <select name="fes_count">
               <option value="選択してください">選択してください</option>
-              <option value="ロッキンジャパン">ロッキンジャパン</option>
-              <option value="ラブシャ">ラブシャ</option>
-              <option value="カウントダウンジャパン">カウントダウンジャパン</option>
+              <?php foreach($reviews as $review): ?>
+              <option value="<?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?>">
+              <?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?>
+              </option>
+              <?php endforeach;?>
             </select>
+
           </div>
           <div class="corner">
             <p class="subtitle">思い出の一枚</p>
