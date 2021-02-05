@@ -53,9 +53,6 @@ else{
         <li>
           <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
         </li>
-        <li>
-          <a href="http://localhost:8888/my_project/logout.php"></a>
-        </li>
         <!-- ドロップダウンリスト -->
         <div class="dropdown">
           <button class="dropdown__btn" id="dropdown__btn">
