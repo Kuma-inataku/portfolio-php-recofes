@@ -54,14 +54,14 @@ if(!empty($_POST)){
 
 
   //-----------------今回の質問箇所---------------
-  $stmt = $db->prepare('UPDATE users SET name=?, sns_twitter=?, sns_instagram=?, fes_count=?, image=?, profile=?, modified=NOW() WHERE id=?');
+  $stmt = $db->prepare('UPDATE users SET name=?, sns_twitter=?, sns_instagram=?, fes_count=?, profile=?, modified=NOW() WHERE id=?');
   $stmt->execute(array(
-    $user['name'],
-    $user['twitter'],
-    $user['instagram'],
-    $user['fes_count'],
-    $user['image'],
-    $user['profile']
+    $_POST['name'],
+    $_POST['twitter'],
+    $_POST['instagram'],
+    $_POST['fes_count'],
+    $_POST['profile'],
+    $_SESSION['id']
   ));
   //-----------------[END]今回の質問箇所---------------
   
@@ -137,6 +137,12 @@ if(!empty($_POST)){
       <h1>プロフィール編集</h1>
       <div class="content">
         <form action="" method="post">
+        <div class="corner">
+          <p class="subtitle">プロフィール画像</p>
+          <p>※変更できません</p>
+            <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
+        </div>
+
           <div class="corner">
             <p class="subtitle">ニックネーム</p>
             <!-- <p class="error">*ニックネームを入力してください</p> -->
@@ -180,19 +186,6 @@ if(!empty($_POST)){
               <?php endfor;?>
             </select>
               <!-- -----------------[END]今回の質問箇所--------------- -->
-
-
-          </div>
-          <div class="corner">
-            <p class="subtitle">プロフィール画像</p>
-            <div>
-
-
-            <!-- -----------------今回の質問箇所--------------- -->
-              <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
-            </div>
-            <input type="file" name="image" size="35" maxlength="255" value="" />
-            <!-- -----------------[END]今回の質問箇所--------------- -->
 
 
           </div>
