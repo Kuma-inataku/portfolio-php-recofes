@@ -80,7 +80,7 @@ if(!empty($_POST)){
         <form action="" method="post">
           <div class="corner">
             <?php if ($error['login'] === 'blank'): ?>
-            <p class="error">メールアドレスとパスワードをご記入ください</p>
+            <p class="error">メールアドレスとパスワードを正しくご記入ください</p>
             <?php endif;?>
             <?php if ($error['login'] === 'failed'): ?>
               <p class="error">ログインに失敗しました。正しくご記入ください</p>

@@ -51,9 +51,7 @@ if(!empty($_POST)){
     move_uploaded_file($_FILES['image']['tmp_name'], '../user_picture/' . $image);
   }
 
-
-
-  //-----------------今回の質問箇所---------------
+  // プロフィール編集機能
   $stmt = $db->prepare('UPDATE users SET name=?, sns_twitter=?, sns_instagram=?, fes_count=?, profile=?, modified=NOW() WHERE id=?');
   $stmt->execute(array(
     $_POST['name'],
@@ -63,9 +61,6 @@ if(!empty($_POST)){
     $_POST['profile'],
     $_SESSION['id']
   ));
-  //-----------------[END]今回の質問箇所---------------
-  
-
 
   // エラーデバックコード
   // var_dump($_SESSION);
@@ -142,52 +137,26 @@ if(!empty($_POST)){
           <p>※変更できません</p>
             <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
         </div>
-
           <div class="corner">
             <p class="subtitle">ニックネーム</p>
-            <!-- <p class="error">*ニックネームを入力してください</p> -->
-
-
-            <!-- -----------------今回の質問箇所--------------- -->
               <input type="text" name="name" size="35" maxlength="255" value="<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>" />
-            <!-- -----------------[END]今回の質問箇所--------------- -->
-
-
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Twiter)</p>
-
-
-             <!-- -----------------今回の質問箇所--------------- -->
               <input type="text" name="twitter" size="35" maxlength="255" value="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" />
-             <!-- -----------------[END]今回の質問箇所--------------- -->
-
-
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Instagram)</p>
-
-
-             <!-- -----------------今回の質問箇所-------------- -->
               <input type="text" name="instagram" size="35" maxlength="255" value="<?php print(htmlspecialchars($user['sns_instagram'],ENT_QUOTES)); ?>" />
-             <!-- -----------------[END]今回の質問箇所--------------- -->
-
-
           </div>
           <div class="corner">
             <p class="subtitle">フェスに行った回数</p>
-
-            
-              <!-- -----------------今回の質問箇所--------------- -->
             <select name="fes_count">
               <option value="<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>"><?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回</option>
               <?php for($i=0; $i<=100; $i++): ?>
               <option value="<?php print $i ?>"><?php print $i . '回' ?></option>
               <?php endfor;?>
             </select>
-              <!-- -----------------[END]今回の質問箇所--------------- -->
-
-
           </div>
           <div class="corner">
             <p class="subtitle">自己紹介</p>
