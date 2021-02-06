@@ -13,7 +13,18 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
-  $rankings = $db->query('SELECT * FROM fes LIMIT 0,5');
+  $rankings = $db->query('SELECT * FROM reviews LIMIT 0,5');
+  
+  // 質問箇所
+  $stmts = $db->prepare('SELECT COUNT (*) AS review_cnt,fes_name FROM reviews GROUP BY fes_name');
+  $stmts->execute(array());
+  $stmt = $stmts->fetch();
+  // [END]質問箇所
+
+  // var_dump($stmts);
+  // var_dump($db->errorInfo()); 
+  // exit();
+
 }
 else{
   header('Location: ../login.php');
@@ -86,7 +97,12 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
           <li data-rank="1">
             <span>1位</span>
             <a href="#"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
-            <p>(<?php ?>票)</p>
+
+            <!-- 質問箇所 -->
+            <p>(<?php print(htmlspecialchars($stmt['review_cnt'],ENT_QUOTES)); ?>〇〇票)</p>
+            <!-- [END]質問箇所 -->
+
+
           </li>
           <?php endforeach; ?>
           <!-- <li data-rank="2">
