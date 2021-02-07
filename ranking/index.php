@@ -24,7 +24,7 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   // exit();
 
   // fes_name1個に対してのidを取得するために定義
-  $stmts = $db->prepare('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name');
+  $stmts = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name ORDER BY review_cnt DESC');
   // $stmts->execute($ranking['fes_name']);
   // $stmt = $stmts->fetch();
 
@@ -101,15 +101,13 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         <h2>オススメフェスランキング</h2>
         <ol>
           <?php foreach($rankings as $ranking):?>
+            <?php foreach($stmts as $stmt):?>
           <li data-rank="1">
             <span>1位</span>
             <a href="detail.php?id="><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
-
-            <?php foreach($stmts as $stmt):?>
             <p>(<?php print(htmlspecialchars($stmt['review_cnt'],ENT_QUOTES)); ?>票)</p>
-            <?php endforeach; ?>
-
           </li>
+            <?php endforeach; ?>
           <?php endforeach; ?>
 
 
