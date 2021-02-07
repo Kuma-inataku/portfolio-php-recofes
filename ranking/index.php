@@ -13,18 +13,26 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
+  // fes_nameを表示するために$rankingを定義
   $rankings = $db->query('SELECT * FROM reviews LIMIT 0,5');
-  
-  // 質問箇所
-  $stmts = $db->prepare('SELECT COUNT (*) AS review_cnt,fes_name FROM reviews GROUP BY fes_name');
-  $stmts->execute(array());
-  $stmt = $stmts->fetch();
-  // [END]質問箇所
+  // $rankings->execute([]);
+  // $ranking= $rankings->fetch();
 
-  // var_dump($stmts);
+  //エラーデバックコード
+  // var_dump($ranking);
   // var_dump($db->errorInfo()); 
   // exit();
 
+  // fes_name1個に対してのidを取得するために定義
+  $stmts = $db->prepare('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name');
+  // $stmts->execute($ranking['fes_name']);
+  // $stmt = $stmts->fetch();
+
+  //エラーデバックコード
+  // var_dump($stmts);
+  // var_dump($db->errorInfo()); 
+  // exit();
+  
 }
 else{
   header('Location: ../login.php');
@@ -89,22 +97,22 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
   </header>
   <section class="rank_wrap">
     <div class="rank"> 
-      <!-- [PHP]投稿内容持ってくる -->
       <div class="rank-content">
         <h2>オススメフェスランキング</h2>
         <ol>
           <?php foreach($rankings as $ranking):?>
           <li data-rank="1">
             <span>1位</span>
-            <a href="#"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
+            <a href="detail.php?id="><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
 
-            <!-- 質問箇所 -->
-            <p>(<?php print(htmlspecialchars($stmt['review_cnt'],ENT_QUOTES)); ?>〇〇票)</p>
-            <!-- [END]質問箇所 -->
-
+            <?php foreach($stmts as $stmt):?>
+            <p>(<?php print(htmlspecialchars($stmt['review_cnt'],ENT_QUOTES)); ?>票)</p>
+            <?php endforeach; ?>
 
           </li>
           <?php endforeach; ?>
+
+
           <!-- <li data-rank="2">
             <span>2位</span>
             <a href="#">SWEET LOVE SHOWER</a>
@@ -120,10 +128,12 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
             <a href="#">COUNT DOWN JAPAN</a>
             <p>(票)</p>
           </li> -->
+
+
         </ol>
       </div>
       <div class="rank-link">
-        <a href="http://localhost:8888/my_project/ranking/ranking.php">もっと見る</a>
+        <a href="ranking.php">もっと見る</a>
       </div>
     </div>
     </section>
