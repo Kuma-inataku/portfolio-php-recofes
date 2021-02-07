@@ -11,13 +11,17 @@ require('dbconnect.php');
 // $stmts->execute(array());
 // $stmt = $stmts->fetch();
 
-$fruits = $db->prepare('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP BY name_fruit ORDER BY cnt_fruit DESC');
-$fruits->execute([]);
-$fruit=$fruits->fetch();
+// foreach使わないパターン
+// $fruits = $db->prepare('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test WHERE name_fruit=? GROUP BY name_fruit ORDER BY cnt_fruit DESC');
+// $fruits->execute([$_POST['name_fruit']]);
+// $fruit=$fruits->fetch();
 
-var_dump($fruit);
+// foreach使うパターン
+$fruits = $db->query('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP BY name_fruit ORDER BY cnt_fruit DESC');
+
+// var_dump($fruit);
 // var_dump($db->errorInfo()); 
-exit();
+// exit();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -28,8 +32,8 @@ exit();
   <title>test</title>
 </head>
 <body>
-<p><?php print(htmlspecialchars($fruit['name_fruit'],ENT_QUOTES)); ?>・<?php print(htmlspecialchars($fruit['cnt_fruit'], ENT_QUOTES )); ?>個</p>
-<p><?php print(htmlspecialchars($fruit['name_fruit'],ENT_QUOTES)); ?>・<?php print(htmlspecialchars($fruit['cnt_fruit'], ENT_QUOTES )); ?>個</p>
-<p><?php print(htmlspecialchars($fruit['name_fruit'],ENT_QUOTES)); ?>・<?php print(htmlspecialchars($fruit['cnt_fruit'], ENT_QUOTES )); ?>個</p>
+<?php foreach($fruits as $fruit):?>
+  <p><?php print(htmlspecialchars($fruit['name_fruit'],ENT_QUOTES)); ?>・<?php print(htmlspecialchars($fruit['cnt_fruit'], ENT_QUOTES )); ?>個</p>
+<?php endforeach; ?>
 </body>
 </html>
