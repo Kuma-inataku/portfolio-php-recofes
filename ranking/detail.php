@@ -11,6 +11,16 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
+
+  $id = $_REQUEST['id'];
+  // 表示するfesのid特定
+  $fes = $db->prepare('SELECT * FROM fes WHERE id=?');
+  $fes->execute([$id]);
+  $fesInfo= $fes->fetch();
+
+  // var_dump($_SESSION);
+  // var_dump($db->errorInfo()); 
+  // exit();
 }
 else{
   header('Location: ../login.php');
@@ -75,7 +85,7 @@ else{
     <div class="rank"> 
       <!-- [PHP]投稿内容持ってくる -->
       <!-- <img class="rank-img" src="<?php ?>" alt=""> -->
-      <h2>YONFES<?php ?></h2>
+      <h2>YONFES<?php print(htmlspecialchars($fesInfo['fes_name'],ENT_QUOTES)); ?></h2>
       <div class="rank-info">
         <div class="rank_info_img">
           <img src="../fes_image/<?php print(htmlspecialchars($review['image'],ENT_QUOTES)); ?>" alt="">

@@ -12,7 +12,7 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
-  $rankings = $db->query('SELECT * FROM fes LIMIT 0,15');
+  $rankings = $db->query('SELECT DISTINCT * FROM fes LIMIT 0,15');
 }
 else{
   header('Location: ../login.php');
@@ -81,7 +81,7 @@ else{
         <?php foreach($rankings as $ranking):?>
           <li data-rank="1">
             <span><?php print(htmlspecialchars($ranking['fes_id'],ENT_QUOTES)); ?>位</span>
-            <a href="http://localhost:8888/my_project/ranking/detail.php"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
+            <a href="detail.php?id=<?php print(htmlspecialchars($ranking['fes_id'],ENT_QUOTES)); ?>"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
             <p>(<?php ?>票)</p>
           </li>
           <?php endforeach; ?>
