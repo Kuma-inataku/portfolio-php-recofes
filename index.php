@@ -73,7 +73,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
           <!-- <a href="#"> -->
             <li class="card"> 
               <!-- <section> -->
-              <img class="card-img" src="user_picture/<?php print(htmlspecialchars($review['image'],ENT_QUOTES)); ?>" alt="思い出の一枚">
+              <img class="card-img" src="fes_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="思い出の一枚">
               <div class="card-content">
                 <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
                 <br>
