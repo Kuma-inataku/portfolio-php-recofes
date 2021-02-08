@@ -25,11 +25,11 @@ if(!empty($_POST)){
   if($_POST['name'] === ''){
     $error['name'] = 'blank';
   }
-  //空欄時のエラー表示(フェス回数)
+  //非選択時のエラー表示(フェス回数)
   if($_POST['fes_count'] === '選択してください'){
     $error['fes_count'] = 'must_select';
   }
-  ///jpg/.png/gif以外が選択された時のエラー表示(画像選択)
+  // /jpg/.png/gif以外が選択された時のエラー表示(画像選択)
   $fileName = $_FILES['image']['name'];
   if(!empty($fileName)){
     $ext = substr($fileName,-3);

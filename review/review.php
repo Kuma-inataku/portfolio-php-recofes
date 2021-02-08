@@ -20,20 +20,33 @@ else{
 }
 
 if(!empty($_POST)){
-  if($_POST['review'] !== ''){
+  // /jpg/.png/gif以外が選択された時のエラー表示(画像選択)
+  $fileName = $_FILES['review_image']['name'];
+
+  if(!empty($fileName)){
+    $ext = substr($fileName,-3);
+    if($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){
+      $error['review_image']= 'type';
+    }
+  }
+  
+  if(empty($error)){
+    $image = date('YmdHis') . $_FILES['review_image']['name'];
+    move_uploaded_file($_FILES['review_image']['tmp_name'],'../fes_picture/' . $image);
+  }
     // フォーム入力内容をDBに保存
     $review = $db->prepare('INSERT INTO reviews SET reviewer_id=?, fes_name=?, review_image=?, review=?, created=NOW()');
     $review->execute(array(
       $user['id'],
       $_POST['fes_name'],
-      $_POST['review_image'],
+      $image,
       $_POST['review']
     ));
 
     header('Location: ../ranking/index.php');
-    exit();  
-  }
+    exit();
 }
+// }
 
 ?>
 
@@ -92,7 +105,7 @@ if(!empty($_POST)){
     <div class="container">
       <h1>口コミする</h1>
       <div class="content">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
           <div class="corner">
             <p class="subtitle">オススメフェス<span class="must">必須</span></p>
             <select name="fes_name">
@@ -103,10 +116,32 @@ if(!empty($_POST)){
               </option>
               <?php endforeach;?>
             </select>
+            <!-- 未記入の場合のエラー表示 -->
+            <?php if ($error['fes_count'] === 'must_select'): ?>
+              <p class="error">回数を選んでください</p>
+            <?php endif; ?>
+            <!-- [END]未記入の場合のエラー表示 -->
+            <!-- 他項目で漏れがあった場合の場合のエラー -->
+            <?php if(!empty($error)): ?>
+              <p class="error">恐れ入りますが、再度回数を選択ください</p>
+            <?php endif; ?>
+            <!-- [END]他項目で漏れがあった場合の場合のエラー -->
+
           </div>
           <div class="corner">
             <p class="subtitle">思い出の一枚</p>
             <input type="file" name="review_image" size="35" maxlength="255" value="" />
+
+            <!-- 画像じゃないモノが投函された場合のエラー -->
+            <?php if ($error['review_image'] === 'type'): ?>
+            <p class="error">画像は「.jpg」「.gif」「.png」のどれかで指定してください</p>
+            <?php endif; ?>
+            <!-- [END]画像じゃないモノが投函された場合のエラー -->
+              <!-- 他項目で漏れがあった場合の場合のエラー -->
+              <?php if(!empty($error)): ?>
+              <p class="error">恐れ入りますが、再度画像を指定してください</p>
+              <?php endif; ?>
+              <!-- [END]他項目で漏れがあった場合の場合のエラー -->
           </div>
           <div class="corner">
             <p class="subtitle">オススメの理由</p>
