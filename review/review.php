@@ -20,9 +20,10 @@ else{
 }
 
 if(!empty($_POST)){
-  // /jpg/.png/gif以外が選択された時のエラー表示(画像選択)
+  // $_FILESで受け取った画像データ名を$fileNameに保存($_FILESはグローバル変数)
   $fileName = $_FILES['review_image']['name'];
-
+  
+  // /jpg/.png/gif以外が選択された時のエラー表示(画像選択)
   if(!empty($fileName)){
     $ext = substr($fileName,-3);
     if($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){
@@ -31,7 +32,9 @@ if(!empty($_POST)){
   }
   
   if(empty($error)){
+    //$_FILESで受け取った画像データに年月日時分秒を付与したファイル名を$imageに代入
     $image = date('YmdHis') . $_FILES['review_image']['name'];
+    // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
     move_uploaded_file($_FILES['review_image']['tmp_name'],'../fes_picture/' . $image);
   }
     // フォーム入力内容をDBに保存

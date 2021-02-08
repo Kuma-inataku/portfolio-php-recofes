@@ -13,20 +13,18 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
-  // fes_nameを表示するために$rankingを定義
-  $rankings = $db->query('SELECT * FROM reviews LIMIT 0,5');
+  // $rankings = $db->query('SELECT * FROM reviews LIMIT 0,5');
   // $rankings->execute([]);
   // $ranking= $rankings->fetch();
-
+  
   //エラーデバックコード
   // var_dump($ranking);
   // var_dump($db->errorInfo()); 
   // exit();
-
-  // fes_name1個に対してのidを取得するために定義
-  $stmts = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name ORDER BY review_cnt DESC');
-  // $stmts->execute($ranking['fes_name']);
-  // $stmt = $stmts->fetch();
+  
+  // fes_nameを表示及び、fes_name1個に対してのidの数をCOUNTした結果(数字)を取得するために$rankingsを定義
+  $rankings = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name ORDER BY review_cnt DESC');
+  $ranking = $rankings->fetch();
 
   //エラーデバックコード
   // var_dump($stmts);
@@ -99,13 +97,11 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         <h2>オススメフェスランキング</h2>
         <ol>
           <?php foreach($rankings as $ranking):?>
-            <?php foreach($stmts as $stmt):?>
-          <li data-rank="1">
-            <span>1位</span>
-            <a href="detail.php?id="><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
-            <p>(<?php print(htmlspecialchars($stmt['review_cnt'],ENT_QUOTES)); ?>票)</p>
-          </li>
-            <?php endforeach; ?>
+            <li data-rank="1">
+              <span>1位</span>
+              <a href="detail.php?id="><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
+              <p>(<?php print(htmlspecialchars($ranking['review_cnt'],ENT_QUOTES)); ?>票)</p>
+            </li>
           <?php endforeach; ?>
           <!-- <li data-rank="2">
             <span>2位</span>
@@ -122,7 +118,6 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
             <a href="#">COUNT DOWN JAPAN</a>
             <p>(票)</p>
           </li> -->
-
         </ol>
       </div>
       <div class="rank-link">
