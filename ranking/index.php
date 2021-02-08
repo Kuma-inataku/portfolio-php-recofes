@@ -32,15 +32,13 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   // var_dump($stmts);
   // var_dump($db->errorInfo()); 
   // exit();
-  
+ 
 }
 else{
   header('Location: ../login.php');
   exit();
 }
-
 $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns_instagram, r.* FROM users u, reviews r WHERE u.id=r.reviewer_id ORDER BY r.created DESC LIMIT 0,3');
-
 ?>
 
 <!DOCTYPE html>
@@ -109,8 +107,6 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
           </li>
             <?php endforeach; ?>
           <?php endforeach; ?>
-
-
           <!-- <li data-rank="2">
             <span>2位</span>
             <a href="#">SWEET LOVE SHOWER</a>
