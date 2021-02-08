@@ -3,14 +3,14 @@ session_start();
 require('dbconnect.php');
 
 $rankings = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name ORDER BY review_cnt DESC');
-$ranking= $rankings->fetch();
+// $ranking= $rankings->fetch();
+// var_dump($ranking);
+// var_dump($db->errorInfo()); 
+// exit();
 
 // foreach使うパターン
 $fruits = $db->query('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP BY name_fruit ORDER BY cnt_fruit DESC');
 
-// var_dump($fruit);
-// var_dump($db->errorInfo()); 
-// exit();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
