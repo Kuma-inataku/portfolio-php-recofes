@@ -23,18 +23,23 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   // exit();
   
   // fes_nameを表示及び、fes_name1個に対してのidの数をCOUNTした結果(数字)を取得するために$rankingsを定義
-  $rankings = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name ORDER BY review_cnt DESC LIMIT 0,5');
+  $rankings = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_name ORDER BY review_cnt DESC');
   //エラーデバックコード
-  // var_dump($stmts);
+  // var_dump($rankings);
   // var_dump($db->errorInfo()); 
   // exit();
+
 }
 else{
   header('Location: ../login.php');
   exit();
 }
 $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns_instagram, r.* FROM users u, reviews r WHERE u.id=r.reviewer_id ORDER BY r.created DESC LIMIT 0,3');
+
+$fes_nums = $db->query('SELECT * FROM fes');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -94,8 +99,9 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         <ol>
           <?php foreach($rankings as $ranking):?>
             <li data-rank="1">
-              <span><?php for($i=1; $i<6; $i++){ print $i;break;} ?>位</span>
-              <a href="detail.php?id="><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
+              <!-- <span><?php for($i=1; $i<6; $i++){ print $i;break;} ?>位</span> -->
+              <span>位</span>
+              <a href="detail.php?id=<?php ?>"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
               <p>(<?php print(htmlspecialchars($ranking['review_cnt'],ENT_QUOTES)); ?>票)</p>
             </li>
           <?php endforeach; ?>
@@ -133,7 +139,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
           <!-- <a href="#"> -->
             <li class="card"> 
               <!-- <section> -->
-              <img class="card-img" src="../fes_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES));?>" alt="思い出の一枚">
+              <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES));?>" alt="思い出の一枚">
 
               <div class="card-content">
                 <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>

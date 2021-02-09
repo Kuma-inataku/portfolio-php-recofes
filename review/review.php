@@ -35,7 +35,7 @@ if(!empty($_POST)){
     //$_FILESで受け取った画像データに年月日時分秒を付与したファイル名を$imageに代入
     $image = date('YmdHis') . $_FILES['review_image']['name'];
     // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
-    move_uploaded_file($_FILES['review_image']['tmp_name'],'../fes_picture/' . $image);
+    move_uploaded_file($_FILES['review_image']['tmp_name'],'../review_picture/' . $image);
   }
     // フォーム入力内容をDBに保存
     $review = $db->prepare('INSERT INTO reviews SET reviewer_id=?, fes_name=?, review_image=?, review=?, created=NOW()');

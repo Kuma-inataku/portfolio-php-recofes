@@ -7,25 +7,33 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
   $_SESSION['time'] =time();
   
-  // DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
-  $users = $db->prepare('SELECT * FROM users WHERE id=?');
-  $users->execute(array($_SESSION['id']));
-  $user = $users->fetch();
-
-  $id = $_REQUEST['id'];
-  // 表示するfesのid特定
-  $fes = $db->prepare('SELECT * FROM fes WHERE id=?');
-  $fes->execute([$id]);
-  $fesInfo= $fes->fetch();
-
-  // var_dump($_SESSION);
-  // var_dump($db->errorInfo()); 
-  // exit();
 }
 else{
   header('Location: ../login.php');
   exit();
 }
+
+if(empty($_REQUEST['id'])){
+  // var_dump($_REQUEST['fes_id']);
+// var_dump($db->errorInfo()); 
+// exit();
+header('Location: index.php');
+exit;
+}
+
+// DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
+$users = $db->prepare('SELECT * FROM users WHERE id=?');
+$users->execute(array($_SESSION['id']));
+$user = $users->fetch();
+
+
+// 表示するfesのid特定
+  $id = $_REQUEST['id'];
+  $festivals = $db->prepare('SELECT * FROM fes WHERE fes_id=?');
+  $festivals->execute([$id]);
+  $fes= $festivals->fetch();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -83,26 +91,25 @@ else{
   </header>
   <section class="rank_wrap">
     <div class="rank"> 
-      <!-- [PHP]投稿内容持ってくる -->
       <!-- <img class="rank-img" src="<?php ?>" alt=""> -->
-      <h2>YONFES<?php print(htmlspecialchars($fesInfo['fes_name'],ENT_QUOTES)); ?></h2>
+      <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?></h2>
       <div class="rank-info">
         <div class="rank_info_img">
-          <img src="../fes_image/<?php print(htmlspecialchars($review['image'],ENT_QUOTES)); ?>" alt="">
+          <img src="../fes_picture/<?php print(htmlspecialchars($fes['fes_picture'],ENT_QUOTES)); ?>" alt="フェスの写真">
         </div>
         <div class="rank_info_content">
           <table>
             <tr>
               <th>開催場所</th>
-              <td><?php ?></td>
+              <td><?php print(htmlspecialchars($fes['fes_location'],ENT_QUOTES)); ?></td>
             </tr>
             <tr>
               <th>開催時期</th>
-              <td><?php ?></td>
+              <td><?php print(htmlspecialchars($fes['fes_time'],ENT_QUOTES)); ?>月</td>
             </tr>
             <tr>
               <th>公式サイト</th>
-              <td><?php ?></td>
+              <td><a href="<?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?>" target="_blank"><?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?></a></td>
             </tr>
           </table>
         </div>
@@ -111,7 +118,7 @@ else{
   </section>
     <div>
       <div>
-        <h2><?php ?>の口コミ</h2>
+        <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?>の口コミ</h2>
         <ul class="this_reviews">
           <!-- <a href="#"> -->
             <li class="reviews"> 
