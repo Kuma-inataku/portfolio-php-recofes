@@ -11,6 +11,8 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
+
+  $reviews=$db->query('SELECT r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id');
 }
 else{
   header('Location: ../login.php');
@@ -105,15 +107,17 @@ else{
         <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
         <ul class="this_reviews">
           <!-- <a href="#"> -->
+          <?php foreach($reviews as $review): ?>
             <li class="reviews"> 
               <div class="review_flex">
                 <div class="review-left">
                   <!-- [PHP]reviewsテーブルのreview_image持ってくる -->
-                  <img class="card-img" src="../images/top_image3.jpg<?php ?>" alt="">
+                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="思い出の写真">
                 </div>
                 <div class="review-right">
                   <div class="card-content">
-                    <p class="card-text"><?php ?>サイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストササイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テスト</p>
+                    <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
+                    <p class="card-text"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
                   </div>
                   <div class="review_right_bottom">
                     <div class="reviewer_img">
@@ -128,6 +132,7 @@ else{
                 </div>
               </div>
             </li>
+            <?php endforeach; ?>
           <!-- </a> -->
         </ul>
       </div>
