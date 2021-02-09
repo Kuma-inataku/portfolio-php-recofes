@@ -37,20 +37,28 @@ if(!empty($_POST)){
     // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
     move_uploaded_file($_FILES['review_image']['tmp_name'],'../review_picture/' . $image);
   }
+
+
+    //質問箇所
     // フォーム入力内容をDBに保存
-    $review = $db->prepare('INSERT INTO reviews SET reviewer_id=?, fes_name=?, review_image=?, review=?, created=NOW()');
+    $review = $db->prepare('INSERT INTO reviews, reviews (fes_id) SELECT fes_id FROM fes WHERE reviews.name=fes.fes_name SET fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
     $review->execute(array(
-      $user['id'],
       $_POST['fes_name'],
       $image,
-      $_POST['review']
+      $_POST['review'],
+      $user['id']
     ));
+    //[END]質問箇所
+
+
+  // var_dump($review['fes_name']);
+  // var_dump($db->errorInfo()); 
+  // exit();
+    
 
     header('Location: ../ranking/index.php');
     exit();
 }
-// }
-
 ?>
 
 <!DOCTYPE html>

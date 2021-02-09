@@ -14,9 +14,6 @@ else{
 }
 
 if(empty($_REQUEST['id'])){
-  // var_dump($_REQUEST['fes_id']);
-// var_dump($db->errorInfo()); 
-// exit();
 header('Location: index.php');
 exit;
 }
@@ -26,12 +23,20 @@ $users = $db->prepare('SELECT * FROM users WHERE id=?');
 $users->execute(array($_SESSION['id']));
 $user = $users->fetch();
 
-
 // 表示するfesのid特定
   $id = $_REQUEST['id'];
   $festivals = $db->prepare('SELECT * FROM fes WHERE fes_id=?');
   $festivals->execute([$id]);
   $fes= $festivals->fetch();
+  
+  $reviews = $db->prepare('SELECT * FROM reviews WHERE fes_id=?');
+  $reviews->execute([$id]);
+  // $review= $reviews->fetch();
+
+  $members = $db->prepare('SELECT u.name, u.sns_twitter, u.sns_instagram, u.fes_count, u.image,r.* FROM users u, reviews r WHERE u.id=r.reviewer_id AND fes_id=?');
+  $members->execute([$id]);
+  $member=$members->fetch();
+  
 
 
 ?>
@@ -119,26 +124,27 @@ $user = $users->fetch();
     <div>
       <div>
         <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?>の口コミ</h2>
+        <?php foreach($reviews as $review): ?>
         <ul class="this_reviews">
           <!-- <a href="#"> -->
             <li class="reviews"> 
               <!-- [PHP]投稿内容持ってくる -->
               <div class="review_flex">
                 <div class="review-left">
-                  <img class="card-img" src="../images/top_image3.jpg<?php ?>" alt="">
+                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
                 </div>
                 <div class="review-right">
                   <div class="card-content">
-                    <p class="card-text">サイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストササイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テストサイコーだった！WANIMAいいね！テスト</p>
+                    <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
                   </div>
                   <div class="review_right_bottom">
                     <div class="reviewer_img">
-                      <img src="../images/top_image3.jpg<?php ?>" alt="">
+                      <img src="../user_picture/<?php print(htmlspecialchars($member['image'],ENT_QUOTES)); ?>" alt="">
                     </div>
                     <div class="reviewer_profile">
-                      <p class="reviewer_name">山田太郎<?php ?></p>
+                      <p class="reviewer_name"><?php print(htmlspecialchars($member['name'],ENT_QUOTES)); ?></p>
                       <br>
-                      フェス回数：<?php ?>回
+                      フェス回数：<?php print(htmlspecialchars($member['fes_count'],ENT_QUOTES)); ?>回
                     </div>
                     <div class="goodbtn">
                       <button type="submit">いいね！</button>
@@ -149,6 +155,7 @@ $user = $users->fetch();
             </li>
           <!-- </a> -->
         </ul>
+        <?php endforeach; ?>
       </div>
       <footer>
       ©2021 Reco.FES 
