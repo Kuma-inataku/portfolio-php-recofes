@@ -1,5 +1,8 @@
 <?php
-require('dbconnect.php');
+// Noticeメッセージを表示する
+ini_set('display_errors', 1); 
+
+require('../dbconnect.php');
 session_start();
 
 // SESSIONにidやtimeが保存されてた場合
@@ -24,32 +27,31 @@ else{
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>レコフェス</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/home.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/home.css">
   <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
   <script type="text/javascript" src="../js/dropdownmenu.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-<body>
-<header>
-<nav>
+  <body>
+    <header>
+      <nav>
       <ul>
       <li class="nav_home">
-           <a href="../ranking/index.php">レコＦＥＳ</a>
-        </li>
-        <li class="nav_must">
-          <a href="#">他のランキング</a>
-        </li>
-        <li class="nav_must">
-          <a href="../review/review.php">口コミする</a>
-        </li>
-        <li>
-          <a href="../present/present.php">特典</a>
-        </li>
-        <li>
-          <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
-        </li>
-
+        <a href="../ranking/index.php">レコＦＥＳ</a>
+      </li>
+      <li class="nav_must">
+        <a href="#">他のランキング</a>
+      </li>
+      <li class="nav_must">
+        <a href="../review/review.php">口コミする</a>
+      </li>
+      <li>
+        <a href="../present/present.php">特典</a>
+      </li>
+      <li>
+        <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
+      </li>
         <!-- ドロップダウンリスト -->
         <div class="dropdown">
           <button class="dropdown__btn" id="dropdown__btn">
@@ -72,14 +74,21 @@ else{
   </header>
   <div class="wrap">
     <div class="container">
-      <h1>ログイン</h1>
+      <h1>特典</h1>
       <div class="content">
-
+      <p>
+        フェス初心者の方向けにログイン限定特典として
+        <br>
+        <span>「絶対に失敗しない！フェスへの持ち物チェックリスト」</span>
+        <br>
+        をプレゼントいたします。
+      </p>
+      <br>
+      <p>
+        ダウンロードは<a href="twitter1.png" download="サンプル.png">こちら</a>から
+      </p>
       </div>
     </div>
-  </div>
-  <div class="register">
-    <a href="http://localhost:8888/my_project/join/index.php">新規登録はこちら</a>
   </div>
   <footer>
     ©2021 Reco.FES 
