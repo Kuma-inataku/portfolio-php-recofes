@@ -152,15 +152,17 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
             </div>
           </div>
           <div class="corner">
-            <p class="subtitle">SNS(Twiter)<span class="sns_url">※URLを記入ください</span></p>
+            <p class="subtitle">SNS(Twiter)</p>
+            <span class="sns_url">※https://twitter.com/以降(ユーザー名)を記入ください</span>
             <div>
-              <input type="text" name="twitter" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['twitter'],ENT_QUOTES)); ?>" />
+              <input type="text" name="twitter" size="35" maxlength="255" value="https://twitter.com/<?php print(htmlspecialchars($_POST['twitter'],ENT_QUOTES)); ?>" />
             </div>
           </div>
           <div class="corner">
-            <p class="subtitle">SNS(Instagram)<span class="sns_url">※URLを記入ください</span></p>
+            <p class="subtitle">SNS(Instagram)</p>
+            <span class="sns_url">※https://www.instagram.com/以降(ユーザーネーム)を記入ください</span>
             <div>
-              <input type="text" name="instagram" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['instagram'],ENT_QUOTES)); ?>" />
+              <input type="text" name="instagram" size="35" maxlength="255" value="https://www.instagram.com/<?php print(htmlspecialchars($_POST['instagram'],ENT_QUOTES)); ?>" />
             </div>
           </div>
           <div class="corner">
