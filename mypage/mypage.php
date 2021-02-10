@@ -12,7 +12,8 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
-  $reviews=$db->query('SELECT r.id, r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id ORDER BY r.created DESC');
+  $reviews = $db->prepare('SELECT r.id, r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id AND reviewer_id=? ORDER BY r.created DESC');
+  $reviews->execute(array($_SESSION['id']));
 
   $ids=$db->query('SELECT reviewer_id FROM reviews');
   $ids->execute([]);
@@ -113,7 +114,6 @@ else{
     <div>
       <div>
         <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
-          <?php if($_SESSION['id'] == $id['reviewer_id']) : ?>
         <ul class="this_reviews">
           <!-- <a href="#"> -->
           <?php foreach($reviews as $review): ?>
@@ -153,8 +153,7 @@ else{
             <?php endforeach; ?>
           <!-- </a> -->
         </ul>
-            <?php endif; ?>
-      </div>
+     </div>
       <footer>
       ©2021 Reco.FES 
       </footer>
