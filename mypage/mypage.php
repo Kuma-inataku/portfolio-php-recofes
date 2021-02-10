@@ -88,10 +88,10 @@ else{
           <p class="myfes_count">フェスへ行った回数：<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回</p>
           <p class="my_comment"><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></p>
           <div class="mysns">
-            <a href="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL">
+            <a href="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL" target="_blank">
               <img src="../images/twitter.png" alt="">
             </a>
-            <a href="sns_instagram" alt="Instagram URL">
+            <a href="<?php print(htmlspecialchars($user['sns_instagram'],ENT_QUOTES)); ?>" alt="Instagram URL" target="_blank">
               <img src="../images/Instagram.png" alt="">
             </a>
           </div>
@@ -107,6 +107,7 @@ else{
         <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
         <ul class="this_reviews">
           <!-- <a href="#"> -->
+          <?php if($_SESSION['id'] == $review['reviewer_id']) : ?>
           <?php foreach($reviews as $review): ?>
             <li class="reviews"> 
               <div class="review_flex">
@@ -142,6 +143,7 @@ else{
               </div>
             </li>
             <?php endforeach; ?>
+            <?php endif; ?>
           <!-- </a> -->
         </ul>
       </div>

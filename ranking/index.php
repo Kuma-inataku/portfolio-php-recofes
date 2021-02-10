@@ -139,11 +139,11 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
                 <br>
                 <p>フェス経験回数：<?php print(htmlspecialchars($review['fes_count'],ENT_QUOTES)); ?>回</p>
                 <br>
-                <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
-                  <img src="../images/twitter.png" alt="">
-                </a>
                 <a href="<?php print(htmlspecialchars($review['sns_twitter'],ENT_QUOTES)); ?>">
-                  <img src="../images/instagram.png" alt="">
+                  <img src="../images/twitter.png" alt="" target="_blank">
+                </a>
+                <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
+                  <img src="../images/instagram.png" alt="" target="_blank">
                 </a>
               </div>
               <div class="card-link">
