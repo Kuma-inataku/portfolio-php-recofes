@@ -18,32 +18,32 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   exit();
 }
 if(!empty($_POST)){
-    //空欄時のエラー表示(ニックネーム)
-    if($_POST['name'] === ''){
-      $error['name'] = 'blank';
+  //空欄時のエラー表示(ニックネーム)
+  if($_POST['name'] === ''){
+    $error['name'] = 'blank';
+  }
+  //空欄時のエラー表示(フェス回数)
+  if($_POST['fes_count'] === '選択してください'){
+    $error['fes_count'] = 'must_select';
+  }
+  ///jpg/.png/gif以外が選択された時のエラー表示(画像選択)
+  $fileName = $_FILES['image']['name'];
+  if(!empty($fileName)){
+    $ext = substr($fileName,-3);
+    if($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){
+      $error['image']= 'type';
     }
-    //空欄時のエラー表示(フェス回数)
-    if($_POST['fes_count'] === '選択してください'){
-      $error['fes_count'] = 'must_select';
+  }
+  //アカウントの重複チェック
+  if(empty($error)){
+    //ニックネームの重複チェック
+    $member = $db->prepare('SELECT COUNT(*) AS cnt_name FROM users WHERE name=?');
+    $member->execute(array($_POST['name']));
+    $recordName = $member->fetch();
+    if ($recordName['cnt_name'] > 0){
+      $error['name'] = 'duplicate';
     }
-    ///jpg/.png/gif以外が選択された時のエラー表示(画像選択)
-    $fileName = $_FILES['image']['name'];
-    if(!empty($fileName)){
-      $ext = substr($fileName,-3);
-      if($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){
-        $error['image']= 'type';
-      }
-    }
-    //アカウントの重複チェック
-    if(empty($error)){
-      //ニックネームの重複チェック
-      $member = $db->prepare('SELECT COUNT(*) AS cnt_name FROM users WHERE name=?');
-      $member->execute(array($_POST['name']));
-      $recordName = $member->fetch();
-      if ($recordName['cnt_name'] > 0){
-        $error['name'] = 'duplicate';
-      }
-    }
+  }
   // エラーが一つも出て得ない場合
   if(empty($error)){
     // 画像データを../user_pictureという場所に投函し、かつ画像データを保持
@@ -71,8 +71,6 @@ if(!empty($_POST)){
   header('Location: mypage.php');
   exit();
   }
-
-  
 ?>
 
 <!DOCTYPE html>
@@ -160,13 +158,7 @@ if(!empty($_POST)){
           </div>
           <div class="corner">
             <p class="subtitle">自己紹介</p>
-
-
-             <!-- -----------------今回の質問箇所--------------- -->
             <textarea name="profile" cols="50" rows="10" placeholder=""><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></textarea>
-              <!-- -----------------[END]今回の質問箇所--------------- -->
-
-
           </div>
           <div class="go_login">
             <input type="submit" value="登録" />

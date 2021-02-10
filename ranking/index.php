@@ -152,6 +152,9 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
                   <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
                     <i class="far fa-trash-alt"></i>
                   </a>
+                  <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                    <i class="fas fa-pen"></i>
+                  </a>
                   <?php endif; ?>
               </div>
             <!-- </section> -->

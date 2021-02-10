@@ -12,7 +12,7 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
-  $reviews=$db->query('SELECT r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id');
+  $reviews=$db->query('SELECT r.id, r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id');
 }
 else{
   header('Location: ../login.php');
@@ -130,6 +130,15 @@ else{
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="card-link">
+              <a href="../review/detail.php">もっと見る</a>
+              <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+              <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                <i class="far fa-trash-alt"></i>
+              <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                <i class="fas fa-pen"></i>
+              </a>
               </div>
             </li>
             <?php endforeach; ?>
