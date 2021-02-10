@@ -1,4 +1,7 @@
 <?php
+// Noticeメッセージを表示する
+ini_set('display_errors', 1); 
+
 session_start();
 require('../dbconnect.php');
 
@@ -12,7 +15,13 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
-  $stmts = $db->query('SELECT * FROM fes WHERE fes_id ORDER BY fes_name_kana ASC');
+  $stmts = $db->query('SELECT * FROM fes ORDER BY fes_name_kana ASC');
+  // $stmts->execute(array($_POST['fes_name']));
+  // $fesTbl = $stmts->fetch();
+
+  // var_dump($fesTbl['fes_id']);
+  // var_dump($db->errorInfo());
+  // exit();
 }
 else{
   header('Location: ../login.php');
@@ -30,32 +39,30 @@ if(!empty($_POST)){
       $error['review_image']= 'type';
     }
   }
-  
+  // INSERTでfes_id代入するために$_POST['fes_name']で受け取るフェス名と同じfesテーブル内のフェス名に紐づくfes_idを$fesCntに代入
+  $fesCnts = $db->prepare('SELECT fes_id FROM fes WHERE fes_name=?');
+  $fesCnts->execute(array($_POST['fes_name']));
+  $fesCnt=$fesCnts->fetch();
+
   if(empty($error)){
     //$_FILESで受け取った画像データに年月日時分秒を付与したファイル名を$imageに代入
     $image = date('YmdHis') . $_FILES['review_image']['name'];
     // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
     move_uploaded_file($_FILES['review_image']['tmp_name'],'../review_picture/' . $image);
-  }
-  
-    // $fesId = $db->query('SELECT fes.fes_id FROM fes WHERE fes.fes_name=reviews.fes_name');
-    
-    //質問箇所
+  }    
     // フォーム入力内容をDBに保存
     $review = $db->prepare('INSERT INTO reviews SET fes_id=?, fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
     $review->execute(array(
-      
+      $fesCnt['fes_id'],
       $_POST['fes_name'],
       $image,
       $_POST['review'],
       $user['id']
     ));
-    //[END]質問箇所
+    // var_dump($user['id']);
+    // var_dump($db->errorInfo()); 
+    // exit(); 
 
-  // var_dump($review['fes_name']);
-  // var_dump($db->errorInfo()); 
-  // exit();
-    
     header('Location: ../ranking/index.php');
     exit();
 }
@@ -161,7 +168,7 @@ if(!empty($_POST)){
             </div>
           </div>
           <div class="go_login">
-            <input type="submit" value="確認画面へ" />
+            <input type="submit" value="投稿する" />
           </div>
         </form>
       </div>

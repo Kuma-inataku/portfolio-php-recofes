@@ -176,7 +176,8 @@ nav li.nav_home{
 footer{
   text-align: center;
   height:50px;
-  background-color: aquamarine;
+  background-color: #333;
+  color: #fff;
 }
 /* [END]フッター */
 

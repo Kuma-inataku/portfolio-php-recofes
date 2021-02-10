@@ -13,6 +13,14 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $user = $users->fetch();
 
   $reviews=$db->query('SELECT r.id, r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id');
+
+  $ids=$db->query('SELECT reviewer_id FROM reviews');
+  $ids->execute([]);
+  $id=$ids->fetch();
+  //エラーデバックコード
+  // var_dump($id);
+  // var_dump($db->errorInfo()); 
+  // exit();
 }
 else{
   header('Location: ../login.php');
@@ -105,9 +113,9 @@ else{
     <div>
       <div>
         <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
+          <?php if($_SESSION['id'] == $id['reviewer_id']) : ?>
         <ul class="this_reviews">
           <!-- <a href="#"> -->
-          <?php if($_SESSION['id'] == $review['reviewer_id']) : ?>
           <?php foreach($reviews as $review): ?>
             <li class="reviews"> 
               <div class="review_flex">
@@ -143,9 +151,9 @@ else{
               </div>
             </li>
             <?php endforeach; ?>
-            <?php endif; ?>
           <!-- </a> -->
         </ul>
+            <?php endif; ?>
       </div>
       <footer>
       ©2021 Reco.FES 
