@@ -12,7 +12,7 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
-  $reviews=$db->query('SELECT r.id, r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id');
+  $reviews=$db->query('SELECT r.id, r.fes_name, r.review_image, r.review FROM reviews r, users u WHERE r.reviewer_id=u.id ORDER BY r.created DESC');
 
   $ids=$db->query('SELECT reviewer_id FROM reviews');
   $ids->execute([]);
