@@ -29,7 +29,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
           <a href="login.php">ログイン</a>
         </li>
         <li>
-          <a href="#">ゲストログイン</a>
+          <a href="login_guest.php">ゲストログイン</a>
         </li>
       </ul>
     </nav>

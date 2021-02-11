@@ -64,7 +64,7 @@ if(!empty($_POST)){
     var_dump($image);
     var_dump($_POST['review']);
     var_dump($user['id']);
-    // var_dump($db->errorInfo()); 
+    var_dump($db->errorInfo()); 
     // exit(); 
 
     header('Location: ../ranking/index.php');

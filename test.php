@@ -19,6 +19,8 @@ $fruits = $db->query('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP B
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>test</title>
+  <script type="text/javascript" src="js/dropdownmenu.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 <?php foreach($fruits as $fruit):?>
@@ -36,5 +38,16 @@ $fruits = $db->query('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP B
     <?php endforeach; ?>
   </ol>
 
+  <button id="showr">Show</button>
+    <p style="display: none;" id="test">
+    <span>昔むかし、</span> <span>ある</span> <span>ところに</span>
+    <span>3人の</span> <span>プログラマーが</span> <span>おった</span>
+    <span>そうな…</span>
+    </p>
+  <script>
+  $("#showr").click(function () {
+    $("#test").show();
+  });
+  </script>
 </body>
 </html>

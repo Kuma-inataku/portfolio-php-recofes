@@ -30,7 +30,6 @@ if(!empty($_POST)){
 
   header('Location: thanks.php');
   exit();
-  
 }
 
   ?>
@@ -57,7 +56,7 @@ if(!empty($_POST)){
           <a href="../login.php">ログイン</a>
         </li>
         <li>
-          <a href="#">ゲストログイン</a>
+        <a href="../login_guest.php">ゲストログイン</a>
         </li>
       </ul>
     </nav>
