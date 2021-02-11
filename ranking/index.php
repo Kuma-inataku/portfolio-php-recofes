@@ -147,7 +147,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
                 </a>
               </div>
               <div class="card-link">
-                  <a href="../review/detail.php">もっと見る</a>
+                  <a href="../mypage/user_mypage.php?id=<?php print(htmlspecialchars($review['reviewer_id'])) ?>">もっと見る</a>
                  <?php if($_SESSION['id'] == $review['reviewer_id']) : ?>
                   <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
                     <i class="far fa-trash-alt"></i>
