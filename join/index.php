@@ -43,6 +43,12 @@ if(!empty($_POST)){
     $member = $db->prepare('SELECT COUNT(*) AS cnt_email FROM users WHERE email=?');
     $member->execute(array($_POST['email']));
     $recordEmail = $member->fetch();
+
+    // エラーデバックコード
+    // var_dump($recordEmail);
+    // var_dump($db->errorInfo()); 
+    // exit();
+
     if ($recordEmail['cnt_email'] > 0){
       $error['email'] = 'duplicate';
     }

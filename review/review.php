@@ -5,19 +5,16 @@ ini_set('display_errors', 1);
 session_start();
 require('../dbconnect.php');
 
-// SESSIONにidやtimeが保存されてた場合
 if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
-  // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
+  // ログイン時にSESSIONのtimeを現在時刻に上書き(=更新)
   $_SESSION['time'] =time();
   
-  // DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
+  // $_SESSION['id']でusersテーブルからidを取得し、ログイン中のユーザーを特定
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
 
   $stmts = $db->query('SELECT * FROM fes ORDER BY fes_name_kana ASC');
-  // $stmts->execute(array($_POST['fes_name']));
-  // $fesTbl = $stmts->fetch();
 
   // var_dump($fesTbl['fes_id']);
   // var_dump($db->errorInfo());
@@ -29,9 +26,24 @@ else{
 }
 
 if(!empty($_POST)){
+  //空欄時のエラー表示(ニックネーム)
+  if($_POST['fes_name'] === '選択してください'){
+    $error['fes_name'] = 'must_select';
+  }
+  // fes_nameが既に口コミされていた時の重複を防ぐ
+  if(empty($error)){
+    $fes_review = $db->prepare('SELECT COUNT(*) AS cnt_fes_name FROM reviews WHERE fes_name=? AND reviewer_id=?');
+    $fes_review->execute(array($_POST['fes_name'],$_SESSION['id']));
+    $recordFes_name = $fes_review->fetch();
+    // var_dump($recordFes_name['cnt_fes_name']);
+    // var_dump($db->errorInfo());
+    // exit();
+    if ($recordFes_name['cnt_fes_name'] > 0){
+      $error['cnt_fes_name'] = 'duplicate';
+      }
+    }
   // $_FILESで受け取った画像データ名を$fileNameに保存($_FILESはグローバル変数)
   $fileName = $_FILES['review_image']['name'];
-  
   // /jpg/.png/gif以外が選択された時のエラー表示(画像選択)
   if(!empty($fileName)){
     $ext = substr($fileName,-3);
@@ -49,7 +61,6 @@ if(!empty($_POST)){
     $image = date('YmdHis') . $_FILES['review_image']['name'];
     // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
     move_uploaded_file($_FILES['review_image']['tmp_name'],'../review_picture/' . $image);
-  }    
     // フォーム入力内容をDBに保存
     $review = $db->prepare('INSERT INTO reviews SET fes_id=?, fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
     $review->execute(array(
@@ -66,9 +77,10 @@ if(!empty($_POST)){
     var_dump($user['id']);
     var_dump($db->errorInfo()); 
     // exit(); 
-
+    
     header('Location: ../ranking/index.php');
     exit();
+  }    
 }
 ?>
 
@@ -138,16 +150,18 @@ if(!empty($_POST)){
               </option>
               <?php endforeach;?>
             </select>
-            <!-- 未記入の場合のエラー表示 -->
-            <?php if ($error['fes_count'] === 'must_select'): ?>
+            <!-- 未選択の場合のエラー表示 -->
+            <?php if ($error['fes_name'] === 'must_select'): ?>
               <p class="error">回数を選んでください</p>
             <?php endif; ?>
-            <!-- [END]未記入の場合のエラー表示 -->
+            <!-- fes_nameが重複時のエラー表示 -->
+            <?php if ($error['cnt_fes_name'] === 'duplicate'): ?>
+              <p class="error">指定されたフェスは既に口コミしています</p>
+            <?php endif; ?> 
             <!-- 他項目で漏れがあった場合の場合のエラー -->
             <?php if(!empty($error)): ?>
               <p class="error">恐れ入りますが、再度回数を選択ください</p>
             <?php endif; ?>
-            <!-- [END]他項目で漏れがあった場合の場合のエラー -->
 
           </div>
           <div class="corner">
