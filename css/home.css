@@ -10,34 +10,140 @@
   background-color:rgba(255,255,255,0.4);
   background-blend-mode:lighten;
 }
-/* [END]トップページ */
-/* タイトル */
+
+/* できること */
+.wrap_about{
+  margin-bottom:80px;
+  background: #eee;
+}
+.bg_ab{
+  margin: 0 30px;
+}
+/* サブタイトル */
 h2{
   text-align: center;
-  padding: 40px 0;
+  padding: 70px 0 30px 0;
+  margin-bottom: 80px;
 }
-/* [END]タイトル */
-/* できること */
+/* サブタイトル(英語) */
+.wrap_about h2::before{
+  content: "ABOUT";
+  display: block;
+  font-size: 2em;
+  margin-bottom:20px ;
+  color: #fff;
+  text-stroke: 1px #000;
+  -webkit-text-stroke: 1px #000;
+  letter-spacing: 0.1em;
+}
+/* サブタイトル(下線) */
+.wrap_about h2::after{
+  content: "";
+  position: absolute;
+  bottom: -130px;
+  left: 50%;
+  height: 1px;
+  width: 40px;
+  margin-left: -20px;
+  background-color: #000;
+}
+/* できること１ */
+.ab_subtitle{
+  margin: 50px;
+  text-align: center;
+}
+.ab_subtitle p{
+  font-size: 28px;
+  display: inline-block;
+  font-weight: bold;
+}
 .about{
   display: flex;
   justify-content: center;
-  margin:auto 0;
+  margin:0 0 20px 0;
 }
-.ab_left{
-  width: 30%;
-  background: red;
-}
-.ab_left img{
-  width:300px;
-}
-.ab_right{
+.about .ab_text{
   list-style: none;
-  width: 70%;
-  background: blue;
+  width: 55%;
+  /* background: rgb(194, 194, 240); */
+  line-height: 1.5;
 }
-/* [END]できること */
-
+.about .ab_text span{
+  font-size: 25px;
+  font-weight: bold;
+  background: linear-gradient(transparent 70%, #ffd871 70%);
+}
+.ab_image{
+  width: 45%;
+  /* background: red; */
+}
+.ab_image img{
+  width:400px;
+}
+.about .ab_text_2nd{
+  list-style: none;
+  width: 55%;
+  /* background: rgb(194, 194, 240); */
+  line-height: 1.5;
+}
+.about .ab_text_2nd span{
+  font-size: 25px;
+  font-weight: bold;
+  background: linear-gradient(transparent 70%, #ffd871 70%);
+}
+/* できること２ */
+.ab_text_2nd{
+  list-style: none;
+  width: 55%;
+  /* background: blue; */
+  line-height: 1.5;
+}
+.ab_image_2nd{
+  width: 55%;
+  /* background: red; */
+}
+.ab_image_2nd img{
+  margin-left: auto;
+  width:400px;
+  display:block;
+}
 /* 直近の投稿 */
+.wrap_review{
+  /* margin: 0 30px; */
+  background: #fff;
+}
+.bg_rev{
+  margin: 0 30px;
+}
+
+/* サブタイトル */
+h2{
+  text-align: center;
+  padding: 70px 0 30px 0;
+  margin-bottom: 80px;
+}
+/* サブタイトル(英語) */
+.wrap_review h2::before{
+  content: "REVIEW";
+  display: block;
+  font-size: 2em;
+  margin-bottom:20px ;
+  color: #fff;
+  text-stroke: 1px #000;
+  -webkit-text-stroke: 1px #000;
+  letter-spacing: 0.1em;
+}
+/* サブタイトル(下線) */
+.wrap_review h2::after{
+  content: "";
+  position: absolute;
+  bottom: -1300px;
+  left: 50%;
+  height: 1px;
+  width: 40px;
+  margin-left: -20px;
+  background-color: #000;
+}
 .recent_reviews{
   display: flex;
   justify-content: space-around;
@@ -83,10 +189,6 @@ h2{
 .card-link a:hover {
   color: #0090aa;
 }
-/* [END]カードリンク*/
-
-/* [END]直近の投稿 */
-
 
 /* ------------------ログイン画面---------------------- */
 
