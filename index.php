@@ -20,7 +20,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
     <nav>
       <ul>
         <li class="nav_home">
-          <a href="index.php">レコＦＥＳ</a> 
+          <a href="index.php" class="nav_title">レコＦＥＳ</a> 
         </li>
         <li>
           <a href="join/index.php">ユーザー登録</a>

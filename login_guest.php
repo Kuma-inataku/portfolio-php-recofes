@@ -42,7 +42,7 @@ if(!empty($_POST)){
     <nav>
       <ul>
         <li class="nav_home">
-          <a href="index.php">レコＦＥＳ</a>
+          <a href="index.php" class="nav_title">レコＦＥＳ</a>
         </li>
         <li>
           <a href="join/index.php">ユーザー登録</a>
