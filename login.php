@@ -69,7 +69,7 @@ if(!empty($_POST)){
           <a href="login.php">ログイン</a>
         </li>
         <li>
-          <a href="login_guest.php">ゲストログイン</a>
+          <a href="login_guest.php">採用ご担当者様用ログイン</a>
         </li>
       </ul>
     </nav>
@@ -101,7 +101,9 @@ if(!empty($_POST)){
           </div>
           <div class="go_login">
             <input type="submit" value="ログイン" />
-            <a href="login_guest.php">ゲストログイン</a>
+          </div>
+          <div class="go_login">
+            <a href="login_guest.php">採用ご担当者様用ログイン</a>
           </div>
         </form>
       </div>
