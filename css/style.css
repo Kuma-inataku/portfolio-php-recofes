@@ -31,9 +31,8 @@ body {
     width: 100%;
     font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Sans W3", ヒラギノ角ゴシック, Meiryo, メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
     margin: 0 auto;
-    background-color: #EEEEEE;
+    background-color: #eee;
 }
-
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
     display:block;
@@ -105,9 +104,6 @@ input, select {
 /* [end]reset.css */
 
 /* ナビバー(ログイン前) */
-/* nav {
-  color: white;
-} */
 nav ul {
   display: flex;
   flex-flow: row;
@@ -131,10 +127,6 @@ nav ul .nav_must a{
 nav ul .nav_must a:hover{
   background-color: #ED59A4;
 }
-/* nav ul li .nav_present{
-display: flex;
-align-items: center;
-} */
 /* --------------[END]ログイン後限定-------------- */
 
 nav ul li a {
