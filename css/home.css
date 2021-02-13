@@ -94,12 +94,14 @@ h2{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px 0px;
+  margin-top: 50px;
 }
 .container{
-  padding: 30px;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 8px;
   background: #fff;
+  box-shadow: 0 1px 2px rgb(25 25 25 / 20%);
+  width: 550px;
 }
 .container h1{
   text-align: center;
@@ -117,23 +119,26 @@ h2{
   border: none;
   font-size: 16px;
   resize: none;
+  width: 100%;
 }
 .content .corner img{
   width: 250px;
 }
-.subtitle .must{
+.content .subtitle .must{
   font-weight: normal;
   color: #fff;
   background-color: #E5117C;
-  border-radius: 10px;
+  border-radius: 7px;
   font-size: 12px;
   padding: 0 10px;
+  vertical-align: middle;
+  margin-left: 8px;
 }
-.subtitle .sns_url{
+.corner .sns_url{
   font-weight: normal;
   color: #777;
   font-size: 12px;
-  margin-left: 20px;
+  padding-top: 10px;
 }
 .content .save_login{
   margin-bottom: 30px;
@@ -155,14 +160,19 @@ h2{
   background-color: #333;
   color: #fff;
   padding: 10px 20px;
-  margin: 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.content .go_login input:hover{
+background: #777;
 }
 .register{
   text-align: center;
+  margin-top: 20px;
 }
 .register a{
-  color: #333;
-  text-decoration: none;
+  color: #54C6F0;
+  /* text-decoration: none; */
 }
 .register a:hover{
   color: orange;

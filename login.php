@@ -89,7 +89,6 @@ if(!empty($_POST)){
             <!-- [ログインフォーム]メールアドレス -->
             <p class="subtitle">メールアドレス<span class="must">必須</span></p>
             <input type="text" name="email" size="35" maxlength="255" value="<?php print(htmlspecialchars($email,ENT_QUOTES)); ?>" />
-            </div>
           </div>
           <div class="corner">
             <!-- [ログインフォーム]パスワード -->
@@ -109,7 +108,7 @@ if(!empty($_POST)){
     </div>
   </div>
   <div class="register">
-    <a href="http://localhost:8888/my_project/join/index.php">新規登録はこちら</a>
+    <p>新規登録は<a href="join/index.php">こちら</a></p>
   </div>
   <footer>
     ©2021 Reco.FES 
