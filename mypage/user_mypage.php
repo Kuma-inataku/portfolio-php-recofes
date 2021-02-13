@@ -51,9 +51,9 @@ else{
         <li class="nav_home">
         <a href="http://localhost:8888/my_project/ranking/index.php">レコＦＥＳ</a>
         </li>
-        <li class="nav_must">
+        <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
-        </li>
+        </li> -->
         <li class="nav_must">
         <a href="http://localhost:8888/my_project/review/review.php">口コミする</a>
         </li>

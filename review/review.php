@@ -103,9 +103,9 @@ if(!empty($_POST)){
       <li class="nav_home">
            <a href="../ranking/index.php">レコＦＥＳ</a>
         </li>
-        <li class="nav_must">
+        <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
-        </li>
+        </li> -->
         <li class="nav_must">
           <a href="../review/review.php">口コミする</a>
         </li>

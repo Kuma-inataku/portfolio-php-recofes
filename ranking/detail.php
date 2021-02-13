@@ -36,8 +36,6 @@ $user = $users->fetch();
   $members = $db->prepare('SELECT u.name, u.sns_twitter, u.sns_instagram, u.fes_count, u.image,r.* FROM users u, reviews r WHERE u.id=r.reviewer_id AND fes_id=?');
   $members->execute([$id]);
   $member=$members->fetch();
-  
-
 
 ?>
 
@@ -62,9 +60,9 @@ $user = $users->fetch();
       <li class="nav_home">
            <a href="../ranking/index.php">レコＦＥＳ</a>
         </li>
-        <li class="nav_must">
+        <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
-        </li>
+        </li> -->
         <li class="nav_must">
           <a href="../review/review.php">口コミする</a>
         </li>
