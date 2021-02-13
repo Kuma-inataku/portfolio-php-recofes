@@ -7,6 +7,7 @@
 .rank{
   margin: 30px auto;
   width: 90%;
+  max-width: 1000px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px #ccc;

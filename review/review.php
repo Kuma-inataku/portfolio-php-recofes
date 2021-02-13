@@ -86,114 +86,117 @@ if(!empty($_POST)){
 
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>レコフェス</title>
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../css/home.css">
-  <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
-  <script type="text/javascript" src="../js/dropdownmenu.js"></script>
-  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-</head>
-<body>
-<header>
-    <nav>
-      <ul>
-      <li class="nav_home">
-           <a href="../ranking/index.php">レコＦＥＳ</a>
-        </li>
-        <!-- <li class="nav_must">
-          <a href="#">他のランキング</a>
-        </li> -->
-        <li class="nav_must">
-          <a href="../review/review.php">口コミする</a>
-        </li>
-        <li>
-          <a href="../present/present.php">特典</a>
-        </li>
-        <li>
-          <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
-        </li>
-        <!-- ドロップダウンリスト -->
-        <div class="dropdown">
-          <button class="dropdown__btn" id="dropdown__btn">
-            <i class="fas fa-bars fa-2x"></i>
-          </button>
-          <div class="dropdown__body">
-            <ul class="dropdown__list">
-              <li class="dropdown__item">
-                <a href="../mypage/mypage.php" class="dropdown__item-link">マイページ</a>
-              </li>
-              <li class="dropdown__item">
-                <a href="../logout.php" class="dropdown__item-link">ログアウト</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- [END]ドロップダウンリスト -->
-      </ul>
-    </nav>
-</header>
-  <div class="wrap">
-    <div class="container">
-      <h1>口コミする</h1>
-      <div class="content">
-        <form action="" method="post" enctype="multipart/form-data">
-          <div class="corner">
-            <p class="subtitle">オススメフェス<span class="must">必須</span></p>
-            <select name="fes_name">
-              <option value="選択してください">選択してください</option>
-              <?php foreach($stmts as $stmt): ?>
-              <option value="<?php print(htmlspecialchars($stmt['fes_name'],ENT_QUOTES)); ?>">
-              <?php print(htmlspecialchars($stmt['fes_name'],ENT_QUOTES)); ?>
-              </option>
-              <?php endforeach;?>
-            </select>
-            <!-- 未選択の場合のエラー表示 -->
-            <?php if ($error['fes_name'] === 'must_select'): ?>
-              <p class="error">回数を選んでください</p>
-            <?php endif; ?>
-            <!-- fes_nameが重複時のエラー表示 -->
-            <?php if ($error['cnt_fes_name'] === 'duplicate'): ?>
-              <p class="error">指定されたフェスは既に口コミしています</p>
-            <?php endif; ?> 
-            <!-- 他項目で漏れがあった場合の場合のエラー -->
-            <?php if(!empty($error)): ?>
-              <p class="error">恐れ入りますが、再度回数を選択ください</p>
-            <?php endif; ?>
-
-          </div>
-          <div class="corner">
-            <p class="subtitle">思い出の一枚</p>
-            <input type="file" name="review_image" size="35" maxlength="255" value="" />
-
-            <!-- 画像じゃないモノが投函された場合のエラー -->
-            <?php if ($error['review_image'] === 'type'): ?>
-            <p class="error">画像は「.jpg」「.gif」「.png」のどれかで指定してください</p>
-            <?php endif; ?>
-            <!-- [END]画像じゃないモノが投函された場合のエラー -->
-              <!-- 他項目で漏れがあった場合の場合のエラー -->
-              <?php if(!empty($error)): ?>
-              <p class="error">恐れ入りますが、再度画像を指定してください</p>
-              <?php endif; ?>
-              <!-- [END]他項目で漏れがあった場合の場合のエラー -->
-          </div>
-          <div class="corner">
-            <p class="subtitle">オススメの理由</p>
-            <div>
-            <textarea name="review" cols="50" rows="10" placeholder="オススメの理由を書いてください！"></textarea>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レコフェス</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
+    <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
+    <script type="text/javascript" src="../js/dropdownmenu.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li class="nav_home">
+            <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
+          </li>
+          <!-- <li class="nav_must">
+            <a href="#">他のランキング</a>
+          </li> -->
+          <!-- <li class="nav_must">
+            <a href="../review/review.php">口コミする</a>
+          </li> -->
+          <li>
+            <a href="../present/present.php"><i class="fas fa-gift fa"></i>特典</a>
+            <!-- <div class="nav_present">
+              <a href="../present/present.php"><i class="fas fa-gift fa-2x"></i>特典</a>
+            </div> -->
+          </li>
+          <li>
+            <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
+          </li>
+          <!-- ドロップダウンリスト -->
+          <div class="dropdown">
+            <button class="dropdown__btn" id="dropdown__btn">
+              <i class="fas fa-bars fa-2x"></i>
+            </button>
+            <div class="dropdown__body">
+              <ul class="dropdown__list">
+                <li class="dropdown__item">
+                  <a href="../mypage/mypage.php" class="dropdown__item-link">マイページ</a>
+                </li>
+                <li class="dropdown__item">
+                  <a href="../logout.php" class="dropdown__item-link">ログアウト</a>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="go_login">
-            <input type="submit" value="投稿する" />
-          </div>
-        </form>
+          <!-- [END]ドロップダウンリスト -->
+        </ul>
+      </nav>
+    </header>
+    <div class="wrap">
+      <div class="container">
+        <h1>口コミする</h1>
+        <div class="content">
+          <form action="" method="post" enctype="multipart/form-data">
+            <div class="corner">
+              <p class="subtitle">オススメフェス<span class="must">必須</span></p>
+              <select name="fes_name">
+                <option value="選択してください">選択してください</option>
+                <?php foreach($stmts as $stmt): ?>
+                <option value="<?php print(htmlspecialchars($stmt['fes_name'],ENT_QUOTES)); ?>">
+                <?php print(htmlspecialchars($stmt['fes_name'],ENT_QUOTES)); ?>
+                </option>
+                <?php endforeach;?>
+              </select>
+              <!-- 未選択の場合のエラー表示 -->
+              <?php if ($error['fes_name'] === 'must_select'): ?>
+                <p class="error">回数を選んでください</p>
+              <?php endif; ?>
+              <!-- fes_nameが重複時のエラー表示 -->
+              <?php if ($error['cnt_fes_name'] === 'duplicate'): ?>
+                <p class="error">指定されたフェスは既に口コミしています</p>
+              <?php endif; ?> 
+              <!-- 他項目で漏れがあった場合の場合のエラー -->
+              <?php if(!empty($error)): ?>
+                <p class="error">恐れ入りますが、再度回数を選択ください</p>
+              <?php endif; ?>
+
+            </div>
+            <div class="corner">
+              <p class="subtitle">思い出の一枚</p>
+              <input type="file" name="review_image" size="35" maxlength="255" value="" />
+
+              <!-- 画像じゃないモノが投函された場合のエラー -->
+              <?php if ($error['review_image'] === 'type'): ?>
+              <p class="error">画像は「.jpg」「.gif」「.png」のどれかで指定してください</p>
+              <?php endif; ?>
+              <!-- [END]画像じゃないモノが投函された場合のエラー -->
+                <!-- 他項目で漏れがあった場合の場合のエラー -->
+                <?php if(!empty($error)): ?>
+                <p class="error">恐れ入りますが、再度画像を指定してください</p>
+                <?php endif; ?>
+                <!-- [END]他項目で漏れがあった場合の場合のエラー -->
+            </div>
+            <div class="corner">
+              <p class="subtitle">オススメの理由</p>
+              <div>
+              <textarea name="review" cols="50" rows="10" placeholder="オススメの理由を書いてください！"></textarea>
+              </div>
+            </div>
+            <div class="go_login">
+              <input type="submit" value="投稿する" />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <footer>
-    ©2021 Reco.FES 
-  </footer>
-</body>
+    <footer>
+      ©2021 Reco.FES 
+    </footer>
+  </body>
 </html>

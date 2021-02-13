@@ -37,14 +37,20 @@ else{
   <header>
     <nav>
       <ul>
-      <li class="nav_home">
-           <a href="../ranking/index.php">レコＦＥＳ</a>
+        <li class="nav_home">
+          <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
         </li>
         <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
         </li> -->
-        <li class="nav_must">
+        <!-- <li class="nav_must">
           <a href="../review/review.php">口コミする</a>
+        </li> -->
+        <li>
+          <a href="../present/present.php"><i class="fas fa-gift fa"></i>特典</a>
+          <!-- <div class="nav_present">
+            <a href="../present/present.php"><i class="fas fa-gift fa-2x"></i>特典</a>
+          </div> -->
         </li>
         <li>
           <a href="../present/present.php">特典</a>
