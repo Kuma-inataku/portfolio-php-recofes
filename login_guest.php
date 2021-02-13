@@ -65,7 +65,6 @@ if(!empty($_POST)){
           <div class="corner">
             <p class="subtitle">メールアドレス<span class="must">必須</span></p>
             <input type="text" name="email" size="35" maxlength="255" value="guest@mail.com" />
-            </div>
           </div>
           <!-- [ログインフォーム]パスワード -->
           <div class="corner">

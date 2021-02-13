@@ -159,17 +159,17 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Twiter)</p>
-            <span class="sns_url">※https://twitter.com/以降(ユーザー名)を記入ください</span>
             <div>
               <input type="text" name="twitter" size="35" maxlength="255" value="https://twitter.com/<?php print(htmlspecialchars($_POST['twitter'],ENT_QUOTES)); ?>" />
             </div>
+            <p class="sns_url">https://twitter.com/以降(ユーザー名)を記入ください</p>
           </div>
           <div class="corner">
             <p class="subtitle">SNS(Instagram)</p>
-            <span class="sns_url">※https://www.instagram.com/以降(ユーザーネーム)を記入ください</span>
             <div>
               <input type="text" name="instagram" size="35" maxlength="255" value="https://www.instagram.com/<?php print(htmlspecialchars($_POST['instagram'],ENT_QUOTES)); ?>" />
             </div>
+            <p class="sns_url">https://www.instagram.com/以降(ユーザーネーム)を記入ください</p>
           </div>
           <div class="corner">
             <p class="subtitle">フェスに行った回数<span class="must">必須</span></p>
@@ -222,7 +222,7 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
     </div>
   </div>
   <div class="register">
-    既に会員の方は<a href="#">コチラ</a>からログイン
+    既に会員の方は<a href="../login.php">コチラ</a>からログイン
   </div>
   <footer>
     ©2021 Reco.FES 

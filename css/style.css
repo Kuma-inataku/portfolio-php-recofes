@@ -181,10 +181,13 @@ nav ul .nav_title:hover{
 
 /* フッター */
 footer{
-  text-align: center;
+  margin-top: 20px;
   height:50px;
   background-color: #333;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-/* [END]フッター */
 
+/* [END]フッター */
