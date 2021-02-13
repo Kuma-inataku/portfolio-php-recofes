@@ -146,11 +146,12 @@ h2{
 }
 .content .go_login{
   text-align: center;
+  margin-top: 30px;
 }
 .content .go_login a{
   text-align: center;
   text-decoration: none;
-  margin: 20px;
+  /* margin: 20px; */
 }
 .content .go_login a:hover{
   color: orange;

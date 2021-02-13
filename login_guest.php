@@ -51,14 +51,14 @@ if(!empty($_POST)){
           <a href="login.php">ログイン</a>
         </li>
         <li>
-          <a href="login_guest.php">ゲストログイン</a>
+          <a href="login_guest.php">採用ご担当者様用ログイン</a>
         </li>
       </ul>
     </nav>
   </header>
   <div class="wrap">
     <div class="container">
-      <h1>ログイン(ゲスト)</h1>
+      <h1>採用ご担当者様用ログイン</h1>
       <div class="content">
         <form action="" method="post">
           <!-- [ログインフォーム]メールアドレス -->

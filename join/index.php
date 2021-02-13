@@ -101,7 +101,7 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
           <a href="../login.php">ログイン</a>
         </li>
         <li>
-          <a href="../login_guest.php">ゲストログイン</a>
+          <a href="../login_guest.php">採用ご担当者様用ログイン</a>
         </li>
       </ul>
     </nav>

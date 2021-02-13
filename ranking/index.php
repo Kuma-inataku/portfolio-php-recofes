@@ -13,11 +13,6 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
   
-  //エラーデバックコード
-  // var_dump($ranking);
-  // var_dump($db->errorInfo()); 
-  // exit();
-  
   // fes_nameを表示及び、fes_name1個に対してのidの数をCOUNTした結果(数字)を取得するために$rankingsを定義
   $rankings = $db->query('SELECT fes_id, fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_id, fes_name ORDER BY review_cnt DESC');
 }
@@ -111,9 +106,6 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
           </li> -->
         </ol>
       </div>
-      <!-- <div class="rank-link">
-        <a href="ranking.php">もっと見る</a>
-      </div> -->
     </div>
     </section>
     <div>
