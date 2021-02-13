@@ -121,49 +121,35 @@ nav ul {
   font-size: 14px;
 }
 /* --------------ログイン後限定-------------- */
-nav ul .nav_must{
+nav ul .nav_must a{
   background-color: #E5117C;
   color: #fff;
   border-radius: 5px;
-  /* padding: 10px 50px; */
   box-shadow: 0 2px black;
-  /* font-size:20px ; */
-  /* cursor: pointer; */
+  text-decoration: none;
 }
+nav ul .nav_must a:hover{
+  background-color: #ED59A4;
+}
+/* nav ul li .nav_present{
+display: flex;
+align-items: center;
+} */
 /* --------------[END]ログイン後限定-------------- */
-nav a{
-  display: block;
-	/* border-radius: 4px; */
-	padding: 12px 24px;
-	color: #333;
-	text-decoration: none;
-}
+
 nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 12px 24px;
   position: relative;
   display: inline-block;
-  text-decoration: none;
-  /* margin-top: 10px; */
 }
 nav a:hover{
   text-decoration: underline;
 }
-/* nav a::after {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: #333;
-  transform: scale(0, 1);
-  transform-origin: left top;
-  transition: transform .3s;
-} */
-nav ul li a:hover::after {
-  /* transform: scale(1, 1); */
-}
 nav ul li.nav_home{
-  margin-right: auto; 
+  /* margin-right: auto;  */
+  margin-right: 30px; 
   font-size: 2rem;
 }
 nav ul .nav_title:hover{
