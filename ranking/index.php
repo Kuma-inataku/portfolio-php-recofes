@@ -41,7 +41,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
   <header>
     <nav>
       <ul>
-        <li class="nav_home">
+        <li class="nav_home_log">
            <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
         </li>
         <!-- <li class="nav_must">

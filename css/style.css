@@ -148,6 +148,10 @@ nav a:hover{
   text-decoration: underline;
 }
 nav ul li.nav_home{
+  margin-right: auto; 
+  font-size: 2rem;
+}
+nav ul li.nav_home_log{
   /* margin-right: auto;  */
   margin-right: 30px; 
   font-size: 2rem;
