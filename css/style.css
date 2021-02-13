@@ -105,17 +105,20 @@ input, select {
 /* [end]reset.css */
 
 /* ナビバー(ログイン前) */
-nav {
+/* nav {
   color: white;
-}
+} */
 nav ul {
   display: flex;
   flex-flow: row;
+  align-items: center;
   justify-content: flex-end;
 	margin: 0;
 	padding: 6px;
   list-style-type: none;
   color: #333;
+  background: #fff;
+  font-size: 14px;
 }
 /* --------------ログイン後限定-------------- */
 nav ul .nav_must{
@@ -130,20 +133,21 @@ nav ul .nav_must{
 /* --------------[END]ログイン後限定-------------- */
 nav a{
   display: block;
-	border-radius: 4px;
+	/* border-radius: 4px; */
 	padding: 12px 24px;
 	color: #333;
 	text-decoration: none;
 }
-nav a {
+nav ul li a {
   position: relative;
   display: inline-block;
   text-decoration: none;
+  /* margin-top: 10px; */
 }
 nav a:hover{
-  text-decoration: none;
+  text-decoration: underline;
 }
-nav a::after {
+/* nav a::after {
   position: absolute;
   bottom: -4px;
   left: 0;
@@ -154,13 +158,16 @@ nav a::after {
   transform: scale(0, 1);
   transform-origin: left top;
   transition: transform .3s;
+} */
+nav ul li a:hover::after {
+  /* transform: scale(1, 1); */
 }
-nav a:hover::after {
-  transform: scale(1, 1);
-}
-nav li.nav_home{
+nav ul li.nav_home{
   margin-right: auto; 
   font-size: 2rem;
+}
+nav ul .nav_title:hover{
+  text-decoration: none;
 }
 /* [end]ナビバー */
 
