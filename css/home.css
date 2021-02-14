@@ -20,7 +20,7 @@
   margin: 0 30px;
 }
 /* サブタイトル */
-h2{
+.wrap_about h2{
   text-align: center;
   padding: 70px 0 30px 0;
   margin-bottom: 80px;
@@ -90,21 +90,14 @@ h2{
   font-weight: bold;
   background: linear-gradient(transparent 70%, #ffd871 70%);
 }
-/* [直近の投稿] */
+/* 直近の投稿(ログイン前／ログイン後共通) */
 .wrap_review{
-  /* margin: 0 30px; */
   background: #fff;
 }
 .bg_rev{
   margin: 0 30px;
 }
 
-/* サブタイトル */
-h2{
-  text-align: center;
-  padding: 70px 0 30px 0;
-  margin-bottom: 80px;
-}
 /* サブタイトル(英語) */
 .wrap_review h2::before{
   content: "REVIEW";
@@ -235,7 +228,7 @@ h2{
   color: #0090aa;
 }
 
-/* ------------------ログイン画面---------------------- */
+/* ---------HOME画面(ログイン後)----------- */
 
 .wrap{
   display: flex;
@@ -325,8 +318,10 @@ background: #777;
   color: orange;
 }
 
-/* ------------------ログイン後HOMEページ------------------- */
+/* --------口コミエリア(ログイン後)------- */
+
 .review_btn{
+  margin-bottom:150px;
   display: flex;
   justify-content: center;
 }
@@ -342,4 +337,12 @@ background: #777;
 }
 .review_btn button:hover{
   background-color: #ED59A4;
+}
+/* --------口コミエリア(ログイン後)------- */
+.reviews_wrap{
+
+}
+.reviews_wrap h2{
+  text-align: center;
+  margin-bottom: 30px;
 }

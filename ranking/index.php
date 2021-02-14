@@ -114,58 +114,59 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         </ol>
       </div>
     </div>
-    </section>
-    <div>
-      <h2>口コミをしてまだ知らないフェス仲間とつながろう！</h2>
-      <div class="review_btn">
-        <button type="submit" onClick="location.href='http://localhost:8888/my_project/review/review.php'">口コミする</button>
-      </div>
-      <div>
-        <h2>直近の口コミ</h2>
-        <ul class="recent_reviews">
-        <?php foreach($reviews as $review): ?>
-            <li class="card"> 
-              <p class="card-title"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
-              <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES));?>" alt="思い出の一枚">
-              <div class="card-content">
-                <div class="card-review">
-                  <img class="card-user-img" src="../user_picture/<?php print(htmlspecialchars($review['image'],ENT_QUOTES));?>" alt="口コミした人">
-                  <div class="card-user-text">
-                    <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
-                  </div>
-                </div>
-                <div class="card-user-sns">
-                  <a href="<?php print(htmlspecialchars($review['sns_twitter'],ENT_QUOTES)); ?>">
-                    <img src="../images/twitter.png" alt="" target="_blank">
-                  </a>
-                  <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
-                    <img src="../images/instagram.png" alt="" target="_blank">
-                  </a>
-                </div>
-                <!-- <div class="card-user-status">
-                  <p class="card-user-name"><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?></p>
-                  <p class="card-user-count">フェス経験回数：<?php print(htmlspecialchars($review['fes_count'],ENT_QUOTES)); ?>回</p>
-                </div> -->
+  </section>
+  <!-- <div class="review_wrap"> -->
+    <!-- <h2>口コミをしてまだ知らないフェス仲間とつながろう！</h2> -->
+  <div class="review_btn">
+    <button type="submit" onClick="location.href='http://localhost:8888/my_project/review/review.php'">口コミする</button>
+  </div>
+  <!-- </div> -->
+  <div class="reviews_wrap">
+    <h2>直近の口コミ</h2>
+    <ul class="recent_reviews">
+    <?php foreach($reviews as $review): ?>
+        <li class="card"> 
+          <p class="card-title"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
+          <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES));?>" alt="思い出の一枚">
+          <div class="card-content">
+            <div class="card-review">
+              <img class="card-user-img" src="../user_picture/<?php print(htmlspecialchars($review['image'],ENT_QUOTES));?>" alt="口コミした人">
+              <div class="card-user-text">
+                <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
               </div>
-              <div class="card-link">
-                  <a href="../mypage/user_mypage.php?id=<?php print(htmlspecialchars($review['reviewer_id'])) ?>">もっと見る</a>
-                 <?php if($_SESSION['id'] == $review['reviewer_id']) : ?>
-                  <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
-                    <i class="far fa-trash-alt"></i>
-                  </a>
-                  <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
-                    <i class="fas fa-pen"></i>
-                  </a>
-                  <?php endif; ?>
-              </div>
-            <!-- </section> -->
-            </li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-      <footer>
-      ©2021 Reco.FES 
-      </footer>
+            </div>
+            <div class="card-user-sns">
+              <a href="<?php print(htmlspecialchars($review['sns_twitter'],ENT_QUOTES)); ?>">
+                <img src="../images/twitter.png" alt="" target="_blank">
+              </a>
+              <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
+                <img src="../images/instagram.png" alt="" target="_blank">
+              </a>
+            </div>
+            <!-- <div class="card-user-status">
+              <p class="card-user-name"><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?></p>
+              <p class="card-user-count">フェス経験回数：<?php print(htmlspecialchars($review['fes_count'],ENT_QUOTES)); ?>回</p>
+            </div> -->
+          </div>
+          <div class="card-link">
+              <a href="../mypage/user_mypage.php?id=<?php print(htmlspecialchars($review['reviewer_id'])) ?>">もっと見る</a>
+              <?php if($_SESSION['id'] == $review['reviewer_id']) : ?>
+              <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                <i class="far fa-trash-alt"></i>
+              </a>
+              <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                <i class="fas fa-pen"></i>
+              </a>
+              <?php endif; ?>
+          </div>
+        <!-- </section> -->
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+  <footer>
+  ©2021 Reco.FES 
+  </footer>
 </body>
 </html>
 
