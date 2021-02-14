@@ -15,10 +15,6 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $user = $users->fetch();
 
   $stmts = $db->query('SELECT * FROM fes ORDER BY fes_name_kana ASC');
-
-  // var_dump($fesTbl['fes_id']);
-  // var_dump($db->errorInfo());
-  // exit();
 }
 else{
   header('Location: ../login.php');
@@ -35,9 +31,7 @@ if(!empty($_POST)){
     $fes_review = $db->prepare('SELECT COUNT(*) AS cnt_fes_name FROM reviews WHERE fes_name=? AND reviewer_id=?');
     $fes_review->execute(array($_POST['fes_name'],$_SESSION['id']));
     $recordFes_name = $fes_review->fetch();
-    // var_dump($recordFes_name['cnt_fes_name']);
-    // var_dump($db->errorInfo());
-    // exit();
+
     if ($recordFes_name['cnt_fes_name'] > 0){
       $error['cnt_fes_name'] = 'duplicate';
       }
@@ -100,20 +94,17 @@ if(!empty($_POST)){
     <header>
       <nav>
         <ul>
-          <li class="nav_home">
+          <li class="nav_home_log">
             <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
           </li>
           <!-- <li class="nav_must">
             <a href="#">他のランキング</a>
           </li> -->
-          <!-- <li class="nav_must">
+          <li class="nav_must">
             <a href="../review/review.php">口コミする</a>
-          </li> -->
+          </li>
           <li>
             <a href="../present/present.php"><i class="fas fa-gift fa"></i>特典</a>
-            <!-- <div class="nav_present">
-              <a href="../present/present.php"><i class="fas fa-gift fa-2x"></i>特典</a>
-            </div> -->
           </li>
           <li>
             <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
@@ -165,7 +156,6 @@ if(!empty($_POST)){
               <?php if(!empty($error)): ?>
                 <p class="error">恐れ入りますが、再度回数を選択ください</p>
               <?php endif; ?>
-
             </div>
             <div class="corner">
               <p class="subtitle">思い出の一枚</p>
@@ -175,12 +165,12 @@ if(!empty($_POST)){
               <?php if ($error['review_image'] === 'type'): ?>
               <p class="error">画像は「.jpg」「.gif」「.png」のどれかで指定してください</p>
               <?php endif; ?>
-              <!-- [END]画像じゃないモノが投函された場合のエラー -->
-                <!-- 他項目で漏れがあった場合の場合のエラー -->
-                <?php if(!empty($error)): ?>
-                <p class="error">恐れ入りますが、再度画像を指定してください</p>
-                <?php endif; ?>
-                <!-- [END]他項目で漏れがあった場合の場合のエラー -->
+
+              <!-- 他項目で漏れがあった場合の場合のエラー -->
+              <?php if(!empty($error)): ?>
+              <p class="error">恐れ入りますが、再度画像を指定してください</p>
+              <?php endif; ?>
+
             </div>
             <div class="corner">
               <p class="subtitle">オススメの理由</p>
@@ -188,8 +178,9 @@ if(!empty($_POST)){
               <textarea name="review" cols="50" rows="10" placeholder="オススメの理由を書いてください！"></textarea>
               </div>
             </div>
-            <div class="go_login">
-              <input type="submit" value="投稿する" />
+            <div class="go_review">
+              <input type="submit" value="口コミする" />
+              <p class="">後から修正、順位の変更ができます</p>
             </div>
           </form>
         </div>
