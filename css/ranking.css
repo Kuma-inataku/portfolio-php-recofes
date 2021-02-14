@@ -82,22 +82,6 @@
   font-size: 14px;
   line-height: 1.5;
 }
-/* カードリンク(余裕あれば実装) */
-.rank-link {
-  text-align: center;
-  border-top: 1px solid #eee;
-  padding: 20px;
-  background-color: #333333;
-}
-.rank-link a {
-  text-decoration: none;
-  color: #fff;
-  margin: 0 10px;
-}
-.rank-link a:hover {
-  text-decoration: solid;
-  /* color: #0090aa; */
-}
 /* ------------------detail.php限定---------------------- */
 
 table{
@@ -150,6 +134,29 @@ table th,table td{
 }
 .review-right .rank-review{
   
+}
+.rank-review .rank_fesname{
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.rank-review .rank_text {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.rank-review .rank_link {
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding: 20px;
+}
+.rank_link a {
+  text-decoration: none;
+  color: #0bd;
+  margin: 0 10px;
+}
+.rank_link a:hover {
+  color: #0090aa;
 }
 .review_bottom{
   display: flex;

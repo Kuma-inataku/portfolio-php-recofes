@@ -36,14 +36,18 @@ else{
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>レコFES</title>
+  <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <!-- カードリンク・削除／編集ボタン -->
   <link rel="stylesheet" type="text/css" href="../css/home.css">
+  <!-- 口コミの一部(imageとか) -->
   <link rel="stylesheet" type="text/css" href="../css/ranking.css">
+  <!-- 主にプロフ -->
   <link rel="stylesheet" type="text/css" href="../css/mypage.css">
+  <!-- ハンバーガードロップダウンニュー -->
   <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
   <script type="text/javascript" src="../js/dropdownmenu.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-</head>
 </head>
 <body>
   <header>
@@ -87,10 +91,8 @@ else{
       </ul>
     </nav>
   </header>
-  <section class="prof_wrap">
     <div class="prof"> 
-      <h2 class="title_mypage">マイページ</h2>
-      <!-- [PHP]DB情報持ってくる -->
+      <h2>マイページ</h2>
       <div class="prof-info">
         <div class="prof_info_img">
           <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
@@ -99,6 +101,9 @@ else{
           <p class="myname"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?></p>
           <p class="myfes_count">フェスへ行った回数：<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回</p>
           <p class="my_comment"><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></p>
+        </div>
+        <div class="prof_info_update">
+          <button type="submit" onClick="location.href='http://localhost:8888/my_project/mypage/edit.php'">プロフィール編集</button>
           <div class="mysns">
             <a href="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL" target="_blank">
               <img src="../images/twitter.png" alt="">
@@ -108,54 +113,39 @@ else{
             </a>
           </div>
         </div>
-        <div class="prof_info_update">
-          <button type="submit" onClick="location.href='http://localhost:8888/my_project/mypage/edit.php'">プロフィール編集</button>
-        </div>
       </div>
     </div>
-  </section>
     <div>
-      <div>
+      <div class="rank-content">
         <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
+        <?php foreach($reviews as $review): ?>
         <ul class="this_reviews">
-          <!-- <a href="#"> -->
-          <?php foreach($reviews as $review): ?>
             <li class="reviews"> 
               <div class="review_flex">
                 <div class="review-left">
-                  <!-- [PHP]reviewsテーブルのreview_image持ってくる -->
-                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="思い出の写真">
+                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
                 </div>
                 <div class="review-right">
-                  <div class="card-content">
-                    <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
-                    <p class="card-text"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
+                  <div class="rank-review">
+                    <p class="rank_fesname"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
+                    <p class="rank_text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
                   </div>
-                  <div class="review_right_bottom">
-                    <div class="reviewer_img">
-                      <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="">
+                  <div class="review_bottom">
+                    <div class="rank_link">
+                      <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                        <i class="far fa-trash-alt"></i>
+                      <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                        <i class="fas fa-pen"></i>
+                      </a>
                     </div>
-                    <div class="reviewer_profile">
-                      <p class="reviewer_name"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?></p>
-                      <br>
-                      フェス回数：<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回
-                    </div>
+                  </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-link">
-              <a href="../review/detail.php">もっと見る</a>
-              <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
-              <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
-                <i class="far fa-trash-alt"></i>
-              <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
-                <i class="fas fa-pen"></i>
-              </a>
+                <div class="review_bottom">
               </div>
             </li>
-            <?php endforeach; ?>
-          <!-- </a> -->
-        </ul>
+          </ul>
+          <?php endforeach; ?>
      </div>
       <footer>
       ©2021 Reco.FES 
