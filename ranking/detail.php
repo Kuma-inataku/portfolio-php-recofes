@@ -45,13 +45,14 @@ $user = $users->fetch();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>レコFES</title>
+  <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../css/home.css">
+  <!-- --------指定したフェスについての口コミ------- -->
   <link rel="stylesheet" type="text/css" href="../css/ranking.css">
+  <!-- --------ハンバーガードロップダウンメニュー------- -->
   <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
   <script type="text/javascript" src="../js/dropdownmenu.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-
 </head>
 <body>
   <header>
@@ -96,71 +97,67 @@ $user = $users->fetch();
     </nav>
   </header>
   <section class="rank_wrap">
-    <div class="rank"> 
-      <!-- <img class="rank-img" src="<?php ?>" alt=""> -->
-      <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?></h2>
-      <div class="rank-info">
-        <div class="rank_info_img">
-          <img src="../fes_picture/<?php print(htmlspecialchars($fes['fes_picture'],ENT_QUOTES)); ?>" alt="フェスの写真">
-        </div>
-        <div class="rank_info_content">
-          <table>
-            <tr>
-              <th>開催場所</th>
-              <td><?php print(htmlspecialchars($fes['fes_location'],ENT_QUOTES)); ?></td>
-            </tr>
-            <tr>
-              <th>開催時期</th>
-              <td><?php print(htmlspecialchars($fes['fes_time'],ENT_QUOTES)); ?>月</td>
-            </tr>
-            <tr>
-              <th>公式サイト</th>
-              <td><a href="<?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?>" target="_blank"><?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?></a></td>
-            </tr>
-          </table>
+    <div class="rank">
+      <div class="rank-content">
+        <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?></h2>
+        <div class="rank-info">
+          <div class="rank_info_img">
+            <img src="../fes_picture/<?php print(htmlspecialchars($fes['fes_picture'],ENT_QUOTES)); ?>" alt="フェスの写真">
+          </div>
+          <div class="rank_info_content">
+            <table>
+              <tr>
+                <th>開催場所</th>
+                <td><?php print(htmlspecialchars($fes['fes_location'],ENT_QUOTES)); ?></td>
+              </tr>
+              <tr>
+                <th>開催時期</th>
+                <td><?php print(htmlspecialchars($fes['fes_time'],ENT_QUOTES)); ?>月</td>
+              </tr>
+              <tr>
+                <th>公式サイト</th>
+                <td><a href="<?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?>" target="_blank"><?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?></a></td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </section>
-    <div>
-      <div>
-        <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?>の口コミ</h2>
-        <?php foreach($reviews as $review): ?>
-        <ul class="this_reviews">
-          <!-- <a href="#"> -->
-            <li class="reviews"> 
-              <!-- [PHP]投稿内容持ってくる -->
-              <div class="review_flex">
-                <div class="review-left">
-                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
-                </div>
-                <div class="review-right">
-                  <div class="card-content">
-                    <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
-                  </div>
-                  <div class="review_right_bottom">
-                    <div class="reviewer_img">
-                      <img src="../user_picture/<?php print(htmlspecialchars($member['image'],ENT_QUOTES)); ?>" alt="">
-                    </div>
-                    <div class="reviewer_profile">
-                      <p class="reviewer_name"><?php print(htmlspecialchars($member['name'],ENT_QUOTES)); ?></p>
-                      <br>
-                      フェス回数：<?php print(htmlspecialchars($member['fes_count'],ENT_QUOTES)); ?>回
-                    </div>
-                    <div class="goodbtn">
-                      <button type="submit">いいね！</button>
-                    </div>
-                  </div>
-                </div>
+  <div class="rank-content">
+    <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?>の口コミ</h2>
+    <?php foreach($reviews as $review): ?>
+    <ul class="this_reviews">
+      <li class="reviews"> 
+        <div class="review_flex">
+          <div class="review-left">
+            <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
+          </div>
+          <div class="review-right">
+            <div class="rank-review">
+              <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
+            </div>
+            <div class="review_bottom">
+              <div class="reviewer_img">
+                <img src="../user_picture/<?php print(htmlspecialchars($member['image'],ENT_QUOTES)); ?>" alt="">
               </div>
-            </li>
-          <!-- </a> -->
-        </ul>
-        <?php endforeach; ?>
-      </div>
-      <footer>
-      ©2021 Reco.FES 
-      </footer>
+              <div class="reviewer_profile">
+                <p class="reviewer_fescnt">フェス回数：<?php print(htmlspecialchars($member['fes_count'],ENT_QUOTES)); ?>回</p>
+                <p class="reviewer_name"><?php print(htmlspecialchars($member['name'],ENT_QUOTES)); ?></p>
+              </div>
+              <!-- <div class="goodbtn">
+                <button type="submit">いいね！</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <?php endforeach; ?>
+  </div>
+  <footer>
+  ©2021 Reco.FES 
+  </footer>
 </body>
 </html>
 
