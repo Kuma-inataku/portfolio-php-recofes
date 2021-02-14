@@ -24,19 +24,16 @@ $users->execute(array($_SESSION['id']));
 $user = $users->fetch();
 
 // 表示するfesのid特定
-  $id = $_REQUEST['id'];
-  $festivals = $db->prepare('SELECT * FROM fes WHERE fes_id=?');
-  $festivals->execute([$id]);
-  $fes= $festivals->fetch();
-  
-  $reviews = $db->prepare('SELECT * FROM reviews WHERE fes_id=?');
-  $reviews->execute([$id]);
-  // $review= $reviews->fetch();
+$id = $_REQUEST['id'];
+//フェス情報詳細をfesテーブルから取得
+$festivals = $db->prepare('SELECT * FROM fes WHERE fes_id=?');
+$festivals->execute([$id]);
+$fes= $festivals->fetch();
 
-  $members = $db->prepare('SELECT u.name, u.sns_twitter, u.sns_instagram, u.fes_count, u.image,r.* FROM users u, reviews r WHERE u.id=r.reviewer_id AND fes_id=?');
-  $members->execute([$id]);
-  $member=$members->fetch();
-
+//口コミ情報と口コミ投稿者情報をreviews,usersテーブルから取得
+$members = $db->prepare('SELECT u.name, u.sns_twitter, u.sns_instagram, u.fes_count, u.image,r.* FROM users u, reviews r WHERE u.id=r.reviewer_id AND fes_id=?');
+$members->execute([$id]);
+$member=$members->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -126,16 +123,16 @@ $user = $users->fetch();
   </section>
   <div class="rank-content">
     <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?>の口コミ</h2>
-    <?php foreach($reviews as $review): ?>
+    <?php foreach($members as $member): ?>
     <ul class="this_reviews">
       <li class="reviews"> 
         <div class="review_flex">
           <div class="review-left">
-            <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
+            <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($member['review_image'],ENT_QUOTES)); ?>" alt="">
           </div>
           <div class="review-right">
             <div class="rank-review">
-              <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
+              <p class="card-text"><?php print(htmlspecialchars($member['review'],ENT_QUOTES)); ?></p>
             </div>
             <div class="review_bottom">
               <div class="reviewer_img">
