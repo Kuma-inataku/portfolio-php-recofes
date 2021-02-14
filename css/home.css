@@ -47,26 +47,25 @@ h2{
   margin-left: -20px;
   background-color: #000;
 }
-/* できること１ */
+.about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .ab_subtitle{
-  margin: 50px;
-  text-align: center;
+
 }
 .ab_subtitle p{
   font-size: 28px;
   display: inline-block;
   font-weight: bold;
 }
-.about{
-  display: flex;
-  justify-content: center;
-  margin:0 0 20px 0;
-}
 .about .ab_text{
   list-style: none;
   width: 55%;
   /* background: rgb(194, 194, 240); */
   line-height: 1.5;
+  font-size:20px ;
 }
 .about .ab_text span{
   font-size: 25px;
@@ -78,7 +77,7 @@ h2{
   /* background: red; */
 }
 .ab_image img{
-  width:400px;
+  width:530px;
 }
 .about .ab_text_2nd{
   list-style: none;
@@ -90,22 +89,6 @@ h2{
   font-size: 25px;
   font-weight: bold;
   background: linear-gradient(transparent 70%, #ffd871 70%);
-}
-/* できること２ */
-.ab_text_2nd{
-  list-style: none;
-  width: 55%;
-  /* background: blue; */
-  line-height: 1.5;
-}
-.ab_image_2nd{
-  width: 55%;
-  /* background: red; */
-}
-.ab_image_2nd img{
-  margin-left: auto;
-  width:400px;
-  display:block;
 }
 /* 直近の投稿 */
 .wrap_review{
@@ -137,7 +120,7 @@ h2{
 .wrap_review h2::after{
   content: "";
   position: absolute;
-  bottom: -1300px;
+  bottom: -900px;
   left: 50%;
   height: 1px;
   width: 40px;
