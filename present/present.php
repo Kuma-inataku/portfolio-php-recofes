@@ -77,19 +77,19 @@ else{
     </header>
     <div class="wrap">
       <div class="container">
-        <h1>特典</h1>
+        <h1><i class="fas fa-gift fa"></i>特典</h1>
         <div class="content">
-        <p>
-          フェス初心者の方向けにログイン限定特典として
+          <p class="pre_text">
+            フェス初心者の方向けにログイン限定特典として
+            <br>
+            <span>絶対に失敗しない！<br>初めてのフェス持ち物チェックリスト</span>
+            <br>
+            をプレゼントいたします！
+          </p>
           <br>
-          <span>「絶対に失敗しない！フェスへの持ち物チェックリスト」</span>
-          <br>
-          をプレゼントいたします。
-        </p>
-        <br>
-        <p>
-          ダウンロードは<a href="twitter1.png" download="サンプル.png">こちら</a>から
-        </p>
+          <p class="pre_text">
+            ダウンロードは<a href="twitter1.png" download="サンプル.png">こちら</a>から
+          </p>
         </div>
       </div>
     </div>
