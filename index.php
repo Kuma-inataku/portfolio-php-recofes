@@ -46,6 +46,40 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
     <div class="wrap_about">
       <div class="bg_ab">
         <h2>「レコFES」とは?</h2>
+        <!-- <div class="ab_subtitle">
+          <p>&lt;フェス初心者の方&gt;</p>
+        </div> -->
+        <div class="about">
+          <div class="ab_image">
+            <img src="images/top_image3.jpg" alt="">
+          </div>
+          <div class="ab_text">
+            <div class="ab_subtitle">
+              <p>&lt;フェス初心者の方&gt;</p>
+            </div>
+            <p>
+              <span>口コミやランキングから<br>オススメのフェスを知ることができる！</span> 
+            </p>
+            <p>ランキングはフェス経験者による口コミなので、安心！</p> 
+            <p>さらに初心者の方にうれしいログイン限定特典あり！</p>
+            <br>
+            <div class="ab_subtitle">
+              <p>&lt;フェス経験者の方&gt;</p>
+            </div>
+            <p>
+              <span>新しいフェス仲間と出会える！</span> 
+            </p>
+            <p>
+              SNSとも連携しているので、有益情報を発信してフェス仲間増やそう！
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [2つ分けるパターン]書くことがあまりないので却下 -->
+    <!-- <div class="wrap_about">
+      <div class="bg_ab">
+        <h2>「レコFES」とは?</h2>
         <div class="ab_subtitle">
           <p>&lt;フェス初心者の方&gt;</p>
         </div>
@@ -78,7 +112,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="wrap_review">
       <div class="bg_rev">
         <h2>直近の口コミ</h2>
