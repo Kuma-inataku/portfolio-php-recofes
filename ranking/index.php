@@ -15,13 +15,12 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   
   // fes_nameを表示及び、fes_name1個に対してのidの数をCOUNTした結果(数字)を取得するために$rankingsを定義
   $rankings = $db->query('SELECT fes_id, fes_name, COUNT(id) AS review_cnt FROM reviews GROUP BY fes_id, fes_name ORDER BY review_cnt DESC');
-}
-else{
+
+}else{
   header('Location: ../login.php');
   exit();
 }
 $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns_instagram, r.* FROM users u, reviews r WHERE u.id=r.reviewer_id ORDER BY r.created DESC LIMIT 0,3');
-
 ?>
 
 <!DOCTYPE html>
@@ -88,9 +87,9 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
       <div class="rank-content">
         <h2>オススメフェスランキング</h2>
         <ol>
-          <?php foreach($rankings as $ranking):?>
+          <?php foreach($rankings as $index => $ranking):?>
             <li data-rank="1">
-              <span>位</span>
+              <span><?php print(htmlspecialchars($index+1,ENT_QUOTES)); ?>位</span>
               <a href="detail.php?id=<?php print(htmlspecialchars($ranking['fes_id'],ENT_QUOTES)); ?>">
               <?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
               <p>(<?php print(htmlspecialchars($ranking['review_cnt'],ENT_QUOTES)); ?>票)</p>
