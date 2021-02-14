@@ -11,7 +11,6 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px #ccc;
 }
-
 /* .rank-img{
   border-radius: 5px 5px 0 0;
   max-width: 100%;
@@ -20,7 +19,7 @@
 .rank .rank-content{
   padding: 20px;
 }
-.rank .rank-content h2{
+.rank-content h2{
   text-align: center;
   margin: 10px 0 30px;
 }
@@ -134,32 +133,54 @@ table th,table td{
   box-shadow: 0 2px 5px #ccc;
 }
 .review_flex{
-  display:flex;  
+  display:flex;
 }
-/* .review-left{
+.review_flex .review-left{
   width: 40%;
-} */
-.reviews img{
+}
+.review_flex .review-left img{
+  border-radius: 5px;
   width: 300px;
+  height: 300px;
 }
-.review-right{
+.review_flex .review-right{
   width: 70%;
+  padding: 20px;
+  position: relative;
 }
-.review_right_bottom{
+.review-right .rank-review{
+  
+}
+.review_bottom{
   display: flex;
   align-items: center;
+  position: absolute;
+  bottom: 20px;
 }
-.review_right_bottom .reviewer_img{
-  padding: 20px;
+.review_bottom .reviewer_img{
+  /* padding: 20px; */
 }
-.review_right_bottom .reviewer_img img{
-  width: 100px;
+.review_bottom .reviewer_img img{
+  width: 40px;
+  border-radius: 50px;
 }
-.review_right_bottom .goodbtn{
-  margin-left: auto;
+.review_bottom .reviewer_profile{
+
+}
+.review_bottom .reviewer_profile .reviewer_fescnt{
+  font-weight: 400;
+  font-size: 14px;
+}
+.review_bottom .reviewer_profile .reviewer_name{
+  font-weight: 700;
+  font-size: 16px;
+}
+.review_bottom .goodbtn{
   padding-right: 20px;
+  margin-left: auto;
+  /* right: 0; */
 }
-.review_right_bottom .goodbtn button{
+.review_bottom .goodbtn button{
   color:#9B9BB0 ;
   background-color: #EEEEEE;
   box-shadow: 0 2px #CCCCCC;
