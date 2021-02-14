@@ -318,8 +318,7 @@ background: #777;
   color: orange;
 }
 
-/* --------口コミエリア(ログイン後)------- */
-
+/* --------口コミエリア(ログイン後HOMEページ)------- */
 .review_btn{
   margin-bottom:150px;
   display: flex;
@@ -338,7 +337,6 @@ background: #777;
 .review_btn button:hover{
   background-color: #ED59A4;
 }
-/* --------口コミエリア(ログイン後)------- */
 .reviews_wrap{
 
 }
@@ -362,4 +360,25 @@ background: #777;
 }
 .content .pre_text a:hover{
   color: orange;
+}
+/* 口コミ投稿ページ */
+.content .go_review{
+  text-align: center;
+}
+.content .go_review input{
+  margin-bottom: 20px;
+  border: none;
+  background-color: #E5117C;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0 2px black;
+}
+.content .go_review input:hover{
+  background: #ED59A4;
+  }
+.content .go_review p{
+  text-align: center;
+  font-size: 14px;
 }

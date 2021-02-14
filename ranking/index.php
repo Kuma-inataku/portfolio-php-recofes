@@ -50,9 +50,9 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
         </li> -->
-        <!-- <li class="nav_must">
+        <li class="nav_must">
           <a href="../review/review.php">口コミする</a>
-        </li> -->
+        </li>
         <li>
           <a href="../present/present.php"><i class="fas fa-gift fa"></i>特典</a>
           <!-- <div class="nav_present">
@@ -158,7 +158,6 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
               </a>
               <?php endif; ?>
           </div>
-        <!-- </section> -->
         </li>
       <?php endforeach; ?>
     </ul>
