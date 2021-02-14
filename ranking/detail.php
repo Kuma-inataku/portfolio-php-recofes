@@ -132,7 +132,7 @@ $member=$members->fetch();
           </div>
           <div class="review-right">
             <div class="rank-review">
-              <p class="card-text"><?php print(htmlspecialchars($member['review'],ENT_QUOTES)); ?></p>
+              <p class="rank_text"><?php print(htmlspecialchars($member['review'],ENT_QUOTES)); ?></p>
             </div>
             <div class="review_bottom">
               <div class="reviewer_img">
