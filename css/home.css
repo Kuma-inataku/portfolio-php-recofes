@@ -346,3 +346,20 @@ background: #777;
   text-align: center;
   margin-bottom: 30px;
 }
+/* 特典ページ */
+.content .pre_text{
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.content .pre_text span{
+  font-size:30px;
+  font-weight: bold;
+  background: linear-gradient(transparent 70%, #ffd871 70%);
+}
+.content .pre_text a{
+  color: #0bd;
+}
+.content .pre_text a:hover{
+  color: orange;
+}
