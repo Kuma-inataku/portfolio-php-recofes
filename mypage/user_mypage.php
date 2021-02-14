@@ -17,10 +17,6 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $reviews->execute(array($_REQUEST['id']));
   $review=$reviews->fetch();
 
-  //エラーデバックコード
-  // var_dump($id);
-  // var_dump($db->errorInfo()); 
-  // exit();
 }
 else{
   header('Location: ../login.php');
@@ -35,21 +31,24 @@ else{
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>レコFES</title>
+    <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../css/home.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../css/home.css"> -->
+  <!-- 口コミの一部(imageとか) -->
   <link rel="stylesheet" type="text/css" href="../css/ranking.css">
+    <!-- 主にプロフ -->
   <link rel="stylesheet" type="text/css" href="../css/mypage.css">
+  <!-- ハンバーガードロップダウンニュー -->
   <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
   <script type="text/javascript" src="../js/dropdownmenu.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-</head>
 </head>
 <body>
   <header>
     <nav>
       <ul>
-      <li class="nav_home">
-           <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
+        <li class="nav_home">
+          <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
         </li>
         <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
@@ -98,6 +97,8 @@ else{
           <p class="myname"><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?></p>
           <p class="myfes_count">フェスへ行った回数：<?php print(htmlspecialchars($review['fes_count'],ENT_QUOTES)); ?>回</p>
           <p class="my_comment"><?php print(htmlspecialchars($review['profile'],ENT_QUOTES)); ?></p>
+        </div>
+        <div class="prof_info_update">
           <div class="mysns">
             <a href="<?php print(htmlspecialchars($review['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL" target="_blank">
               <img src="../images/twitter.png" alt="">
@@ -111,27 +112,24 @@ else{
     </div>
   </section>
     <div>
-      <div>
+      <div class="rank-content">
         <h2><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?>の口コミ</h2>
         <ul class="this_reviews">
-          <!-- <a href="#"> -->
           <?php foreach($reviews as $review): ?>
             <li class="reviews"> 
               <div class="review_flex">
                 <div class="review-left">
-                  <!-- [PHP]reviewsテーブルのreview_image持ってくる -->
-                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="思い出の写真">
+                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
                 </div>
                 <div class="review-right">
-                  <div class="card-content">
-                    <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
-                    <p class="card-text"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
+                  <div class="rank-review">
+                    <p class="rank_fesname"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
+                    <p class="rank_text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
                   </div>
                 </div>
               </div>
             </li>
             <?php endforeach; ?>
-          <!-- </a> -->
         </ul>
      </div>
       <footer>

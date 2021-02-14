@@ -38,8 +38,6 @@ else{
   <title>レコFES</title>
   <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <!-- カードリンク・削除／編集ボタン -->
-  <link rel="stylesheet" type="text/css" href="../css/home.css">
   <!-- 口コミの一部(imageとか) -->
   <link rel="stylesheet" type="text/css" href="../css/ranking.css">
   <!-- 主にプロフ -->
