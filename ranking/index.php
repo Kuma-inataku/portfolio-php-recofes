@@ -30,9 +30,13 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>レコFES</title>
+  <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <!-- 直近の口コミ -->
   <link rel="stylesheet" type="text/css" href="../css/home.css">
+  <!-- ランキング表 -->
   <link rel="stylesheet" type="text/css" href="../css/ranking.css">
+  <!-- ハンバーガーセレクトダウンニュー -->
   <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">
   <script type="text/javascript" src="../js/dropdownmenu.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -120,26 +124,28 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         <h2>直近の口コミ</h2>
         <ul class="recent_reviews">
         <?php foreach($reviews as $review): ?>
-          <!-- <a href="#"> -->
             <li class="card"> 
-              <!-- <section> -->
+              <p class="card-title"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
               <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES));?>" alt="思い出の一枚">
-
               <div class="card-content">
-                <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
-                <br>
-                <p><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?></p>
-                <br>
-                <p><?php print(htmlspecialchars($review['created'],ENT_QUOTES)); ?></p>
-                <br>
-                <p>フェス経験回数：<?php print(htmlspecialchars($review['fes_count'],ENT_QUOTES)); ?>回</p>
-                <br>
-                <a href="<?php print(htmlspecialchars($review['sns_twitter'],ENT_QUOTES)); ?>">
-                  <img src="../images/twitter.png" alt="" target="_blank">
-                </a>
-                <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
-                  <img src="../images/instagram.png" alt="" target="_blank">
-                </a>
+                <div class="card-review">
+                  <img class="card-user-img" src="../user_picture/<?php print(htmlspecialchars($review['image'],ENT_QUOTES));?>" alt="口コミした人">
+                  <div class="card-user-text">
+                    <p class="card-text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
+                  </div>
+                </div>
+                <div class="card-user-sns">
+                  <a href="<?php print(htmlspecialchars($review['sns_twitter'],ENT_QUOTES)); ?>">
+                    <img src="../images/twitter.png" alt="" target="_blank">
+                  </a>
+                  <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
+                    <img src="../images/instagram.png" alt="" target="_blank">
+                  </a>
+                </div>
+                <!-- <div class="card-user-status">
+                  <p class="card-user-name"><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?></p>
+                  <p class="card-user-count">フェス経験回数：<?php print(htmlspecialchars($review['fes_count'],ENT_QUOTES)); ?>回</p>
+                </div> -->
               </div>
               <div class="card-link">
                   <a href="../mypage/user_mypage.php?id=<?php print(htmlspecialchars($review['reviewer_id'])) ?>">もっと見る</a>

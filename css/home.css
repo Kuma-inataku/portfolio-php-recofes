@@ -90,7 +90,7 @@ h2{
   font-weight: bold;
   background: linear-gradient(transparent 70%, #ffd871 70%);
 }
-/* 直近の投稿 */
+/* [直近の投稿] */
 .wrap_review{
   /* margin: 0 30px; */
   background: #fff;
@@ -132,6 +132,7 @@ h2{
   justify-content: space-around;
   list-style: none;
 }
+/* カード */
 .card{
   margin: 30px auto;
   width: 350px;
@@ -139,26 +140,87 @@ h2{
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
 }
-.card-img{
-  border-radius: 5px 5px 0 0;
-  max-width: 100%;
-  height: auto;
-}
-.card-content{
-  padding: 20px;
-}
-.card-title {
+.card .card-title {
   font-size: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   text-align: center;
   color: #333;
+  font-weight: bold;
 }
-.card-text {
+.card .card-img{
+  max-width: 300px;
+  width: 90%;
+  height: 300px;
+  margin:0 auto;
+  display: block;
+}
+.card .card-content{
+  padding: 10px 20px;
+}
+.card-content .card-review{
+  display: flex;
+  margin-bottom: 10px;
+}
+.card-content .card-review .card-user-img{
+  width: 40px;
+  border-radius: 50px;
+}
+/* カード吹き出し */
+.card-content .card-review .card-user-text{
+  position: relative;
+  display: inline-block;
+  margin-left:15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #FFF;
+  border: solid 2px #555;
+  box-sizing: border-box;
+}
+.card-content .card-review .card-user-text::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid #FFF;
+  z-index: 2;
+}
+.card-content .card-review .card-user-text::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  z-index: 1;
+}
+.card-content .card-review .card-user-text .card-text {
   color: #777;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
 }
-/* カードリンク(余裕あれば実装) */
+.card-content .card-user-status{
+  margin-bottom:10px ;
+  font-size: 12px;
+}
+.card-content .card-user-status .card-user-name{
+  display: inline-block;
+}
+.card-content .card-user-status .card-user-count{
+  display:inline-block;
+  margin-left: 30px;
+}
+.card-content .card-user-sns{
+  display: inline;
+}
+.card-content .card-user-sns a{
+  text-decoration: none;
+}
 .card-link {
   text-align: center;
   border-top: 1px solid #eee;
@@ -258,7 +320,6 @@ background: #777;
 }
 .register a{
   color: #54C6F0;
-  /* text-decoration: none; */
 }
 .register a:hover{
   color: orange;
