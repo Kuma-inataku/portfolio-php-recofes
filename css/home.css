@@ -12,18 +12,18 @@
 }
 
 /* できること */
-.wrap_about{
-  margin-bottom:80px;
-  background: #eee;
-}
 .bg_ab{
   margin: 0 30px;
 }
 /* サブタイトル */
-.wrap_about {
-  text-align: center;
+.wrap_about{
+  background: #eee;
   padding: 70px 0 30px 0;
   margin-bottom: 80px;
+}
+.wrap_about h2{
+  margin-bottom:50px ;
+  text-align: center;
 }
 /* サブタイトル(英語) */
 .wrap_about h2::before{
@@ -37,7 +37,7 @@
   letter-spacing: 0.1em;
 }
 /* サブタイトル(下線) */
-.wrap_about h2::after{
+/* .wrap_about h2::after{
   content: "";
   position: absolute;
   bottom: -130px;
@@ -46,7 +46,7 @@
   width: 40px;
   margin-left: -20px;
   background-color: #000;
-}
+} */
 .about{
   display: flex;
   justify-content: center;
@@ -96,8 +96,12 @@
 }
 .bg_rev{
   margin: 0 30px;
+  padding-top: 80px;
 }
-
+.wrap_review h2{
+  margin-bottom:50px ;
+  text-align: center;
+}
 /* サブタイトル(英語) */
 .wrap_review h2::before{
   content: "REVIEW";
@@ -110,7 +114,7 @@
   letter-spacing: 0.1em;
 }
 /* サブタイトル(下線) */
-.wrap_review h2::after{
+/* .wrap_review h2::after{
   content: "";
   position: absolute;
   bottom: -900px;
@@ -119,7 +123,7 @@
   width: 40px;
   margin-left: -20px;
   background-color: #000;
-}
+} */
 .recent_reviews{
   display: flex;
   justify-content: space-around;
