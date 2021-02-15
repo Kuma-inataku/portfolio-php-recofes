@@ -1,0 +1,7 @@
+{
+    "name": "owner/my_project",
+    "require": {
+        "php":"^7.4.1",
+        "ext-mbstring":"*"
+    }
+}
