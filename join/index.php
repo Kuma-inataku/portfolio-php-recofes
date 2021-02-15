@@ -1,6 +1,6 @@
 <?php 
 // Noticeメッセージを表示する
-ini_set('display_errors', 1); 
+// ini_set('display_errors', 1); 
 
 //セッションの値受取(書き直し時に受け取れるように)
 session_start();
