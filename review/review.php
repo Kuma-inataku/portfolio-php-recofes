@@ -180,7 +180,8 @@ if(!empty($_POST)){
             </div>
             <div class="go_review">
               <input type="submit" value="口コミする" />
-              <p class="">後から修正、順位の変更ができます</p>
+              <p class="">後から修正ができます</p>
+              <p class="">※「思い出の一枚」は修正ができません。</p>
             </div>
           </form>
         </div>
