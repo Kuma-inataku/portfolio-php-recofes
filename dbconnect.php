@@ -9,9 +9,9 @@ $db_host = $url["host"];
 $user = $url["user"];
 $password = $url["pass"];
 
-var_dump($url);
+// var_dump($url);
 // var_dump($db->errorInfo()); 
-exit(); 
+// exit(); 
 
 try{
   $db = new PDO('mysql:dbname=' . $db_name . ';host=' . $db_host . ';charset=utf8,' . $user,$password);
