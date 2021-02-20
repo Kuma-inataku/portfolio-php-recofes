@@ -12,9 +12,9 @@ $password = $url["pass"];
 try{
   $db = new PDO('mysql:dbname=' . $db_name . '; host=' . $db_host . '; charset=utf8,' . $user,$password);
 }catch(PDOException $e){
-  var_dump($e);
+  // var_dump($e);
 // var_dump($db->errorInfo()); 
-exit(); 
+// exit(); 
   print('DB接続エラー：' . $e->getMessage());
 }
 
