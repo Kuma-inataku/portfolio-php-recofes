@@ -10,7 +10,7 @@ $user = $url["user"];
 $password = $url["pass"];
 
 try{
-  $db = new PDO('mysql:dbname=' . $db_name . '; host=' . $db_host . '; charset=utf8,' . $user,$password);
+  $db = new PDO('mysql:dbname=' . $db_name . '; host=' . $db_host . '; charset=utf8mb4,' . $user,$password);
 }catch(PDOException $e){
   var_dump($db);
 // var_dump($db->errorInfo()); 
