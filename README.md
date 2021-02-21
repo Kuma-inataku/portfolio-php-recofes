@@ -11,6 +11,7 @@
 
 ### 学習時間
 PHP/SQL学習期間：約１週間（約５０時間）
+
 本アプリ開発期間：約３週間（約１６０時間）
 
 ※[参考ツイート](https://twitter.com/TkTkTkTkTako/status/1350229150561275905?s=20) (ProgateでPHPを学習開始)
