@@ -12,17 +12,8 @@ $password = $url["pass"];
 try{
   $db = new PDO('mysql:dbname=' . $db_name . '; host=' . $db_host . '; charset=utf8' , $user,$password);
 }catch(PDOException $e){
-  // var_dump($e);
-// var_dump($db->errorInfo()); 
-// exit(); 
   print('DB接続エラー：' . $e->getMessage());
 }
-
-// try{
-//   $db = new PDO('mysql:dbname=heroku_805ca66e29a361b; host=us-cdbr-east-03.cleardb.com; charset=utf8','b631d197289086','4f34bddb');
-// }catch(PDOException $e){
-//   print('DB接続エラー：' . $e->getMessage());
-// }
 
 //ローカル環境データベース情報
 // try{
