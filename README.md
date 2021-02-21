@@ -77,7 +77,7 @@ Amazonや楽天で買い物したり、
 ※~~同じ選択肢(フェス名)が3つになっているのは修正中ですm(__)m~~
 
 ⇒修正完了しました。
-![口コミ.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/780929/a4bfe2e9-7c7f-cede-6730-7953e23090a4.gif)
+![口コミ.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/780929/684aa651-09ee-7c4b-4821-3a3c5b131908.gif)
 
 ### 口コミ内容表示
 直近の口コミを思い出の写真と一緒に3つ表示
@@ -231,7 +231,7 @@ $member = $members ->  fetch();
 
 ~~(別途Qiita記事投稿予定)~~
 
-⇒こちらについては別途[Qiita記事](https://qiita.com/TkTkTkTkTako/items/aa0063e733a99ef53e54)でアウトプットしました。
+⇒[コチラのQiita記事](https://qiita.com/TkTkTkTkTako/items/aa0063e733a99ef53e54)でアウトプットしました。
 
 ※[参考ツイート](https://twitter.com/TkTkTkTkTako/status/1358414441528786944?s=20) (prepareとquery)
 
@@ -240,7 +240,7 @@ $member = $members ->  fetch();
 ### 3.Herokuでのデプロイ
 特にローカル環境(MyAdmin)から本番環境(MySQL Workbench)へデータベースを移行する際、SQLの処理がうまくいかず苦戦しました。
 
-(別途、Qiita記事投稿予定)
+⇒[コチラのQiita記事](https://qiita.com/TkTkTkTkTako/items/27e9f47923ccb77064d2)でアウトプットしました。
 
 ※[参考ツイート](https://twitter.com/TkTkTkTkTako/status/1361330940564267008?s=20)
 
