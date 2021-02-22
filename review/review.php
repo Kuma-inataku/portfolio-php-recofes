@@ -55,7 +55,24 @@ if(!empty($_POST)){
     $image = date('YmdHis') . $_FILES['review_image']['name'];
     // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
     move_uploaded_file($_FILES['review_image']['tmp_name'],'../review_picture/' . $image);
-    // フォーム入力内容をDBに保存
+
+    // var_dump($fesCnt['fes_id']);
+    // var_dump($image);
+    // exit();
+
+    // フォーム入力内容をDBに保存(画像無の場合)
+    if($image=date('YmdHis')){
+      $review = $db->prepare('INSERT INTO reviews SET fes_id=?, fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
+      $review->execute(array(
+        $fesCnt['fes_id'],
+        $_POST['fes_name'],
+        'sample.jpg ',
+        $_POST['review'],
+        $user['id']
+      ));
+      
+    }else{
+      // フォーム入力内容をDBに保存(画像有の場合)
     $review = $db->prepare('INSERT INTO reviews SET fes_id=?, fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
     $review->execute(array(
       $fesCnt['fes_id'],
@@ -64,14 +81,14 @@ if(!empty($_POST)){
       $_POST['review'],
       $user['id']
     ));
+  }
     // var_dump($fesCnt['fes_id']);
     // var_dump($_POST['fes_name']);
     // var_dump($image);
     // var_dump($_POST['review']);
     // var_dump($user['id']);
     // var_dump($db->errorInfo()); 
-    // exit(); 
-    
+    // exit();     
     header('Location: ../ranking/index.php');
     exit();
   }    
