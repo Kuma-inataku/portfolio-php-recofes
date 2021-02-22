@@ -64,12 +64,12 @@ if(!empty($_POST)){
       $_POST['review'],
       $user['id']
     ));
-    var_dump($fesCnt['fes_id']);
-    var_dump($_POST['fes_name']);
-    var_dump($image);
-    var_dump($_POST['review']);
-    var_dump($user['id']);
-    var_dump($db->errorInfo()); 
+    // var_dump($fesCnt['fes_id']);
+    // var_dump($_POST['fes_name']);
+    // var_dump($image);
+    // var_dump($_POST['review']);
+    // var_dump($user['id']);
+    // var_dump($db->errorInfo()); 
     // exit(); 
     
     header('Location: ../ranking/index.php');
