@@ -101,7 +101,7 @@ else{
           <p class="my_comment"><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></p>
         </div>
         <div class="prof_info_update">
-          <button type="submit" onClick="location.href='http://localhost:8888/my_project/mypage/edit.php'">プロフィール編集</button>
+          <button type="submit" onClick="location.href='edit.php'">プロフィール編集</button>
           <div class="mysns">
             <a href="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL" target="_blank">
               <img src="../images/twitter.png" alt="">
