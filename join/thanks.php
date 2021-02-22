@@ -32,7 +32,7 @@
       <div class="content">
         <form action="" method="post">
           <div class="go_login">
-            <a href="http://localhost:8888/my_project/login.php">
+            <a href="login.php">
             ログインする
             <!-- <input type="submit" value="ログインする" /> -->
             </a>
