@@ -117,7 +117,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
   <!-- <div class="review_wrap"> -->
     <!-- <h2>口コミをしてまだ知らないフェス仲間とつながろう！</h2> -->
   <div class="review_btn">
-    <button type="submit" onClick="location.href='http://localhost:8888/my_project/review/review.php'">口コミする</button>
+    <button type="submit" onClick="location.href='../review/review.php'">口コミする</button>
   </div>
   <!-- </div> -->
   <div class="reviews_wrap">
