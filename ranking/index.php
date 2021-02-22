@@ -139,7 +139,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
                 <img src="../images/twitter.png" alt="" target="_blank">
               </a>
               <a href="<?php print(htmlspecialchars($review['sns_instagram'],ENT_QUOTES)); ?>">
-                <img src="../images/instagram.png" alt="" target="_blank">
+                <img src="../images/Instagram.png" alt="" target="_blank">
               </a>
             </div>
             <!-- <div class="card-user-status">
