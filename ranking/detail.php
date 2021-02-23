@@ -44,7 +44,7 @@ $member=$members->fetch();
   <title>レコFES</title>
   <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <!-- --------指定したフェスについての口コミ------- -->
+  <!-- --------指定したフェス詳細、フェスの口コミ------- -->
   <link rel="stylesheet" type="text/css" href="../css/ranking.css">
   <!-- --------ハンバーガードロップダウンメニュー------- -->
   <link rel="stylesheet" type="text/css" href="../css/dropdownmenu.css">

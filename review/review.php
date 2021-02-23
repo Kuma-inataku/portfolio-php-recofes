@@ -56,10 +56,6 @@ if(!empty($_POST)){
     // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
     move_uploaded_file($_FILES['review_image']['tmp_name'],'../review_picture/' . $image);
 
-    // var_dump($fesCnt['fes_id']);
-    // var_dump($image);
-    // exit();
-
     // フォーム入力内容をDBに保存(画像無の場合)
     if($image=date('YmdHis')){
       $review = $db->prepare('INSERT INTO reviews SET fes_id=?, fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
