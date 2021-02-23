@@ -49,7 +49,8 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         <h2>「レコFES」とは?</h2>
         <div class="about">
           <div class="ab_image">
-            <img src="images/top_image3.jpg" alt="">
+            <img src="images/friends.jpg" alt="">
+            <!-- <img src="images/top_image3.jpg" alt=""> -->
           </div>
           <div class="ab_text">
             <div class="ab_subtitle">
