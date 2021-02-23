@@ -85,8 +85,10 @@ Amazonや楽天で買い物したり、
 
 ログインユーザーのみ自分の口コミ削除や編集が可能
 
-※Instagramアイコンが表示されない点、画像が崩れている点は修正中です。
-![口コミ表示.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/780929/de8a3249-0810-5206-18ef-5797b3af40dd.png)
+~~※Instagramアイコンが表示されない点、画像が崩れている点については修正中です。~~
+
+⇒修正完了しました。
+![口コミ表示.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/780929/a6e3694c-655f-21e5-8970-637a8c596dfb.png)
 
 ### ユーザー情報詳細
 「この人の口コミ役に立つ(^^)」と思ったらその投稿者のSNSまで遷移可能
