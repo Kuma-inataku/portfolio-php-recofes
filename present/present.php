@@ -88,7 +88,7 @@ else{
           </p>
           <br>
           <p class="pre_text">
-            ダウンロードは<a href="twitter1.png" download="サンプル.png">こちら</a>から
+            ダウンロードは<a href="../images/fes_preparation_all.png" download="fes_preparation_all.png">こちら</a>から
           </p>
         </div>
       </div>
