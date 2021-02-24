@@ -50,44 +50,30 @@ if(!empty($_POST)){
   $fesCnts->execute(array($_POST['fes_name']));
   $fesCnt=$fesCnts->fetch();
 
-  if(empty($error)){
-    //$_FILESで受け取った画像データに年月日時分秒を付与したファイル名を$imageに代入
-    $image = date('YmdHis') . $_FILES['review_image']['name'];
+  if(empty($error)){   
+    // 思い出の写真が空欄だった場合、固定の画像を表示
+    if($_FILES['review_image']['name'] == ""){
+      $image = 'test.jpg';
+    }
+    // 思い出の写真が入っていたら、その通り表示
+    else{
+      //$_FILESで受け取った画像データに年月日時分秒を付与したファイル名を$imageに代入
+      $image = date('YmdHis') . $_FILES['review_image']['name'];
+    }
     // $_FILESで受け取った画像を専用で作ったfes_pctureディレクトリに投函
     move_uploaded_file($_FILES['review_image']['tmp_name'],'../review_picture/' . $image);
-
-    // フォーム入力内容をDBに保存(画像無の場合)
-    if($image=date('YmdHis')){
+    // フォーム入力内容をDBに保存
       $review = $db->prepare('INSERT INTO reviews SET fes_id=?, fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
       $review->execute(array(
         $fesCnt['fes_id'],
         $_POST['fes_name'],
-        'sample.jpg ',
+        $image,
         $_POST['review'],
         $user['id']
-      ));
-      
-    }else{
-      // フォーム入力内容をDBに保存(画像有の場合)
-    $review = $db->prepare('INSERT INTO reviews SET fes_id=?, fes_name=?, review_image=?, review=?, reviewer_id=?, created=NOW()');
-    $review->execute(array(
-      $fesCnt['fes_id'],
-      $_POST['fes_name'],
-      $image,
-      $_POST['review'],
-      $user['id']
-    ));
-  }
-    // var_dump($fesCnt['fes_id']);
-    // var_dump($_POST['fes_name']);
-    // var_dump($image);
-    // var_dump($_POST['review']);
-    // var_dump($user['id']);
-    // var_dump($db->errorInfo()); 
-    // exit();     
+      )); 
     header('Location: ../ranking/index.php');
     exit();
-  }    
+  }
 }
 ?>
 
