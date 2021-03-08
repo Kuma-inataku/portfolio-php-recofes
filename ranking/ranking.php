@@ -78,6 +78,7 @@ else{
       </ul>
     </nav>
   </header>
+  <main>
   <section class="rank_wrap">
     <div class="rank"> 
       <!-- [PHP]投稿内容持ってくる -->
@@ -91,25 +92,11 @@ else{
             <p>(<?php ?>票)</p>
           </li>
           <?php endforeach; ?>
-          <!-- <li data-rank="2">
-            <span>2位</span>
-            <a href="#">SWEET LOVE SHOWER<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li data-rank="3">
-            <span>3位</span>
-            <a href="#">RIZING SUN<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li>
-          <li>
-            <span>4位</span>
-            <a href="#">COUNT DOWN JAPAN<?php ?></a>
-            <p>(<?php ?>票)</p>
-          </li> -->
         </ol>
       </div>
     </div>
   </section>
+  </main>
   <footer>
   ©2021 Reco.FES 
   </footer>

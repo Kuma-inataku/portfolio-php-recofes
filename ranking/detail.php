@@ -93,6 +93,7 @@ $member=$members->fetch();
       </ul>
     </nav>
   </header>
+  <main>
   <section class="rank_wrap">
     <div class="rank">
       <div class="rank-content">
@@ -152,6 +153,7 @@ $member=$members->fetch();
     </ul>
     <?php endforeach; ?>
   </div>
+  </main>
   <footer>
   ©2021 Reco.FES 
   </footer>

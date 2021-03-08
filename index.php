@@ -35,6 +35,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
       </ul>
     </nav>
   </header>
+  <main>
     <section class="bg-img">
       <!-- キャッチコピー -->
       <div class="title">
@@ -148,9 +149,10 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
         </ul>
       </div>
     </div>
-      <footer>
-      ©2021 Reco.FES 
-      </footer>
+    </main>
+    <footer>
+    ©2021 Reco.FES 
+    </footer>
 </body>
 </html>
 

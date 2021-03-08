@@ -128,6 +128,7 @@ if(!empty($_POST)){
         </ul>
       </nav>
     </header>
+    <main>
     <div class="wrap">
       <div class="container">
         <h1>口コミする</h1>
@@ -186,6 +187,7 @@ if(!empty($_POST)){
         </div>
       </div>
     </div>
+    </main>
     <footer>
       ©2021 Reco.FES 
     </footer>

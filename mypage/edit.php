@@ -11,7 +11,6 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
   $users = $db->prepare('SELECT * FROM users WHERE id=?');
   $users->execute(array($_SESSION['id']));
   $user = $users->fetch();
- 
 }
   else{
   header('Location: ../login.php');
@@ -80,25 +79,21 @@ if(!empty($_POST)){
   <script type="text/javascript" src="../js/dropdownmenu.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-</head>
 <body>
   <header>
     <nav>
-    <ul>
-    <li class="nav_home_log">
-           <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
+      <ul>
+        <li class="nav_home_log">
+          <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
         </li>
-        <!-- <li class="nav_must">
-          <a href="#">他のランキング</a>
-        </li> -->
         <li class="nav_must">
           <a href="../review/review.php">口コミする</a>
         </li>
         <li>
           <a href="../present/present.php"><i class="fas fa-gift fa"></i>特典</a>
-          <!-- <div class="nav_present">
-            <a href="../present/present.php"><i class="fas fa-gift fa-2x"></i>特典</a>
-          </div> -->
+          <div class="nav_present">
+            <a href="../present/present.php"><i class="fas fa-gift"></i>特典</a>
+          </div>
         </li>
         <li>
           <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
@@ -123,6 +118,7 @@ if(!empty($_POST)){
       </ul>
     </nav>
   </header>
+  <main>
   <div class="wrap">
     <div class="container">
       <h1>プロフィール編集</h1>
@@ -165,6 +161,7 @@ if(!empty($_POST)){
       </div>
     </div>
   </div>
+  </main>
   <footer>
     ©2021 Reco.FES 
   </footer>

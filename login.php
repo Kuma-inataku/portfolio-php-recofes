@@ -42,7 +42,6 @@ if(!empty($_POST)){
     $error['login'] = 'blank';
   }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +52,6 @@ if(!empty($_POST)){
   <title>レコフェス</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
-  <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 </head>
 <body>
   <header>
@@ -74,44 +72,46 @@ if(!empty($_POST)){
       </ul>
     </nav>
   </header>
-  <div class="wrap">
-    <div class="container">
-      <h1>ログイン</h1>
-      <div class="content">
-        <form action="" method="post">
-          <div class="corner">
-            <?php if ($error['login'] === 'blank'): ?>
-            <p class="error">メールアドレスとパスワードを正しくご記入ください</p>
-            <?php endif;?>
-            <?php if ($error['login'] === 'failed'): ?>
-              <p class="error">ログインに失敗しました。正しくご記入ください</p>
-            <?php endif;?>
-            <!-- [ログインフォーム]メールアドレス -->
-            <p class="subtitle">メールアドレス<span class="must">必須</span></p>
-            <input type="text" name="email" size="35" maxlength="255" value="<?php print(htmlspecialchars($email,ENT_QUOTES)); ?>" />
-          </div>
-          <div class="corner">
-            <!-- [ログインフォーム]パスワード -->
-            <p class="subtitle">パスワード<span class="must">必須</span></p>
-            <input type="password" name="password" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['password'],ENT_QUOTES)); ?>" />
-          </div>
-          <div class="save_login">
-            <input id="save" type="checkbox" name="save" value="on">
-            <label for="save">ログイン状態を維持する</label>
-          </div>
-          <div class="go_login">
-            <input type="submit" value="ログイン" />
-          </div>
-          <div class="go_login">
-            <a href="login_guest.php">採用ご担当者様用ログイン</a>
-          </div>
-        </form>
+  <main>
+    <div class="wrap">
+      <div class="container">
+        <h1>ログイン</h1>
+        <div class="content">
+          <form action="" method="post">
+            <div class="corner">
+              <?php if ($error['login'] === 'blank'): ?>
+              <p class="error">メールアドレスとパスワードを正しくご記入ください</p>
+              <?php endif;?>
+              <?php if ($error['login'] === 'failed'): ?>
+                <p class="error">ログインに失敗しました。正しくご記入ください</p>
+              <?php endif;?>
+              <!-- [ログインフォーム]メールアドレス -->
+              <p class="subtitle">メールアドレス<span class="must">必須</span></p>
+              <input type="text" name="email" size="35" maxlength="255" value="<?php print(htmlspecialchars($email,ENT_QUOTES)); ?>" />
+            </div>
+            <div class="corner">
+              <!-- [ログインフォーム]パスワード -->
+              <p class="subtitle">パスワード<span class="must">必須</span></p>
+              <input type="password" name="password" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['password'],ENT_QUOTES)); ?>" />
+            </div>
+            <div class="save_login">
+              <input id="save" type="checkbox" name="save" value="on">
+              <label for="save">ログイン状態を維持する</label>
+            </div>
+            <div class="go_login">
+              <input type="submit" value="ログイン" />
+            </div>
+            <div class="go_login">
+              <a href="login_guest.php">採用ご担当者様用ログイン</a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="register">
-    <p>新規登録は<a href="join/index.php">こちら</a></p>
-  </div>
+    <div class="register">
+      <p>新規登録は<a href="join/index.php">こちら</a></p>
+    </div>
+  </main>
   <footer>
     ©2021 Reco.FES 
   </footer>

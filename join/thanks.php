@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
 <body>
-<header>
+  <header>
     <nav>
       <ul>
       <li class="nav_home">
@@ -26,6 +26,7 @@
       </ul>
     </nav>
   </header>
+  <main>
   <div class="wrap">
     <div class="container">
       <h1>登録しました</h1>
@@ -41,6 +42,7 @@
       </div>
     </div>
   </div>
+  </main>
   <footer>
     ©2021 Reco.FES 
   </footer>
