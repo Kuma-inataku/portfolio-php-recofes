@@ -51,7 +51,7 @@ else{
   <header>
     <nav>
       <ul>
-      <li class="nav_home_log">
+        <li class="nav_home_log">
            <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
         </li>
         <!-- <li class="nav_must">
@@ -89,65 +89,66 @@ else{
       </ul>
     </nav>
   </header>
-    <div class="prof"> 
-      <h2>マイページ</h2>
-      <div class="prof-info">
-        <div class="prof_info_img">
-          <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
-        </div>
-        <div class="prof_info_content">
-          <p class="myname"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?></p>
-          <p class="myfes_count">フェスへ行った回数：<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回</p>
-          <p class="my_comment"><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></p>
-        </div>
-        <div class="prof_info_update">
-          <button type="submit" onClick="location.href='edit.php'">プロフィール編集</button>
-          <div class="mysns">
-            <a href="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL" target="_blank">
-              <img src="../images/twitter.png" alt="">
-            </a>
-            <a href="<?php print(htmlspecialchars($user['sns_instagram'],ENT_QUOTES)); ?>" alt="Instagram URL" target="_blank">
-              <img src="../images/Instagram.png" alt="">
-            </a>
-          </div>
+  <main>
+  <div class="prof"> 
+    <h2>マイページ</h2>
+    <div class="prof-info">
+      <div class="prof_info_img">
+        <img src="../user_picture/<?php print(htmlspecialchars($user['image'],ENT_QUOTES)); ?>" alt="プロフィール画像">
+      </div>
+      <div class="prof_info_content">
+        <p class="myname"><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?></p>
+        <p class="myfes_count">フェスへ行った回数：<?php print(htmlspecialchars($user['fes_count'],ENT_QUOTES)); ?>回</p>
+        <p class="my_comment"><?php print(htmlspecialchars($user['profile'],ENT_QUOTES)); ?></p>
+      </div>
+      <div class="prof_info_update">
+        <button type="submit" onClick="location.href='edit.php'">プロフィール編集</button>
+        <div class="mysns">
+          <a href="<?php print(htmlspecialchars($user['sns_twitter'],ENT_QUOTES)); ?>" alt="Twitter URL" target="_blank">
+            <img src="../images/twitter.png" alt="">
+          </a>
+          <a href="<?php print(htmlspecialchars($user['sns_instagram'],ENT_QUOTES)); ?>" alt="Instagram URL" target="_blank">
+            <img src="../images/Instagram.png" alt="">
+          </a>
         </div>
       </div>
     </div>
-    <div>
-      <div class="rank-content">
-        <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
-        <?php foreach($reviews as $review): ?>
-        <ul class="this_reviews">
-            <li class="reviews"> 
-              <div class="review_flex">
-                <div class="review-left">
-                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
-                </div>
-                <div class="review-right">
-                  <div class="rank-review">
-                    <p class="rank_fesname"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
-                    <p class="rank_text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
-                  </div>
-                  <div class="review_bottom">
-                    <div class="rank_link">
-                      <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
-                        <i class="far fa-trash-alt"></i>
-                      <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
-                        <i class="fas fa-pen"></i>
-                      </a>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-                <div class="review_bottom">
+  </div>
+  <div class="rank-content">
+    <h2><?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>の口コミ</h2>
+    <?php foreach($reviews as $review): ?>
+    <ul class="this_reviews">
+      <li class="reviews"> 
+        <div class="review_flex">
+          <div class="review-left">
+            <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
+          </div>
+          <div class="review-right">
+            <div class="rank-review">
+              <p class="rank_fesname"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
+              <p class="rank_text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
+            </div>
+            <div class="review_bottom">
+              <div class="rank_link">
+                <a href="../delete.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                  <i class="far fa-trash-alt"></i>
+                <a href="../review/edit.php?id=<?php print(htmlspecialchars($review['id'])) ?>">
+                  <i class="fas fa-pen"></i>
+                </a>
               </div>
-            </li>
-          </ul>
-          <?php endforeach; ?>
-     </div>
-      <footer>
-      ©2021 Reco.FES 
-      </footer>
+            </div>
+            </div>
+          </div>
+          <div class="review_bottom">
+        </div>
+      </li>
+    </ul>
+    <?php endforeach; ?>
+  </div>
+  </main>
+  <footer>
+  ©2021 Reco.FES 
+  </footer>
 </body>
 </html>
 

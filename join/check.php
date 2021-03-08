@@ -22,9 +22,6 @@ if(!empty($_POST)){
     $_SESSION['join']['image'],
     $_SESSION['join']['profile']
   ));
-  // var_dump($_SESSION); // ここ
-  // var_dump($db->errorInfo());
-  // exit();
 
   unset($_SESSION['join']);
 
@@ -61,6 +58,7 @@ if(!empty($_POST)){
       </ul>
     </nav>
 </header>
+<main>
   <div class="wrap">
     <div class="container">
       <h1>登録内容確認</h1>
@@ -119,6 +117,7 @@ if(!empty($_POST)){
       </div>
     </div>
   </div>
+</main>
   <footer>
     ©2021 Reco.FES 
   </footer>

@@ -75,6 +75,7 @@ else{
         </ul>
       </nav>
     </header>
+    <main>
     <div class="wrap">
       <div class="container">
         <h1><i class="fas fa-gift fa"></i>特典</h1>
@@ -93,6 +94,7 @@ else{
         </div>
       </div>
     </div>
+    </main>
     <footer>
       ©2021 Reco.FES 
     </footer>

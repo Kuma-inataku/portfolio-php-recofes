@@ -85,6 +85,7 @@ else{
       </ul>
     </nav>
   </header>
+  <main>
   <section class="prof_wrap">
     <div class="prof"> 
       <h2 class="title_mypage"><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?>のマイページ</h2>
@@ -111,30 +112,30 @@ else{
       </div>
     </div>
   </section>
-    <div>
-      <div class="rank-content">
-        <h2><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?>の口コミ</h2>
-        <ul class="this_reviews">
-          <?php foreach($reviews as $review): ?>
-            <li class="reviews"> 
-              <div class="review_flex">
-                <div class="review-left">
-                  <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
-                </div>
-                <div class="review-right">
-                  <div class="rank-review">
-                    <p class="rank_fesname"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
-                    <p class="rank_text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <?php endforeach; ?>
-        </ul>
-     </div>
-      <footer>
-      ©2021 Reco.FES 
-      </footer>
+  <div class="rank-content">
+    <h2><?php print(htmlspecialchars($review['name'],ENT_QUOTES)); ?>の口コミ</h2>
+    <ul class="this_reviews">
+    <?php foreach($reviews as $review): ?>
+      <li class="reviews"> 
+        <div class="review_flex">
+          <div class="review-left">
+            <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($review['review_image'],ENT_QUOTES)); ?>" alt="">
+          </div>
+          <div class="review-right">
+            <div class="rank-review">
+              <p class="rank_fesname"><?php print(htmlspecialchars($review['fes_name'],ENT_QUOTES)); ?></p>
+              <p class="rank_text"><?php print(htmlspecialchars($review['review'],ENT_QUOTES)); ?></p>
+            </div>
+          </div>
+        </div>
+      </li>
+    <?php endforeach; ?>
+    </ul>
+  </div>
+  <footer>
+  ©2021 Reco.FES 
+  </footer>
+  </main>
 </body>
 </html>
 

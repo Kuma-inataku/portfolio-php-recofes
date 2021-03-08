@@ -88,24 +88,25 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
   <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
 <body>
-<header>
-    <nav>
-      <ul>
-        <li class="nav_home">
-          <a href="../index.php" class="nav_title">レコＦＥＳ</a> 
-        </li>
-        <li>
-          <a href="index.php">ユーザー登録</a>
-        </li>
-        <li>
-          <a href="../login.php">ログイン</a>
-        </li>
-        <li>
-          <a href="../login_guest.php">採用ご担当者様用ログイン</a>
-        </li>
-      </ul>
-    </nav>
-</header>
+  <header>
+      <nav>
+        <ul>
+          <li class="nav_home">
+            <a href="../index.php" class="nav_title">レコＦＥＳ</a> 
+          </li>
+          <li>
+            <a href="index.php">ユーザー登録</a>
+          </li>
+          <li>
+            <a href="../login.php">ログイン</a>
+          </li>
+          <li>
+            <a href="../login_guest.php">採用ご担当者様用ログイン</a>
+          </li>
+        </ul>
+      </nav>
+  </header>
+  <main>
   <div class="wrap">
     <div class="container">
       <h1>新規登録</h1>
@@ -224,6 +225,7 @@ if($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])){
   <div class="register">
     既に会員の方は<a href="../login.php">コチラ</a>からログイン
   </div>
+  </main>
   <footer>
     ©2021 Reco.FES 
   </footer>

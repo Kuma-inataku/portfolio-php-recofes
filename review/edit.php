@@ -107,6 +107,7 @@ if(!empty($_POST)){
       </ul>
     </nav>
 </header>
+<main>
   <div class="wrap">
     <div class="container">
       <h1>口コミ編集</h1>
@@ -163,11 +164,11 @@ if(!empty($_POST)){
           <div class="go_login">
             <input type="submit" value="確認画面へ" />
           </div>
-
         </form>
       </div>
     </div>
   </div>
+  </main>
   <footer>
     ©2021 Reco.FES 
   </footer>

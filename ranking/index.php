@@ -82,6 +82,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
       </ul>
     </nav>
   </header>
+  <main>
   <section class="rank_wrap">
     <div class="rank"> 
       <div class="rank-content">
@@ -95,21 +96,6 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
               <p>(<?php print(htmlspecialchars($ranking['review_cnt'],ENT_QUOTES)); ?>票)</p>
             </li>
           <?php endforeach; ?>
-          <!-- <li data-rank="2">
-            <span>2位</span>
-            <a href="#">SWEET LOVE SHOWER</a>
-            <p>(票)</p>
-          </li>
-          <li data-rank="3">
-            <span>3位</span>
-            <a href="#">RIZING SUN</a>
-            <p>(票)</p>
-          </li>
-          <li>
-            <span>4位</span>
-            <a href="#">COUNT DOWN JAPAN</a>
-            <p>(票)</p>
-          </li> -->
         </ol>
       </div>
     </div>
@@ -162,6 +148,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
       <?php endforeach; ?>
     </ul>
   </div>
+  </main>
   <footer>
   ©2021 Reco.FES 
   </footer>
