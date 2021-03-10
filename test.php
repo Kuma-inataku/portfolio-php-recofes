@@ -7,6 +7,18 @@ $rankings = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GR
 // foreach使うパターン
 $fruits = $db->query('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP BY name_fruit ORDER BY cnt_fruit DESC');
 
+Schema::create('bbs', function (Blueprint $table) {
+  $table->increments('id');
+  $table->integer('user_id'); 
+  $table->string('comment'); 
+  $table->text('image'); // 画像に関する記述
+  $table->timestamps();
+});
+$image = base64_encode(file_get_contents($request->image->getRealPath()));
+Bbs::insert([
+    "image" => $image
+]);
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -19,6 +31,22 @@ $fruits = $db->query('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP B
   <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
+
+<form action="/bbs" method="POST" enctype="multipart/form-data" class="post_form">
+    <div class="form_parts">
+        <input type="file" name="image">
+        <br>
+        <br>
+        <textarea name="comment" rows="4" cols="40"></textarea>
+        <br>
+        {{ csrf_field() }}
+        <button class="btn btn-success">投稿</button>
+    </div>
+</form>
+<p>
+<img src="data:image/png;base64,<?= $image ?>">
+</p>
+
 <?php foreach($fruits as $fruit):?>
   <p><?php print(htmlspecialchars($fruit['name_fruit'],ENT_QUOTES)); ?>・<?php print(htmlspecialchars($fruit['cnt_fruit'], ENT_QUOTES )); ?>個</p>
 <?php endforeach; ?>
