@@ -7,7 +7,14 @@ $rankings = $db->query('SELECT fes_name, COUNT(id) AS review_cnt FROM reviews GR
 // foreach使うパターン
 $fruits = $db->query('SELECT name_fruit, COUNT(*) AS cnt_fruit FROM test GROUP BY name_fruit ORDER BY cnt_fruit DESC');
 
+Schema::create('bbs', function (Blueprint $review) {
+  $review->text('image'); // 画像に関する記述
+});
 
+$image = base64_encode(file_get_contents($request->image->getRealPath()));
+Review::insert([
+    "image" => $image
+]);
 ?>
 
 <!DOCTYPE html>
