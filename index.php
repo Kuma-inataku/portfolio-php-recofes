@@ -10,7 +10,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>レコFES</title>
+  <title>レコフェス</title>
     <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
     <!-- ABOUT, 直近の口コミ -->
@@ -21,7 +21,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
     <nav>
       <ul>
         <li class="nav_home">
-          <a href="index.php" class="nav_title">レコＦＥＳ</a> 
+          <a href="index.php" class="nav_title">レコフェス</a> 
         </li>
         <li>
           <a href="join/index.php">ユーザー登録</a>

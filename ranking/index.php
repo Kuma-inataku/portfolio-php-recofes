@@ -28,7 +28,7 @@ $reviews = $db->query('SELECT u.name, u.image, u.fes_count, u.sns_twitter, u.sns
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>レコFES</title>
+  <title>レコフェス</title>
   <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <!-- 直近の口コミ -->

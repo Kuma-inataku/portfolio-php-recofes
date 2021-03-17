@@ -1,4 +1,7 @@
 <?php 
+// エラーを出力する
+ini_set('display_errors', "On");
+
 session_start();
 require('dbconnect.php');
 
