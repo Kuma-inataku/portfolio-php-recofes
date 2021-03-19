@@ -33,6 +33,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
             <input name="userfile" type="file">
             <input type="submit" value="Upload">
         </form>
-        <img src="<?php print(htmlspecialchars($upload->get('ObjectURL'))) ;?>">
     </body>
 </html>
