@@ -35,7 +35,7 @@ else{
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>レコFES</title>
+  <title>レコフェス</title>
   <!-- ナビバー -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <!-- 口コミの一部(imageとか) -->
@@ -52,7 +52,7 @@ else{
     <nav>
       <ul>
         <li class="nav_home_log">
-           <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
+           <a href="../ranking/index.php" class="nav_title">レコフェス</a>
         </li>
         <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
