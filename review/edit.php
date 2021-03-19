@@ -70,7 +70,7 @@ if(!empty($_POST)){
     <nav>
       <ul>
         <li class="nav_home_log">
-          <a href="../ranking/index.php" class="nav_title">レコフェス</a>
+          <a href="../ranking/index.php" class="nav_title">レコＦＥＳ</a>
         </li>
         <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
