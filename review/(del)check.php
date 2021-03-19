@@ -35,7 +35,7 @@ else{
     <nav>
       <ul>
       <li class="nav_home">
-           <a href="../ranking/index.php">レコＦＥＳ</a>
+           <a href="../ranking/index.php">レコフェス</a>
         </li>
         <!-- <li class="nav_must">
           <a href="#">他のランキング</a>
