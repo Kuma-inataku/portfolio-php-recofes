@@ -1,4 +1,7 @@
 <?php
+// エラーを出力する
+ini_set('display_errors', "On");
+
 require_once "vendor/autoload.php";
 use Aws\S3\S3Client;
 
