@@ -3,6 +3,6 @@
     "require": {
         "php":"^7.4.1",
         "ext-mbstring":"*",
-        "aws/aws-sdk-php": "~3.0"
+        "aws/aws-sdk-php": "3.*"
     }
 }
