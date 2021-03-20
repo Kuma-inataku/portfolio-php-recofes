@@ -16,7 +16,7 @@ $s3 = new S3Client(array(
         'key' => $key,
         'secret' => $secret,
     ),
-    'region'  => 'ap-northeast-1', // 東京リージョン
+    'region'  => 'us-east-1', // 米国(バージニア)
 ));
 
 // アップロードされた画像の処理
