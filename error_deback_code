@@ -1,5 +1,0 @@
-  // エラーデバックコード
-  // var_dump($_SESSION);
-  // var_dump($db->errorInfo()); 
-  // exit();
-  // [END]エラーデバックコード
