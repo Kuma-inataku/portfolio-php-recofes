@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
             'Key' => 'AWS_SECRET_ACCESS_KEY'
         ]);
 
-        $request = $s3Client->createPresignedRequest($cmd, '+20 minutes');
+        $request = $s3->createPresignedRequest($cmd, '+20 minutes');
 
         // Get the actual presigned-url
         $presignedUrl = (string)$request->getUrl();
