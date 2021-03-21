@@ -25,18 +25,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     try {
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
 
-        //Creating a presigned URL
-        $cmd = $s3->getCommand('GetObject', [
-            'Bucket' => 'S3_BUCKET',
-            'Key' => 'AWS_SECRET_ACCESS_KEY'
-        ]);
+        // //Creating a presigned URL
+        // $cmd = $s3->getCommand('GetObject', [
+        //     'Bucket' => 'S3_BUCKET',
+        //     'Key' => 'AWS_SECRET_ACCESS_KEY'
+        // ]);
 
-        $request = $s3->createPresignedRequest($cmd, '+20 minutes');
+        // $request = $s3->createPresignedRequest($cmd, '+20 minutes');
 
         // Get the actual presigned-url
-        $presignedUrl = (string)$request->getUrl();
+        // $presignedUrl = (string)$request->getUrl();
+
+        //Getting the URL to an object
+        $url = $s3->getObjectUrl('S3_BUCKET', 'AWS_SECRET_ACCESS_KEY');
+
 ?>
-        <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'))?>">successful</a> :)</p>
+        <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'));?>">successful</a> :)</p>
 <?php } catch(Exception $e) { ?>
         <p>Upload error :(</p>
 <?php } } ?>
@@ -45,6 +49,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
             <input name="userfile" type="file">
             <input type="submit" value="Upload">
         </form>
-        <img src="<?php print(htmlspecialchars($presignedUrl)) ;?>">
+        <img src="<?=htmlspecialchars($url) ;?>">
     </body>
 </html>
