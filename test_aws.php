@@ -1,44 +1,25 @@
 <?php 
 // エラーを出力する
 ini_set('display_errors', "On");
-
 session_start();
 require('dbconnect.php');
 require('vendor/autoload.php');
 // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
-
 $s3 = new Aws\S3\S3Client([
     'version'  => '2006-03-01',
     'region'   => 'us-east-1',
 ]);
 $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
-
 ?>
 <html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
+    <head><meta charset="UTF-8"></head>
     <body>
         <h1>S3 upload example</h1>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     try {
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
-
-        // //Creating a presigned URL
-        // $cmd = $s3->getCommand('GetObject', [
-        //     'Bucket' => 'S3_BUCKET',
-        //     'Key' => 'AWS_SECRET_ACCESS_KEY'
-        // ]);
-
-        // $request = $s3->createPresignedRequest($cmd, '+20 minutes');
-
-        // Get the actual presigned-url
-        // $presignedUrl = (string)$request->getUrl();
-
-        //Getting the URL to an object
         $url = $s3->getObjectUrl('S3_BUCKET', 'AWS_SECRET_ACCESS_KEY');
-
 ?>
         <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'));?>">successful</a> :)</p>
 <?php } catch(Exception $e) { ?>
