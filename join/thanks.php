@@ -35,7 +35,6 @@
           <div class="go_login">
             <a href="login.php">
             ログインする
-            <!-- <input type="submit" value="ログインする" /> -->
             </a>
           </div>
         </form>
