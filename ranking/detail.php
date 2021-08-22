@@ -1,21 +1,19 @@
-<?php 
+<?php
 session_start();
 require('../dbconnect.php');
 
 // SESSIONにidやtimeが保存されてた場合
-if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
-  // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
-  $_SESSION['time'] =time();
-  
-}
-else{
-  header('Location: ../login.php');
-  exit();
+if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
+    // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
+    $_SESSION['time'] =time();
+} else {
+    header('Location: ../login.php');
+    exit();
 }
 
-if(empty($_REQUEST['id'])){
-header('Location: index.php');
-exit;
+if (empty($_REQUEST['id'])) {
+    header('Location: index.php');
+    exit;
 }
 
 // DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
@@ -71,7 +69,7 @@ $member=$members->fetch();
           </div> -->
         </li>
         <li>
-          <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
+          <p>ようこそ、<?php print(htmlspecialchars($user['name'], ENT_QUOTES)); ?>さん</p>
         </li>
         <!-- ドロップダウンリスト -->
         <div class="dropdown">
@@ -97,24 +95,24 @@ $member=$members->fetch();
   <section class="rank_wrap">
     <div class="rank">
       <div class="rank-content">
-        <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?></h2>
+        <h2><?php print(htmlspecialchars($fes['fes_name'], ENT_QUOTES)); ?></h2>
         <div class="rank-info">
           <div class="rank_info_img">
-            <img src="../fes_picture/<?php print(htmlspecialchars($fes['fes_picture'],ENT_QUOTES)); ?>" alt="フェスの写真">
+            <img src="../fes_picture/<?php print(htmlspecialchars($fes['fes_picture'], ENT_QUOTES)); ?>" alt="フェスの写真">
           </div>
           <div class="rank_info_content">
             <table>
               <tr>
                 <th>開催場所</th>
-                <td><?php print(htmlspecialchars($fes['fes_location'],ENT_QUOTES)); ?></td>
+                <td><?php print(htmlspecialchars($fes['fes_location'], ENT_QUOTES)); ?></td>
               </tr>
               <tr>
                 <th>開催時期</th>
-                <td><?php print(htmlspecialchars($fes['fes_time'],ENT_QUOTES)); ?>月</td>
+                <td><?php print(htmlspecialchars($fes['fes_time'], ENT_QUOTES)); ?>月</td>
               </tr>
               <tr>
                 <th>公式サイト</th>
-                <td><a href="<?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?>" target="_blank"><?php print(htmlspecialchars($fes['fes_url'],ENT_QUOTES)); ?></a></td>
+                <td><a href="<?php print(htmlspecialchars($fes['fes_url'], ENT_QUOTES)); ?>" target="_blank"><?php print(htmlspecialchars($fes['fes_url'], ENT_QUOTES)); ?></a></td>
               </tr>
             </table>
           </div>
@@ -123,25 +121,25 @@ $member=$members->fetch();
     </div>
   </section>
   <div class="rank-content">
-    <h2><?php print(htmlspecialchars($fes['fes_name'],ENT_QUOTES)); ?>の口コミ</h2>
-    <?php foreach($members as $member): ?>
+    <h2><?php print(htmlspecialchars($fes['fes_name'], ENT_QUOTES)); ?>の口コミ</h2>
+    <?php foreach ($members as $member): ?>
     <ul class="this_reviews">
       <li class="reviews"> 
         <div class="review_flex">
           <div class="review-left">
-            <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($member['review_image'],ENT_QUOTES)); ?>" alt="">
+            <img class="card-img" src="../review_picture/<?php print(htmlspecialchars($member['review_image'], ENT_QUOTES)); ?>" alt="">
           </div>
           <div class="review-right">
             <div class="rank-review">
-              <p class="rank_text"><?php print(htmlspecialchars($member['review'],ENT_QUOTES)); ?></p>
+              <p class="rank_text"><?php print(htmlspecialchars($member['review'], ENT_QUOTES)); ?></p>
             </div>
             <div class="review_bottom">
               <div class="reviewer_img">
-                <img src="../user_picture/<?php print(htmlspecialchars($member['image'],ENT_QUOTES)); ?>" alt="">
+                <img src="../user_picture/<?php print(htmlspecialchars($member['image'], ENT_QUOTES)); ?>" alt="">
               </div>
               <div class="reviewer_profile">
-                <p class="reviewer_fescnt">フェス回数：<?php print(htmlspecialchars($member['fes_count'],ENT_QUOTES)); ?>回</p>
-                <p class="reviewer_name"><?php print(htmlspecialchars($member['name'],ENT_QUOTES)); ?></p>
+                <p class="reviewer_fescnt">フェス回数：<?php print(htmlspecialchars($member['fes_count'], ENT_QUOTES)); ?>回</p>
+                <p class="reviewer_name"><?php print(htmlspecialchars($member['name'], ENT_QUOTES)); ?></p>
               </div>
               <!-- <div class="goodbtn">
                 <button type="submit">いいね！</button>
