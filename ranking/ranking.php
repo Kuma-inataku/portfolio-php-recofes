@@ -1,22 +1,21 @@
-<?php 
+<?php
 session_start();
 require('../dbconnect.php');
 
 // SESSIONにidやtimeが保存されてた場合
-if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
-  // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
-  $_SESSION['time'] =time();
-  
-  // DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
-  $users = $db->prepare('SELECT * FROM users WHERE id=?');
-  $users->execute(array($_SESSION['id']));
-  $user = $users->fetch();
+if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
+    // ログイン時にSESSIONのtimeを現在時刻に上書き(更新)する=SESSION長持ち
+    $_SESSION['time'] =time();
 
-  $rankings = $db->query('SELECT DISTINCT * FROM fes LIMIT 0,15');
-}
-else{
-  header('Location: ../login.php');
-  exit();
+    // DBのusersテーブルからidを取得し、どのユーザーがログインしているかSESSIONで受け取る
+    $users = $db->prepare('SELECT * FROM users WHERE id=?');
+    $users->execute(array($_SESSION['id']));
+    $user = $users->fetch();
+
+    $rankings = $db->query('SELECT DISTINCT * FROM fes LIMIT 0,15');
+} else {
+    header('Location: ../login.php');
+    exit();
 }
 ?>
 
@@ -56,7 +55,7 @@ else{
           <a href="../present/present.php">特典</a>
         </li>
         <li>
-          <p>ようこそ、<?php print(htmlspecialchars($user['name'],ENT_QUOTES)); ?>さん</p>
+          <p>ようこそ、<?php print(htmlspecialchars($user['name'], ENT_QUOTES)); ?>さん</p>
         </li>
         <!-- ドロップダウンリスト -->
         <div class="dropdown">
@@ -85,10 +84,10 @@ else{
       <div class="rank-content">
         <h2>オススメフェスランキング</h2>
         <ol>
-        <?php foreach($rankings as $ranking):?>
+        <?php foreach ($rankings as $ranking):?>
           <li data-rank="1">
-            <span><?php print(htmlspecialchars($ranking['fes_id'],ENT_QUOTES)); ?>位</span>
-            <a href="detail.php?id=<?php print(htmlspecialchars($ranking['fes_id'],ENT_QUOTES)); ?>"><?php print(htmlspecialchars($ranking['fes_name'],ENT_QUOTES)); ?></a>
+            <span><?php print(htmlspecialchars($ranking['fes_id'], ENT_QUOTES)); ?>位</span>
+            <a href="detail.php?id=<?php print(htmlspecialchars($ranking['fes_id'], ENT_QUOTES)); ?>"><?php print(htmlspecialchars($ranking['fes_name'], ENT_QUOTES)); ?></a>
             <p>(<?php ?>票)</p>
           </li>
           <?php endforeach; ?>
